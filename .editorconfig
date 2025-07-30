@@ -1,0 +1,17 @@
+[*.cs]
+# Use these rules for all C# files
+# Ensure the formatting options are enabled
+dotnet_sort_system_directives_first=true
+
+# Brace Style
+#csharp_new_line_before_open_brace=none
+csharp_new_line_before_else=true
+csharp_new_line_before_catch=true
+csharp_new_line_before_finally=false
+csharp_new_line_before_members_in_object_initializers=false
+csharp_new_line_before_members_in_anonymous_types=false
+
+# Optional: You can also add other formatting options here
+# For example, to use K&R style for all C# code
+csharp_preserve_single_line_blocks=true
+csharp_preserve_single_line_statements=true

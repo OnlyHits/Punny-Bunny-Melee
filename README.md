@@ -31,3 +31,23 @@ make clean    # If you all messed up, it removes the submodule folder only
 ```bash
 make help    # If my explanations are not enought
 ```
+
+***Note:*** If you're using Windows and powershell does not recognize `make` or `git` commands, see the trouble [shooting section](#trouble-shooting) in the document.
+
+
+### Trouble Shooting
+
+
+Install make (for Windows users) :<br/>
+1. Open powershell as administrator<br/>
+2. Run this command : 
+```bash
+winget install ezwinports.make
+```
+
+Install git (for Windows users) :<br/>
+1. Open powershell as administrator<br/>
+2. Run this command : 
+```bash
+winget install --id Git.Git -e
+```

@@ -38,16 +38,18 @@ make help    # If my explanations are not enought
 ### Trouble Shooting
 
 
-Install make (for Windows users) :<br/>
+Install `make` (for Windows users) :<br/>
 1. Open powershell as administrator<br/>
 2. Run this command : 
 ```bash
 winget install ezwinports.make
 ```
+3. Close your terminal & re open it, then you can run the commands
 
-Install git (for Windows users) :<br/>
+Install `git` (for Windows users) :<br/>
 1. Open powershell as administrator<br/>
 2. Run this command : 
 ```bash
 winget install --id Git.Git -e
 ```
+3. Close your terminal & re open it, then you can run the commands

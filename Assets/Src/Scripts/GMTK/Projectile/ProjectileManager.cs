@@ -1,6 +1,7 @@
 using UnityEngine;
 using CustomArchitecture;
 using System.Collections.Generic;
+using DG.Tweening.Core.Easing;
 
 namespace GMTK
 {
@@ -63,15 +64,15 @@ namespace GMTK
 
         public Player m_player;
 
-        public void AllocateProjectile(AttackUtils.BulletType type, Vector3 direction, Vector3 position, float speed)
+        public void AllocateProjectile(AttackUtils.BulletType type, Vector3 direction, Vector3 position, float speed, bool bounce)
         {
             switch (type)
             {
                 case AttackUtils.BulletType.Bullet_Normal:
-                    m_normalBulletPool?.AllocateElement(position, direction, speed);
+                    m_normalBulletPool?.AllocateElement(position, direction, speed, bounce);
                     break;
                 case AttackUtils.BulletType.Bullet_Bouncy:
-                    m_bouncyBulletPool?.AllocateElement(position, direction, speed);
+                    m_bouncyBulletPool?.AllocateElement(position, direction, speed, bounce);
                     break;
             }
         }

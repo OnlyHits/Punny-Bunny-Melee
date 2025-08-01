@@ -15,12 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 36111308e9a523f439de62f0839d3a3c
   m_SerializeEntries:
-  - m_GUID: 74808e1afe8788449aa1e025bebc5ce6
+  - m_GUID: 34db2165067722a4daf75f71c3c037f9
     m_Address: Assets/Src/Prefabs/Projectile/Normal_Bullet.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 75fa78d440722e441938b48a8f1d70af
+  - m_GUID: 9d00f310aea748c45b838d7c0da9eaf0
     m_Address: Assets/Src/Prefabs/Projectile/Bouncy_Bullet.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []

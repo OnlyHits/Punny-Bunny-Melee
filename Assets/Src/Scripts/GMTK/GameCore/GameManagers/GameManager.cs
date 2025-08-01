@@ -6,7 +6,10 @@ namespace GMTK
 {
     public class GameManager : BaseBehaviour
     {
-        ProjectileManager       m_projectileManager;
+        private ProjectileManager           m_projectileManager;
+        [SerializeField] private Transform  m_arenaTransform;
+
+        public (Vector3, Vector3) GetArenaTransposerDatas() => (m_arenaTransform.position, Vector3.Scale(m_arenaTransform.localScale, new Vector3(10f, 1f, 10f)));
 
         public IEnumerator Load()
         {

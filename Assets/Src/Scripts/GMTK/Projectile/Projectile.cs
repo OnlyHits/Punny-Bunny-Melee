@@ -1,4 +1,5 @@
 using CustomArchitecture;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace GMTK
@@ -7,14 +8,18 @@ namespace GMTK
     {
         private Vector3         m_direction = Vector3.zero;
         private float           m_speed = 0.0f;
-        private float           m_maxDistanceSqr = 300.0f;
+        private float           m_maxDistanceSqr = 60.0f;
         private float           m_currentDistance = 0.0f;
         private ParticleSystem  m_particleSystem;
         private bool            m_bounceOnCollide = false;
 
+        private Rigidbody       m_rigidbody;
+        private Vector3         m_lastVelocity = Vector3.zero;
+        private Vector3         m_lastPosition = Vector3.zero;
+        private float           m_distanceSinceAllocate = 0;
         public Vector3 Direction { get => m_direction; set => m_direction = value; }
         public float Speed { get => m_speed; set => m_speed = value; }
-        public float MaxDistance { get => m_maxDistanceSqr; set => m_maxDistanceSqr = value; }
+        public float MaxDistanceSqr { get => m_maxDistanceSqr; set => m_maxDistanceSqr = value; }
 
         public override void Init(params object[] parameter)
         {
@@ -24,34 +29,62 @@ namespace GMTK
             {
                 arenaTransposer.RegisterOnTeleport(OnTeleport);
             }
+
+            m_rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void OnTeleport()
+        private void OnTeleport(Vector3 position)
         {
+            m_lastPosition = position;
+
             m_particleSystem.Stop();
             m_particleSystem.Play(true);
         }
 
+        protected void Impulse(float speed)
+        {
+            m_rigidbody.AddForce(speed * m_direction, ForceMode.Impulse);
+
+            m_lastVelocity = m_direction * speed;
+        }
+
+        protected override void OnFixedUpdate()
+        {
+            Vector3 currentPosition = transform.position;
+            float movedDistance = (currentPosition - m_lastPosition).sqrMagnitude;
+
+            m_distanceSinceAllocate += movedDistance;
+            m_lastPosition = currentPosition;
+
+            if (m_distanceSinceAllocate > m_maxDistanceSqr)
+            {
+                Compute = false;
+            }
+        }
+
         protected override void OnUpdate()
         {
-            Vector3 offset = m_speed * Time.deltaTime * m_direction;
-
-            transform.position += offset;
-            m_currentDistance += offset.sqrMagnitude;
-
-            if (m_currentDistance > m_maxDistanceSqr)
-                Compute = false;
+            //if (m_rigidbody.linearVelocity.sqrMagnitude < m_minBulletMagnitudeSqr)
+            //    Compute = false;
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (!m_bounceOnCollide)
+            {
+                Compute = false;
                 return;
+            }
 
             ContactPoint contact = collision.contacts[0];
             m_direction = Vector3.Reflect(m_direction.normalized, contact.normal);
+
             m_particleSystem.Stop();
             m_particleSystem.Play(true);
+;
+            m_rigidbody.linearVelocity = Vector3.zero;
+
+            Impulse(m_lastVelocity.magnitude);
         }
 
         public override void OnAllocate(params object[] parameter)
@@ -87,16 +120,26 @@ namespace GMTK
             m_speed = (float)parameter[2];
             m_bounceOnCollide = (bool)parameter[3];
             gameObject.layer = (int)parameter[4];
+            m_distanceSinceAllocate = 0.0f;
+
+            m_rigidbody.linearVelocity = Vector2.zero;
 
             m_currentDistance = 0.0f;
+            m_lastPosition = transform.position;
 
             m_particleSystem.Stop();
             m_particleSystem.Play(true);
+
+            Impulse(m_speed);
 
             Compute = true;
         }
         public override void OnDeallocate()
         {
+            m_rigidbody.linearVelocity = Vector2.zero;
+            m_distanceSinceAllocate = 0.0f;
+            m_lastVelocity = Vector3.zero;
+            m_lastPosition = Vector3.zero;
             m_currentDistance = 0.0f;
             Compute = false;
         }

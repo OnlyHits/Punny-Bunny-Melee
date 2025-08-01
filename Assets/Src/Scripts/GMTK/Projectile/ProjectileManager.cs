@@ -9,7 +9,7 @@ namespace GMTK
     {
         public static Vector3 GetRandomDirectionInAngle(Vector3 direction, float angle)
         {
-            float randomAngle = Random.Range(-angle, angle);
+            float randomAngle = Random.Range(-angle * .5f, angle * .5f);
             Vector3 rotated = Quaternion.AngleAxis(randomAngle, Vector3.up) * direction;
             return rotated.normalized;
         }
@@ -37,8 +37,8 @@ namespace GMTK
                 return directions;
             }
 
-            float startAngle = -angle;
-            float endAngle = angle;
+            float startAngle = -angle * .5f;
+            float endAngle = angle * .5f;
             float step = (endAngle - startAngle) / (nb_directions - 1);
 
             for (int i = 0; i < nb_directions; i++)

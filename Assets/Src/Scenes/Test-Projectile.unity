@@ -403,8 +403,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pause: 0
   m_arenaTransform: {fileID: 1323338678}
-  m_player: {fileID: 1977172991}
   m_mapBounds: {x: 10, y: 1, z: 10}
+  m_playerController: {fileID: 0}
+  m_aiControllers: []
 --- !u!4 &857951775
 Transform:
   m_ObjectHideFlags: 0
@@ -898,22 +899,6 @@ PrefabInstance:
     - target: {fileID: 3311251105902649327, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[0].bounce_on_collision
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[1].bounce_on_collision
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[2].bounce_on_collision
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[3].bounce_on_collision
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

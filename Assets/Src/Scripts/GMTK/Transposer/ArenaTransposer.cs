@@ -7,9 +7,9 @@ namespace GMTK
     public class ArenaTransposer : MonoBehaviour
     {
         private Vector3 m_lastPosition;
-        private Action m_onTeleport;
+        private Action<Vector3> m_onTeleport;
 
-        public void RegisterOnTeleport(Action callback)
+        public void RegisterOnTeleport(Action<Vector3> callback)
         {
             m_onTeleport -= callback;
             m_onTeleport += callback;
@@ -49,7 +49,7 @@ namespace GMTK
                 pos.z = minZ;
 
             if (transform.position != pos)
-                m_onTeleport?.Invoke();
+                m_onTeleport?.Invoke(pos);
 
             transform.position = pos;
         }

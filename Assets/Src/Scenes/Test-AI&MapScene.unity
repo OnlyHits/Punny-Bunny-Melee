@@ -638,6 +638,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameCore
       objectReference: {fileID: 0}
+    - target: {fileID: 4467951697307255130, guid: d97149b183df3cd4180017c2d89ee6ba, type: 3}
+      propertyPath: m_debugStandaloneScene
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

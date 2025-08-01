@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System;
 using System.Data.Common;
+using Unity.VisualScripting;
 
 namespace GMTK
 {
@@ -17,6 +18,7 @@ namespace GMTK
         public float angle_range = 0.0f;
         public bool randomize_distribution = false;
         public bool fire_once = true;
+        public bool bounce_on_collision = false;
         public float time_between_bullet = 0.1f;
         public BulletType bullet_type = BulletType.Bullet_Normal;
     }
@@ -57,7 +59,7 @@ namespace GMTK
 
             foreach (var dir in directions)
             {
-                m_projectileManager.AllocateProjectile(datas.bullet_type, dir, tr.position, datas.speed);
+                m_projectileManager.AllocateProjectile(datas.bullet_type, dir, tr.position, datas.speed, datas.bounce_on_collision);
                 if (directions.Count > 1 && !datas.fire_once)
                     yield return new WaitForSeconds(datas.time_between_bullet);
             }

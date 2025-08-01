@@ -6,10 +6,7 @@ namespace GMTK
 {
     public class GameManager : BaseBehaviour
     {
-        //[SerializeField] private GameBackground m_gameBackground;
-
-        //public CinemachineCameraExtended GetBgCinemachineCamera() => m_gameBackground.GetCinemachineCamera();
-        //public GameBackground GetGameBackground() => m_gameBackground;
+        ProjectileManager       m_projectileManager;
 
         public IEnumerator Load()
         {
@@ -25,11 +22,14 @@ namespace GMTK
         { }
         public override void LateInit(params object[] parameters)
         {
-            //m_gameBackground.LateInit();
+            m_projectileManager?.LateInit();
         }
         public override void Init(params object[] parameters)
         {
-            //m_gameBackground.Init();
+            if (TryGetComponent<ProjectileManager>(out m_projectileManager))
+            {
+                m_projectileManager.Init();
+            }
         }
         #endregion
     }

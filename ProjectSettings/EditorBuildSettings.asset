@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Src/Scenes/LoadingScene.unity
     guid: 5f830d89e9b14c2448f78e240239d1b0
+  - enabled: 1
+    path: Assets/Src/Scenes/Test-Projectile.unity
+    guid: 3edbf28f002143143812a090c81ecf8d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -2,9 +2,10 @@ using System;
 using Sirenix.OdinInspector;
 using CustomArchitecture;
 using UnityEngine;
+using System.Collections;
+
 using static CustomArchitecture.CustomArchitecture;
 using static GMTK.GmtkUtils;
-using System.Collections;
 
 namespace GMTK
 {

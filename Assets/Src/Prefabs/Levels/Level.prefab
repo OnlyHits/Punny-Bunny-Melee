@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 974024612033098843}
   - component: {fileID: 1315503316575319282}
   - component: {fileID: 4866907712699044929}
-  m_Layer: 0
+  - component: {fileID: 7090691526547616287}
+  m_Layer: 8
   m_Name: Obstcale (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +109,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &7090691526547616287
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289293107777396898}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2468755522383496631
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +137,8 @@ GameObject:
   - component: {fileID: 6830811351079142056}
   - component: {fileID: 7433683967527522803}
   - component: {fileID: 7016926413555363299}
-  m_Layer: 0
+  - component: {fileID: 4934043907664013604}
+  m_Layer: 8
   m_Name: Obstcale (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,6 +234,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &4934043907664013604
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2468755522383496631}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2506597347053270460
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +262,8 @@ GameObject:
   - component: {fileID: 7307421331365200888}
   - component: {fileID: 7245299140936196958}
   - component: {fileID: 6796828149099416129}
-  m_Layer: 0
+  - component: {fileID: 954541227690410818}
+  m_Layer: 8
   m_Name: Obstcale (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,6 +359,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &954541227690410818
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2506597347053270460}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2932023616858499278
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +387,8 @@ GameObject:
   - component: {fileID: 3802356857872342884}
   - component: {fileID: 1603560815211447976}
   - component: {fileID: 3441966107314028563}
-  m_Layer: 0
+  - component: {fileID: 6417196263701879863}
+  m_Layer: 8
   m_Name: Obstcale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,6 +484,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &6417196263701879863
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932023616858499278}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3116405302280329562
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +512,7 @@ GameObject:
   - component: {fileID: 6481685750281869940}
   - component: {fileID: 2923776820228056492}
   - component: {fileID: 3537230790069712965}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +620,8 @@ GameObject:
   - component: {fileID: 5171489139721635271}
   - component: {fileID: 5417288187120206062}
   - component: {fileID: 1626394205346003905}
-  m_Layer: 0
+  - component: {fileID: 3460791016959343031}
+  m_Layer: 8
   m_Name: Obstcale (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,6 +717,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &3460791016959343031
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4389431274759405027}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4903372746535783839
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +745,8 @@ GameObject:
   - component: {fileID: 323561588422956201}
   - component: {fileID: 4909888356147886830}
   - component: {fileID: 5997890801984508725}
-  m_Layer: 0
+  - component: {fileID: 1920886960227941024}
+  m_Layer: 8
   m_Name: Obstcale (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,6 +842,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &1920886960227941024
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903372746535783839}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4985517945588743875
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +870,8 @@ GameObject:
   - component: {fileID: 7692019672713048145}
   - component: {fileID: 4750639109849781783}
   - component: {fileID: 2368037375145028352}
-  m_Layer: 0
+  - component: {fileID: 3992377827989385165}
+  m_Layer: 8
   m_Name: Obstcale (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,6 +967,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &3992377827989385165
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985517945588743875}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5126635356669705840
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +995,8 @@ GameObject:
   - component: {fileID: 2378795216844190987}
   - component: {fileID: 5429552385796319845}
   - component: {fileID: 294377047101683449}
-  m_Layer: 0
+  - component: {fileID: 2753088405601945082}
+  m_Layer: 8
   m_Name: Obstcale (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,6 +1092,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &2753088405601945082
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126635356669705840}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5342437639006799969
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,6 +1117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3383369381240458568}
+  - component: {fileID: 3118386441865236918}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -1015,6 +1152,38 @@ Transform:
   - {fileID: 8766781162260463386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3118386441865236918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342437639006799969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 1
+  m_NavMeshData: {fileID: 23800000, guid: e5968c92b65a7bb07909b61e9e794e80, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &6661079126658638149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1196,8 @@ GameObject:
   - component: {fileID: 7456848580310307365}
   - component: {fileID: 2378312937963902182}
   - component: {fileID: 3392604277476792544}
-  m_Layer: 0
+  - component: {fileID: 3078756049646783495}
+  m_Layer: 8
   m_Name: Obstcale (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1123,6 +1293,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &3078756049646783495
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661079126658638149}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7842991760385628368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1321,8 @@ GameObject:
   - component: {fileID: 1954972448114799097}
   - component: {fileID: 6699175301452235483}
   - component: {fileID: 8338654916585581760}
-  m_Layer: 0
+  - component: {fileID: 1335840132587184965}
+  m_Layer: 8
   m_Name: Obstcale (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1231,6 +1418,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &1335840132587184965
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842991760385628368}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &9116551861931940023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1446,8 @@ GameObject:
   - component: {fileID: 2869947008621382004}
   - component: {fileID: 6655343950189440328}
   - component: {fileID: 3317447731005461694}
-  m_Layer: 0
+  - component: {fileID: 9001213088962579347}
+  m_Layer: 8
   m_Name: Obstcale (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1339,3 +1543,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &9001213088962579347
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9116551861931940023}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

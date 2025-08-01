@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using CustomArchitecture;
 using Sirenix.OdinInspector;
-using UnityEditor.Build.Pipeline;
 using UnityEngine;
 
 namespace GMTK
@@ -12,6 +11,10 @@ namespace GMTK
         [SerializeField] private Rigidbody m_rb;
         [SerializeField] private Collider m_collider;
         [SerializeField] private Animator m_animator;
+
+        [Title("Visual")]
+        [SerializeField] private List<Renderer> m_renderers;
+        [SerializeField] private Material m_material;
 
         [Title("Ragdoll")]
         [SerializeField] private List<Rigidbody> m_ragdollRb;
@@ -31,6 +34,7 @@ namespace GMTK
         {
             m_basePos = transform.position;
             EnableRagdoll(false);
+            BindMaterial();
         }
         #endregion
 
@@ -58,34 +62,25 @@ namespace GMTK
             {
                 OnGetHit();
             }
-
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                StartMove();
-            }
-            else if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
-            {
-                StopMove();
-            }
-
-
-            if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
-            {
-                Move();
-            }
-            else
-            {
-                NoMove();
-            }
         }
         #endregion BaseBehaviour_Cb
 
+        #region Visual
+        private void BindMaterial()
+        {
+            foreach (Renderer rd in m_renderers)
+            {
+                rd.materials = new Material[1] { m_material };
+            }
+        }
+        #endregion
+
         #region Movement
-        private void StartMove()
+        public void StartMove()
         {
             m_animator.SetBool(ANIM_RUN, true);
         }
-        private void StopMove()
+        public void StopMove()
         {
             m_animator.SetBool(ANIM_RUN, false);
 
@@ -93,13 +88,13 @@ namespace GMTK
             m_rb.angularVelocity = Vector3.zero;
             m_direction = Vector3.zero;
         }
-        private void NoMove()
+        public void NoMove()
         {
             m_rb.linearVelocity = Vector3.zero;
             m_rb.angularVelocity = Vector3.zero;
             m_direction = Vector3.zero;
         }
-        private void Move()
+        public void Move()
         {
             m_direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             m_direction = m_direction.normalized;

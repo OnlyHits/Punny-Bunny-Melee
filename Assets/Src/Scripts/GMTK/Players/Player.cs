@@ -27,9 +27,11 @@ namespace GMTK
         [Title("Data")]
         [SerializeField] private float m_speed = 1f;
         [SerializeField, ReadOnly] private Vector3 m_direction;
+        private bool m_isMoving;
         private Vector3 m_lastDirection = Vector3.zero;
         private Vector3 m_basePos;
 
+        public bool IsMoving { get => m_isMoving; protected set { } }
         public Vector3 LastDirection { get => m_lastDirection; protected set { } }
         public Transform PistolPivot { get => m_pistolPivot; protected set { } }
 
@@ -82,10 +84,12 @@ namespace GMTK
         #region Movement
         public void StartMove()
         {
+            m_isMoving = true;
             m_animator.SetBool(ANIM_RUN, true);
         }
         public void StopMove()
         {
+            m_isMoving = false;
             m_animator.SetBool(ANIM_RUN, false);
 
             m_rb.linearVelocity = Vector3.zero;
@@ -98,9 +102,9 @@ namespace GMTK
             m_rb.angularVelocity = Vector3.zero;
             m_direction = Vector3.zero;
         }
-        public void Move()
+        public void Move(Vector2 direction)
         {
-            m_direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            m_direction = new Vector3(direction.x, 0, direction.y);
             m_direction = m_direction.normalized;
             m_lastDirection = m_direction == Vector3.zero ? m_lastDirection : m_direction;
 

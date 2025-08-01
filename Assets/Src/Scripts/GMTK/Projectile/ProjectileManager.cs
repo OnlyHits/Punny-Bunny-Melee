@@ -63,9 +63,6 @@ namespace GMTK
 
         public Player m_player;
 
-        // prefab of your projectiles
-        [SerializeField] private GameObject m_testProjPrefab;
-
         public void AllocateProjectile(AttackUtils.BulletType type, Vector3 direction, Vector3 position, float speed)
         {
             switch (type)

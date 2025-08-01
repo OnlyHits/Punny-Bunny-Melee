@@ -4796,7 +4796,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0a548244aeb764744aa3f091fab9a509, type: 2}
+  - {fileID: 2100000, guid: e653836c30661fe419b8992e230ca189, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9735,7 +9735,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d014932d119cb94593d13b0ec38f04d, type: 2}
+  - {fileID: 2100000, guid: a976a44ca501e564bb2adee42f573b4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14647,7 +14647,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d1c941a9dc901c4c9ed950321bb3117, type: 2}
+  - {fileID: 2100000, guid: 3be8ddfefd82d4c46aacf35c0e709d9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14712,8 +14712,8 @@ GameObject:
   - component: {fileID: 198793095439891898}
   - component: {fileID: 199240126902714026}
   - component: {fileID: 82146661744270340}
-  - component: {fileID: 7145862038214534471}
-  - component: {fileID: 7574075717217962373}
+  - component: {fileID: 7833654820887848872}
+  - component: {fileID: 4522288501954118548}
   m_Layer: 0
   m_Name: Bouncy_Bullet
   m_TagString: Untagged
@@ -14738,7 +14738,7 @@ Transform:
   - {fileID: 4214713280581678}
   - {fileID: 4402642995182844}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
 --- !u!198 &198793095439891898
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -19529,7 +19529,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d1c941a9dc901c4c9ed950321bb3117, type: 2}
+  - {fileID: 2100000, guid: 3be8ddfefd82d4c46aacf35c0e709d9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19596,7 +19596,7 @@ AudioSource:
   m_Resource: {fileID: 8300000, guid: e1d80fc70013ecb4a95ed2547a8372e3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1.2
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -19679,7 +19679,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &7145862038214534471
+--- !u!114 &7833654820887848872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19691,7 +19691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5d9abd8ef37484dba45c3acf02a9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7574075717217962373
+--- !u!114 &4522288501954118548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

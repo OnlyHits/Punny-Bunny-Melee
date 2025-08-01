@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pause: 0
   m_arenaTransform: {fileID: 950556011482229668}
+  m_mapBounds: {x: 52, y: 1, z: 28}
 --- !u!1 &957365993
 GameObject:
   m_ObjectHideFlags: 0

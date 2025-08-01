@@ -14,6 +14,9 @@ namespace GMTK
         [SerializeField] private Animator m_animator;
         [SerializeField] private NavMeshAgent m_agent;
 
+        [Title("Pistol pivot")]
+        [SerializeField] private Transform m_pistolPivot; // waiting for weapon
+
         [Title("Visual")]
         [SerializeField] private List<Renderer> m_renderers;
         [SerializeField] private Material m_material;
@@ -27,7 +30,10 @@ namespace GMTK
         private Vector3 m_lastDirection = Vector3.zero;
         private Vector3 m_basePos;
 
+        private PlayerAttackInterface m_attackInterface;
+
         public Vector3 LastDirection { get => m_lastDirection; protected set { } }
+        public Transform PistolPivot { get => m_pistolPivot; protected set { } }
 
         private readonly string ANIM_RUN = "Run";
 
@@ -43,6 +49,10 @@ namespace GMTK
         #region BaseBehaviour_Cb
         public override void Init(params object[] parameters)
         {
+            if (ComponentUtils.GetOrCreateComponent<PlayerAttackInterface>(gameObject, out m_attackInterface))
+            {
+                m_attackInterface.Init(parameters[0], this);
+            }
         }
 
         public override void LateInit(params object[] parameters)

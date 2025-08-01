@@ -57,9 +57,9 @@ namespace GMTK
         private AllocationPool<Projectile> m_normalBulletPool = null;
         private AllocationPool<Projectile> m_bouncyBulletPool = null;
 
-        private List<Projectile>            m_currentProjectiles;
+        private List<Projectile> m_currentProjectiles;
 
-        [SerializeField] private Transform  m_projectileContainer;
+        [SerializeField] private Transform m_projectileContainer;
 
         public Player m_player;
 

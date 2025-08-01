@@ -8,10 +8,15 @@ namespace GMTK
     public class PlayerController : BaseBehaviour
     {
         public Player player;
+        private PlayerAttackInterface m_attackInterface;
 
         #region BaseBehaviour_Cb
         public override void Init(params object[] parameters)
         {
+            if (ComponentUtils.GetOrCreateComponent<PlayerAttackInterface>(gameObject, out m_attackInterface))
+            {
+                m_attackInterface.Init(parameters[0], player);
+            }
         }
 
         public override void LateInit(params object[] parameters)

@@ -1,3 +1,3 @@
 [submodule "Assets/Src/Scripts/CustomArchitecture"]
 	path = Assets/Src/Scripts/CustomArchitecture
-	url = git@github.com:OnlyHits/CustomArchitecture.git
+	url = https://github.com/OnlyHits/GMTK-2025.git

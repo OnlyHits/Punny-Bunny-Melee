@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using CustomArchitecture;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace GMTK
 {
@@ -11,6 +12,7 @@ namespace GMTK
         [SerializeField] private Rigidbody m_rb;
         [SerializeField] private Collider m_collider;
         [SerializeField] private Animator m_animator;
+        [SerializeField] private NavMeshAgent m_agent;
 
         [Title("Pistol pivot")]
         [SerializeField] private Transform m_pistolPivot; // waiting for weapon
@@ -63,15 +65,13 @@ namespace GMTK
 
         protected override void OnLateUpdate()
         {
-
+            transform.position = m_agent.transform.position;
+            m_agent.transform.localPosition = Vector3.zero;
         }
 
         protected override void OnUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                OnGetHit();
-            }
+
         }
         #endregion BaseBehaviour_Cb
 
@@ -148,11 +148,13 @@ namespace GMTK
         private void DisableRagdoll() => EnableRagdoll(false);
         #endregion
 
+        #region Hit
         public void OnGetHit()
         {
             EnableRagdoll(true);
             StartCoroutine(CoroutineUtils.InvokeOnDelay(2f, DisableRagdoll));
         }
+        #endregion
 
     }
 }

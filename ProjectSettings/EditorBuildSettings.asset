@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Src/Scenes/Test-Projectile.unity
     guid: 3edbf28f002143143812a090c81ecf8d
+  - enabled: 1
+    path: Assets/Src/Scenes/Test-AI&MapScene.unity
+    guid: d628d271205299288b795eab3e3b70b5
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 8be65ddfe61cc0448a459be5baedbabd, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

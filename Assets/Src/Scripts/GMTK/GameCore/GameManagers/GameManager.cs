@@ -10,9 +10,10 @@ namespace GMTK
 
         [SerializeField] private Transform  m_arenaTransform;
         [SerializeField] private Player     m_player;
+        [SerializeField] private Vector3    m_mapBounds = new Vector3(10f, 1f, 10f);
 
         public ProjectileManager GetProjectileManager() => m_projectileManager;
-        public (Vector3, Vector3) GetArenaTransposerDatas() => (m_arenaTransform.position, Vector3.Scale(m_arenaTransform.localScale, new Vector3(10f, 1f, 10f)));
+        public (Vector3, Vector3) GetArenaTransposerDatas() => (m_arenaTransform.position, Vector3.Scale(m_arenaTransform.localScale, m_mapBounds));
 
         public IEnumerator Load()
         {

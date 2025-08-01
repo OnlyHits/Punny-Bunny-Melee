@@ -28,6 +28,11 @@ namespace GMTK
 
         protected override void OnUpdate()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                player.OnGetHit();
+            }
+
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 player.StartMove();

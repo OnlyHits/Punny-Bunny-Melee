@@ -20,17 +20,8 @@ namespace GMTK
         protected override void InstantiateGameModes()
         {
             Application.targetFrameRate = 60;
-
             CreateGameMode<MainGameMode>();
-
-#if UNITY_EDITOR
-            if (m_debugStandaloneScene == false)
-            {
-#endif
-                SetStartingGameMode<MainGameMode>();
-#if UNITY_EDITOR
-            }
-#endif
+            SetStartingGameMode<MainGameMode>();
         }
     }
 }

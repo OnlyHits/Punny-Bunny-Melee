@@ -1,0 +1,1089 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &825882053524989267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8402516568384048729}
+  - component: {fileID: 8154517956305901886}
+  - component: {fileID: 1001394744265239488}
+  m_Layer: 0
+  m_Name: 'Ferris Wheel '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8402516568384048729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825882053524989267}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 12.650813, z: 0.000089118104}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1050326609004892613}
+  - {fileID: 5770283420170447044}
+  - {fileID: 8156182226318566228}
+  - {fileID: 8275719700716748309}
+  - {fileID: 1923736293197920391}
+  - {fileID: 8362911640616949092}
+  - {fileID: 8253834937427980184}
+  - {fileID: 7307203938537552003}
+  - {fileID: 7962500947529416313}
+  - {fileID: 8240257973311885684}
+  - {fileID: 5272479697808383488}
+  - {fileID: 3906363437479328828}
+  m_Father: {fileID: 3291744754212886161}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8154517956305901886
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825882053524989267}
+  m_Mesh: {fileID: -4794245478446782279, guid: f5c41acaee901ad4581852305a3b2cf7, type: 3}
+--- !u!23 &1001394744265239488
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825882053524989267}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -6478536213147159724, guid: f5c41acaee901ad4581852305a3b2cf7, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &2802770335671061547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3291744754212886161}
+  - component: {fileID: 1873915244776151348}
+  - component: {fileID: 4460125716910091774}
+  - component: {fileID: 6673776878935748936}
+  m_Layer: 0
+  m_Name: 'Ferris Wheel '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3291744754212886161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802770335671061547}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8402516568384048729}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1873915244776151348
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802770335671061547}
+  m_Mesh: {fileID: 8481206627394312357, guid: f5c41acaee901ad4581852305a3b2cf7, type: 3}
+--- !u!23 &4460125716910091774
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802770335671061547}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b5a827601fd5813468ca5b00a582ba89, type: 2}
+  - {fileID: 2100000, guid: b5a827601fd5813468ca5b00a582ba89, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!64 &6673776878935748936
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802770335671061547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8481206627394312357, guid: f5c41acaee901ad4581852305a3b2cf7, type: 3}
+--- !u!1001 &1375959235957920978
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.4799995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.769187
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698956524468216304, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Red (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 86395236bec7a2e41a739f66b7a9fd03, type: 3}
+--- !u!4 &8253834937427980184 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1375959235957920978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1390103475886916959
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.7700005
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.4768133
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698956524468216304, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Red (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 86395236bec7a2e41a739f66b7a9fd03, type: 3}
+--- !u!4 &8275719700716748309 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1390103475886916959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1425572283514038846
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.790001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.4591875
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698956524468216304, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Red (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 86395236bec7a2e41a739f66b7a9fd03, type: 3}
+--- !u!4 &8240257973311885684 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1425572283514038846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2472465089536809537
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 3726269911602018428, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Blue (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.980001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.029187202
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd29a3eb543020141a957a3bef2e07bd, type: 3}
+--- !u!4 &1923736293197920391 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2472465089536809537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3588637747827570189
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.774
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.480813
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 914379645081014411, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Yellow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9830265660f44d24ba2824b5401c563e, type: 3}
+--- !u!4 &3906363437479328828 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3588637747827570189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6743552569298016837
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 3726269911602018428, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Blue (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.010000229
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.029187
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd29a3eb543020141a957a3bef2e07bd, type: 3}
+--- !u!4 &7307203938537552003 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6743552569298016837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7559753922439940610
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 3726269911602018428, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.010000229
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.975513
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd29a3eb543020141a957a3bef2e07bd, type: 3}
+--- !u!4 &5770283420170447044 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7559753922439940610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7600716836961072200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.4799995
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.7981863
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 914379645081014411, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Yellow (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9830265660f44d24ba2824b5401c563e, type: 3}
+--- !u!4 &7962500947529416313 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7600716836961072200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7998501772669381263
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.4808006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.792713
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698956524468216304, guid: 86395236bec7a2e41a739f66b7a9fd03,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Red
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 86395236bec7a2e41a739f66b7a9fd03, type: 3}
+--- !u!4 &1050326609004892613 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7031210316174916426, guid: 86395236bec7a2e41a739f66b7a9fd03,
+    type: 3}
+  m_PrefabInstance: {fileID: 7998501772669381263}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8202763875400039622
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 3726269911602018428, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Blue (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.9800005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.029187202
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd29a3eb543020141a957a3bef2e07bd, type: 3}
+--- !u!4 &5272479697808383488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4106594640658162374, guid: cd29a3eb543020141a957a3bef2e07bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 8202763875400039622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8355391211730984789
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.799999
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.5091867
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 914379645081014411, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Yellow (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9830265660f44d24ba2824b5401c563e, type: 3}
+--- !u!4 &8362911640616949092 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8355391211730984789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8560150300936382821
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8402516568384048729}
+    m_Modifications:
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.756813
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01991134
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 914379645081014411, guid: 9830265660f44d24ba2824b5401c563e,
+        type: 3}
+      propertyPath: m_Name
+      value: Ferris Wheel Cabine Yellow (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9830265660f44d24ba2824b5401c563e, type: 3}
+--- !u!4 &8156182226318566228 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 575149987681700401, guid: 9830265660f44d24ba2824b5401c563e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8560150300936382821}
+  m_PrefabAsset: {fileID: 0}

@@ -7,12 +7,12 @@ namespace GMTK
     {
         private Vector3 m_direction = Vector3.zero;
         private float m_speed = 0.0f;
-        private float m_maxDistance = 1000.0f;
+        private float m_maxDistanceSqr = 1000.0f;
         private float m_currentDistance = 0.0f;
 
         public Vector3 Direction { get => m_direction; set => m_direction = value; }
         public float Speed { get => m_speed; set => m_speed = value; }
-        public float MaxDistance { get => m_maxDistance; set => m_maxDistance = value; }
+        public float MaxDistance { get => m_maxDistanceSqr; set => m_maxDistanceSqr = value; }
 
         protected override void OnUpdate()
         {
@@ -21,7 +21,7 @@ namespace GMTK
             transform.position += offset;
             m_currentDistance += offset.sqrMagnitude;
 
-            if (m_currentDistance > m_maxDistance * m_maxDistance)
+            if (m_currentDistance > m_maxDistanceSqr)
                 Compute = false;
         }
 

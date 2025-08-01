@@ -30,9 +30,6 @@ namespace GMTK
         {
             List<Vector3> directions = new List<Vector3>(nb_directions);
 
-            direction.y = 0;
-            direction.Normalize();
-
             if (nb_directions <= 1)
             {
                 directions.Add(direction);
@@ -60,6 +57,8 @@ namespace GMTK
         private List<Projectile>            m_currentProjectiles;
         [SerializeField] private Transform  m_projectileContainer;
 
+        public Player m_player;
+
         // prefab of your projectiles
         [SerializeField] private GameObject m_testProjPrefab;
 
@@ -72,13 +71,17 @@ namespace GMTK
             if (m_projectilePool != null)
                 m_projectilePool.Update(Time.deltaTime);
 
-            //Debug.Log("bite");
             if (Input.GetKeyDown(KeyCode.A))
             {
-                var directions = ProjectileUtils.GetEvenlyDistributedDirectionsInAngle(Vector3.up, 360, 8);
+                if (m_player.LastDirection == Vector3.zero)
+                    return;
+
+                var directions = ProjectileUtils.GetEvenlyDistributedDirectionsInAngle(m_player.LastDirection, 360, 8);
 
                 foreach (var direction in directions)
-                    m_projectilePool.AllocateElement(transform.position, direction, 300f);
+                {
+                    m_projectilePool.AllocateElement(m_player.transform.position, direction, 300f);
+                }
             }
         }
         public override void LateInit(params object[] parameters)

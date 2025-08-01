@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CustomArchitecture;
 using Sirenix.OdinInspector;
+using UnityEditor.Build.Pipeline;
 using UnityEngine;
 
 namespace GMTK
@@ -18,7 +19,10 @@ namespace GMTK
         [Title("Data")]
         [SerializeField] private float m_speed = 1f;
         [SerializeField, ReadOnly] private Vector3 m_direction;
+        private Vector3 m_lastDirection = Vector3.zero;
         private Vector3 m_basePos;
+
+        public Vector3 LastDirection { get => m_lastDirection; protected set { } }
 
         private readonly string ANIM_RUN = "Run";
 
@@ -99,6 +103,7 @@ namespace GMTK
         {
             m_direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             m_direction = m_direction.normalized;
+            m_lastDirection = m_direction == Vector3.zero ? m_lastDirection : m_direction;
 
             if (m_direction == Vector3.zero) return;
 

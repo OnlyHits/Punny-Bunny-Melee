@@ -1,8 +1,6 @@
-using CustomArchitecture;
-using System.Collections;
-using static GMTK.AttackUtils;
 using UnityEngine;
-using System.Collections.Generic;
+
+using static GMTK.AttackUtils;
 using static CustomArchitecture.CustomArchitecture;
 using System.Runtime.CompilerServices;
 

@@ -9,7 +9,7 @@ help:
 	@echo "  init          - Initialize and fetch submodules (for newcomers)"
 	@echo "  update        - Update submodules to latest remote commit (tries ssh & https pull)"
 	@echo "  clean         - Remove submodule directory (if broken or corrupted)"
-	@echo "  switch-url    - switch the terget subumodule url (if update fails try this)"
+	@echo "  switch-url    - switch the terget subumodule url (if update or init fails try this)"
 
 init:
 	git submodule update --init --recursive

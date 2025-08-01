@@ -1,16 +1,23 @@
 using System.Collections;
+using System.Collections.Generic;
 using CustomArchitecture;
+using CustomArchitecture.ExtensionMethods;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace GMTK
 {
     public class GameManager : BaseBehaviour
     {
-        private ProjectileManager           m_projectileManager;
+        private ProjectileManager m_projectileManager;
 
-        [SerializeField] private Transform  m_arenaTransform;
-        [SerializeField] private Player     m_player;
-        [SerializeField] private Vector3    m_mapBounds = new Vector3(10f, 1f, 10f);
+        [Title("Level")]
+        [SerializeField] private Transform m_arenaTransform;
+        [SerializeField] private Vector3 m_mapBounds = new Vector3(10f, 1f, 10f);
+
+        [Title("Players")]
+        [SerializeField] private PlayerController m_playerController;
+        [SerializeField] private List<AIController> m_aiControllers;
 
         public ProjectileManager GetProjectileManager() => m_projectileManager;
         public (Vector3, Vector3) GetArenaTransposerDatas() => (m_arenaTransform.position, Vector3.Scale(m_arenaTransform.localScale, m_mapBounds));
@@ -44,8 +51,16 @@ namespace GMTK
                 m_projectileManager.Init(parameters[0]);
             }
 
-            if (m_player != null)
-                m_player.Init(m_projectileManager);
+            if (m_playerController != null)
+            {
+                m_playerController.Init(m_projectileManager);
+            }
+
+            if (!m_aiControllers.IsNullOrEmpty())
+            {
+                foreach (var ai in m_aiControllers)
+                    ai.Init(m_projectileManager);
+            }
         }
         #endregion
     }

@@ -64,15 +64,15 @@ namespace GMTK
 
         public Player m_player;
 
-        public void AllocateProjectile(AttackUtils.BulletType type, Vector3 direction, Vector3 position, float speed, bool bounce)
+        public void AllocateProjectile(AttackUtils.BulletType type, Vector3 direction, Vector3 position, float speed, bool bounce, int projectile_layer)
         {
             switch (type)
             {
                 case AttackUtils.BulletType.Bullet_Normal:
-                    m_normalBulletPool?.AllocateElement(position, direction, speed, bounce);
+                    m_normalBulletPool?.AllocateElement(position, direction, speed, bounce, projectile_layer);
                     break;
                 case AttackUtils.BulletType.Bullet_Bouncy:
-                    m_bouncyBulletPool?.AllocateElement(position, direction, speed, bounce);
+                    m_bouncyBulletPool?.AllocateElement(position, direction, speed, bounce, projectile_layer);
                     break;
             }
         }

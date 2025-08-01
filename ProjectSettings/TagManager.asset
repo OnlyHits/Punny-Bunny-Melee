@@ -14,9 +14,9 @@ TagManager:
   - Player
   - Ground
   - Obstacle
-  - Projectile
-  - 
-  - 
+  - PlayerProjectile
+  - EnemyProjectile
+  - Enemy
   - 
   - 
   - 

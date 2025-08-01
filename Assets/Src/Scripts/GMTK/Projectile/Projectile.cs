@@ -76,11 +76,18 @@ namespace GMTK
                 Debug.LogWarning("wrong parameters");
                 return;
             }
+            if (parameter.Length < 5 || parameter[4] is not int)
+            {
+                Debug.LogWarning("wrong parameters");
+                return;
+            }
 
             transform.position = (Vector3)parameter[0];
             m_direction = (Vector3)parameter[1];
             m_speed = (float)parameter[2];
             m_bounceOnCollide = (bool)parameter[3];
+            gameObject.layer = (int)parameter[4];
+
             m_currentDistance = 0.0f;
 
             m_particleSystem.Stop();

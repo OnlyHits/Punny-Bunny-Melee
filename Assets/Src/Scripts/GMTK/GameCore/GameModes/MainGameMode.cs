@@ -25,6 +25,7 @@ namespace GMTK
         public GameManager GetGameManager() => m_gameManager;
         public HudManager GetHudManager() => m_hudManager;
         public GameConfig GetGameConfig() => m_gameConfig;
+        public (Vector3, Vector3) GetArenaTransposerDatas() => m_gameManager.GetArenaTransposerDatas();
 
         public override void InitGameMode(params object[] parameters)
         {

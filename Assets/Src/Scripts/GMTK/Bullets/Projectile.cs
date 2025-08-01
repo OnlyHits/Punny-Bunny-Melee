@@ -9,10 +9,27 @@ namespace GMTK
         private float m_speed = 0.0f;
         private float m_maxDistanceSqr = 1000.0f;
         private float m_currentDistance = 0.0f;
+        private ParticleSystem m_particleSystem;
 
         public Vector3 Direction { get => m_direction; set => m_direction = value; }
         public float Speed { get => m_speed; set => m_speed = value; }
         public float MaxDistance { get => m_maxDistanceSqr; set => m_maxDistanceSqr = value; }
+
+        public override void Init(params object[] parameter)
+        {
+            m_particleSystem = GetComponent<ParticleSystem>();
+
+            if (TryGetComponent<ArenaTransposer>(out var arenaTransposer))
+            {
+                arenaTransposer.RegisterOnTeleport(OnTeleport);
+            }
+        }
+
+        private void OnTeleport()
+        {
+            m_particleSystem.Stop();
+            m_particleSystem.Play(true);
+        }
 
         protected override void OnUpdate()
         {

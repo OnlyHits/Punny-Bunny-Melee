@@ -80,7 +80,7 @@ namespace GMTK
 
                 foreach (var direction in directions)
                 {
-                    m_projectilePool.AllocateElement(m_player.transform.position, direction, 300f);
+                    m_projectilePool.AllocateElement(m_player.transform.position + new Vector3(0, 2, 0), direction, 50f);
                 }
             }
         }

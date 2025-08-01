@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8467924082574361162}
   - component: {fileID: 8343965264484362852}
   - component: {fileID: 8284413465308084832}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 8469869180916343711}
   - component: {fileID: 1409209779862536233}
   - component: {fileID: 4267457477840617940}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegR
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 3677690183427079740}
   - component: {fileID: 7113804347327605311}
   - component: {fileID: 8745560730746996079}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot (7)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 2196807694228168415}
   - component: {fileID: 2909279697921194917}
   - component: {fileID: 6474307108141893505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BunEarL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1593459820871633940}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot (9)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -479,7 +479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2031626901196906111}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShoulderL
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 4115258758474050567}
   - component: {fileID: 7223580891281107597}
   - component: {fileID: 4353736714282491623}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,7 +597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2188882797640706683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShoulderR
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 3162074022836462001}
   - component: {fileID: 3586806984458787878}
   - component: {fileID: 9099324603400259604}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BunEarR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 2873889046309974908}
   - component: {fileID: 9063367823057809287}
   - component: {fileID: 5357480838751740867}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 8429149215747102782}
   - component: {fileID: 8489322610358660191}
   - component: {fileID: 2888673382719587255}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot (8)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 6870965708752860221}
   - component: {fileID: 3382797375245884986}
   - component: {fileID: 3558272878525900569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CharacterRig
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -1060,7 +1060,7 @@ GameObject:
   - component: {fileID: 7057929044486082245}
   - component: {fileID: 6321381333904051575}
   - component: {fileID: 3913366514672633206}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArmR (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1145,7 +1145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2785561303916184380}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -1180,7 +1180,7 @@ GameObject:
   - component: {fileID: 5560917277927139896}
   - component: {fileID: 2788128757610893115}
   - component: {fileID: 1636797778716018220}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegL
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -1308,7 +1308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2997926842307203348}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -1342,7 +1342,7 @@ GameObject:
   - component: {fileID: 3364074737943344993}
   - component: {fileID: 5047917344653390672}
   - component: {fileID: 2676821728499323287}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArmL (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1429,7 +1429,7 @@ GameObject:
   - component: {fileID: 5135047772652388781}
   - component: {fileID: 1803643796663451212}
   - component: {fileID: 4953116773775357541}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArmL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1516,7 +1516,7 @@ GameObject:
   - component: {fileID: 2112356750604418464}
   - component: {fileID: 4983703649766713225}
   - component: {fileID: 1705348823256167248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot (3)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -1648,7 +1648,7 @@ GameObject:
   - component: {fileID: 8107972089573924309}
   - component: {fileID: 6560054934559429062}
   - component: {fileID: 9052623854443330176}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1687,6 +1687,18 @@ MonoBehaviour:
   m_rb: {fileID: 6560054934559429062}
   m_collider: {fileID: 9052623854443330176}
   m_animator: {fileID: 8107972089573924309}
+  m_renderers:
+  - {fileID: 4953116773775357541}
+  - {fileID: 2676821728499323287}
+  - {fileID: 3088482376859656503}
+  - {fileID: 3913366514672633206}
+  - {fileID: 8284413465308084832}
+  - {fileID: 6474307108141893505}
+  - {fileID: 9099324603400259604}
+  - {fileID: 2315159864036343346}
+  - {fileID: 4353736714282491623}
+  - {fileID: 6805576096190558928}
+  m_material: {fileID: 2100000, guid: 7e1b0d8bec90ad04691efd19bc8b9c4a, type: 2}
   m_ragdollRb:
   - {fileID: 3382797375245884986}
   - {fileID: 5357480838751740867}
@@ -1700,6 +1712,7 @@ MonoBehaviour:
   - {fileID: 7113804347327605311}
   - {fileID: 8489322610358660191}
   m_speed: 5
+  m_direction: {x: 0, y: 0, z: 0}
 --- !u!95 &8107972089573924309
 Animator:
   serializedVersion: 7
@@ -1782,7 +1795,7 @@ GameObject:
   - component: {fileID: 2634909137284627730}
   - component: {fileID: 2649219524395976228}
   - component: {fileID: 2847658792214277146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot (4)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -1913,7 +1926,7 @@ GameObject:
   - component: {fileID: 4923467903480218288}
   - component: {fileID: 8730596592544694171}
   - component: {fileID: 5082835493089082832}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot (5)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -2044,7 +2057,7 @@ GameObject:
   - component: {fileID: 4806096361112531079}
   - component: {fileID: 3474212904828970257}
   - component: {fileID: 429165462973548359}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot (6)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -2174,7 +2187,7 @@ GameObject:
   - component: {fileID: 9153174786761067604}
   - component: {fileID: 3108080539687508832}
   - component: {fileID: 6805576096190558928}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2261,7 +2274,7 @@ GameObject:
   - component: {fileID: 2620857839229281454}
   - component: {fileID: 2261165030915027143}
   - component: {fileID: 6014870598885865572}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pivot (2)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -2389,7 +2402,7 @@ GameObject:
   - component: {fileID: 399495793987849706}
   - component: {fileID: 2860608908715793028}
   - component: {fileID: 3088482376859656503}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArmR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2475,7 +2488,7 @@ GameObject:
   - component: {fileID: 4933579119998604379}
   - component: {fileID: 1779724635230612902}
   - component: {fileID: 2315159864036343346}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}

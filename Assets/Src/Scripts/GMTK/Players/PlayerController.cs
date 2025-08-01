@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
 using CustomArchitecture;
-using Sirenix.OdinInspector;
 using UnityEngine;
+
 using static CustomArchitecture.CustomArchitecture;
 
 namespace GMTK

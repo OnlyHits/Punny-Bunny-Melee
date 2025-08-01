@@ -53,9 +53,9 @@ namespace GMTK
 
     public class ProjectileManager : BaseBehaviour
     {
-        private AllocationPool<Projectile>  m_projectilePool;
-        private List<Projectile>            m_currentProjectiles;
-        [SerializeField] private Transform  m_projectileContainer;
+        private AllocationPool<Projectile> m_projectilePool;
+        private List<Projectile> m_currentProjectiles;
+        [SerializeField] private Transform m_projectileContainer;
 
         public Player m_player;
 

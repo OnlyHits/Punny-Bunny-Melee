@@ -78,6 +78,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# Packed Addressables
+/[Aa]ssets/[Ss]rc/[Ss]cripts/GMTK/GMTKUtils.cs
+
 #Custom
 /[Aa]ssets/[Pp]ackages/Local
 todo.txt

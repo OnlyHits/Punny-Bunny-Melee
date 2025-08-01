@@ -48,7 +48,7 @@ namespace GMTK
 
             m_projectileManager = (ProjectileManager)parameters[0];
         }
-        protected virtual IEnumerator FireCoroutine(Transform tr, Vector3 direction, AttackDatas datas)
+        protected virtual IEnumerator FireCoroutine(Transform tr, Vector3 direction, AttackDatas datas, int projectile_layer)
         {
             List<Vector3> directions = null;
 
@@ -59,7 +59,7 @@ namespace GMTK
 
             foreach (var dir in directions)
             {
-                m_projectileManager.AllocateProjectile(datas.bullet_type, dir, tr.position, datas.speed, datas.bounce_on_collision);
+                m_projectileManager.AllocateProjectile(datas.bullet_type, dir, tr.position, datas.speed, datas.bounce_on_collision, projectile_layer);
                 if (directions.Count > 1 && !datas.fire_once)
                     yield return new WaitForSeconds(datas.time_between_bullet);
             }
@@ -67,12 +67,12 @@ namespace GMTK
             yield return null;
         }
 
-        public virtual bool TryAttack(Transform tr, Vector3 direction, int index)
+        public virtual bool TryAttack(Transform tr, Vector3 direction, int index, int projectile_layer)
         {
             if (index >= m_attackDatas.Count || direction == Vector3.zero)
                 return false;
 
-            StartCoroutine(FireCoroutine(tr, direction, m_attackDatas[index]));
+            StartCoroutine(FireCoroutine(tr, direction, m_attackDatas[index], projectile_layer));
 
             return true;
         }

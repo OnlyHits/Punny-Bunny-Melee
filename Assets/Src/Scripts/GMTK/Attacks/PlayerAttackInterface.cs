@@ -4,12 +4,14 @@ using static GMTK.AttackUtils;
 using UnityEngine;
 using System.Collections.Generic;
 using static CustomArchitecture.CustomArchitecture;
+using System.Runtime.CompilerServices;
 
 namespace GMTK
 {
     public class PlayerAttackInterface : AttackInterface
     {
         private Player m_player = null;
+        private string m_projectileLayer = "PlayerProjectile";
 
         public override void Init(params object[] parameters)
         {
@@ -33,7 +35,7 @@ namespace GMTK
         {
             if (input == InputType.RELEASED)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 0);
+                TryAttack(m_player.PistolPivot, m_player.LastDirection, 0, LayerMask.NameToLayer(m_projectileLayer));
             }
         }
 
@@ -41,7 +43,7 @@ namespace GMTK
         {
             if (input == InputType.RELEASED)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 1);
+                TryAttack(m_player.PistolPivot, m_player.LastDirection, 1, LayerMask.NameToLayer(m_projectileLayer));
             }
         }
 
@@ -49,7 +51,7 @@ namespace GMTK
         {
             if (input == InputType.RELEASED)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 2);
+                TryAttack(m_player.PistolPivot, m_player.LastDirection, 2, LayerMask.NameToLayer(m_projectileLayer));
             }
         }
 
@@ -57,7 +59,7 @@ namespace GMTK
         {
             if (input == InputType.RELEASED)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 3);
+                TryAttack(m_player.PistolPivot, m_player.LastDirection, 3, LayerMask.NameToLayer(m_projectileLayer));
             }
         }
     }

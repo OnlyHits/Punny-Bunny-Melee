@@ -7,8 +7,11 @@ namespace GMTK
     public class GameManager : BaseBehaviour
     {
         private ProjectileManager           m_projectileManager;
-        [SerializeField] private Transform  m_arenaTransform;
 
+        [SerializeField] private Transform  m_arenaTransform;
+        [SerializeField] private Player     m_player;
+
+        public ProjectileManager GetProjectileManager() => m_projectileManager;
         public (Vector3, Vector3) GetArenaTransposerDatas() => (m_arenaTransform.position, Vector3.Scale(m_arenaTransform.localScale, new Vector3(10f, 1f, 10f)));
 
         public IEnumerator Load()
@@ -29,10 +32,19 @@ namespace GMTK
         }
         public override void Init(params object[] parameters)
         {
+            if (parameters.Length < 1 || parameters[0] is not AttackLoader)
+            {
+                Debug.LogWarning("wrong parameters");
+                return;
+            }
+
             if (TryGetComponent<ProjectileManager>(out m_projectileManager))
             {
-                m_projectileManager.Init();
+                m_projectileManager.Init(parameters[0]);
             }
+
+            if (m_player != null)
+                m_player.Init(m_projectileManager);
         }
         #endregion
     }

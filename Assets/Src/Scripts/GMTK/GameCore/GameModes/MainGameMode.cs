@@ -5,6 +5,7 @@ using UnityEngine;
 using static CustomArchitecture.CustomArchitecture;
 using static GMTK.GmtkUtils;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 namespace GMTK
 {
@@ -16,6 +17,10 @@ namespace GMTK
 
         // ---- Config & Save ____
         private GameConfig m_gameConfig;
+        private AttackLoader m_attackLoader; // cached datas
+
+        // ---- Input ----
+        private PlayerInputsController m_playerInput;
 
         // ---- Local datas ----
         private HudManager m_hudManager;
@@ -25,6 +30,8 @@ namespace GMTK
         public GameManager GetGameManager() => m_gameManager;
         public HudManager GetHudManager() => m_hudManager;
         public GameConfig GetGameConfig() => m_gameConfig;
+        public PlayerInputsController GetPlayerInput() => m_playerInput;
+
         public (Vector3, Vector3) GetArenaTransposerDatas() => m_gameManager.GetArenaTransposerDatas();
 
         public override void InitGameMode(params object[] parameters)
@@ -47,13 +54,21 @@ namespace GMTK
             m_hudManager = ComponentUtils.FindObjectAcrossScenes<HudManager>();
             m_gameManager = ComponentUtils.FindObjectAcrossScenes<GameManager>();
 
+            ComponentUtils.GetOrCreateComponent<PlayerInputsController>(gameObject, out m_playerInput);
+
+            if (ComponentUtils.GetOrCreateMonoBehavior<AttackLoader>(gameObject, out m_attackLoader))
+                yield return StartCoroutine(m_attackLoader.Load());
+
             if (m_gameManager != null)
                 yield return StartCoroutine(m_gameManager.Load());
             if (m_hudManager != null)
                 yield return StartCoroutine(m_gameManager.Load());
 
-            m_gameManager?.Init();
+            m_playerInput?.Init();
+            m_gameManager?.Init(m_attackLoader);
             m_hudManager?.Init();
+
+            m_playerInput.LateInit();
             m_gameManager?.LateInit();
             m_hudManager?.LateInit();
 

@@ -404,6 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pause: 0
   m_arenaTransform: {fileID: 1323338678}
+  m_player: {fileID: 1977172991}
 --- !u!4 &857951775
 Transform:
   m_ObjectHideFlags: 0

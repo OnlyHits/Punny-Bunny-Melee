@@ -14,6 +14,8 @@ namespace GMTK
         [SerializeField] private Collider m_collider;
         [SerializeField] private Animator m_animator;
         [SerializeField] private NavMeshAgent m_agent;
+        [SerializeField] private ArenaTransposer m_transposer;
+        [SerializeField] private RagdollArenaTransposer m_ragdollTransposer;
 
         [Title("Movement")]
         [SerializeField] private float m_speed = 1f;
@@ -168,6 +170,10 @@ namespace GMTK
         #region Ragdoll
         public void EnableRagdoll(bool enable)
         {
+            m_ragdollTransposer.enabled = enable;
+            m_transposer.enabled = !enable;
+
+            // @note: reset the player pos on stop ragdoll
             if (!enable)
             {
                 transform.position = m_ragdollRb[0].position;

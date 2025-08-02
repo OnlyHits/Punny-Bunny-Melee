@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1409209779862536233}
   - component: {fileID: 4267457477840617940}
   m_Layer: 6
-  m_Name: LegR
+  m_Name: LegR-----------
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 7113804347327605311}
   - component: {fileID: 8745560730746996079}
   m_Layer: 6
-  m_Name: Pivot (7)
+  m_Name: Pivot (7)-----------
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 9063367823057809287}
   - component: {fileID: 5357480838751740867}
   m_Layer: 6
-  m_Name: Hips
+  m_Name: Hips-----------
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -857,7 +857,7 @@ GameObject:
   - component: {fileID: 8489322610358660191}
   - component: {fileID: 2888673382719587255}
   m_Layer: 6
-  m_Name: Pivot (8)
+  m_Name: Pivot (8)-----------
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1268,7 +1268,7 @@ GameObject:
   - component: {fileID: 2788128757610893115}
   - component: {fileID: 1636797778716018220}
   m_Layer: 6
-  m_Name: LegL
+  m_Name: LegL-----------
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1605,7 +1605,7 @@ GameObject:
   - component: {fileID: 4983703649766713225}
   - component: {fileID: 1705348823256167248}
   m_Layer: 6
-  m_Name: Pivot (3)
+  m_Name: Pivot (3)-----------
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1737,6 +1737,7 @@ GameObject:
   - component: {fileID: 6560054934559429062}
   - component: {fileID: 9052623854443330176}
   - component: {fileID: 3261779752334123655}
+  - component: {fileID: 497933561835752858}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1778,6 +1779,8 @@ MonoBehaviour:
   m_collider: {fileID: 9052623854443330176}
   m_animator: {fileID: 8107972089573924309}
   m_agent: {fileID: 8160173370956893709}
+  m_transposer: {fileID: 3261779752334123655}
+  m_ragdollTransposer: {fileID: 497933561835752858}
   m_speed: 10
   m_direction: {x: 0, y: 0, z: 0}
   m_explostionForce: 250
@@ -1889,6 +1892,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5d9abd8ef37484dba45c3acf02a9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &497933561835752858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970274755711963337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5337741f5086776493d7101c8b9e623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_mainTransfrom: {fileID: 4665465343010354513}
+  m_ragdollTransfroms:
+  - {fileID: 2873889046309974908}
+  - {fileID: 769340221450831392}
+  - {fileID: 3897681923955685585}
+  - {fileID: 9196577106255524907}
+  - {fileID: 3252083983042433307}
+  - {fileID: 7102530582926452078}
+  - {fileID: 4143197136749668158}
+  - {fileID: 3805012139223292268}
+  - {fileID: 450721682979016789}
+  - {fileID: 2438605467177242203}
 --- !u!1 &7070956668541125402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,7 +1929,7 @@ GameObject:
   - component: {fileID: 2649219524395976228}
   - component: {fileID: 2847658792214277146}
   m_Layer: 6
-  m_Name: Pivot (4)
+  m_Name: Pivot (4)-----------
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2033,7 +2060,7 @@ GameObject:
   - component: {fileID: 8730596592544694171}
   - component: {fileID: 5082835493089082832}
   m_Layer: 6
-  m_Name: Pivot (5)
+  m_Name: Pivot (5)-----------
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2250,7 +2277,7 @@ GameObject:
   - component: {fileID: 3474212904828970257}
   - component: {fileID: 429165462973548359}
   m_Layer: 6
-  m_Name: Pivot (6)
+  m_Name: Pivot (6)-----------
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2467,7 +2494,7 @@ GameObject:
   - component: {fileID: 2261165030915027143}
   - component: {fileID: 6014870598885865572}
   m_Layer: 6
-  m_Name: Pivot (2)
+  m_Name: Pivot (2)-----------
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

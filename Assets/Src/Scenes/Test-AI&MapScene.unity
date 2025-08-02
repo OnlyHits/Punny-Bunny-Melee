@@ -242,12 +242,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pause: 0
   m_arenaTransform: {fileID: 950556011482229668}
+  m_mapBounds: {x: 38, y: 1, z: 28}
   m_playerController: {fileID: 1805687835}
   m_aiControllers:
   - {fileID: 2049084115}
   - {fileID: 1782111903}
   - {fileID: 848814202}
-  m_mapBounds: {x: 52, y: 1, z: 28}
 --- !u!114 &848814202 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 217441949080843290, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
@@ -764,8 +764,8 @@ Camera:
   m_GameObject: {fileID: 1966387518}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

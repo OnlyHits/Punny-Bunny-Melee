@@ -109,7 +109,7 @@ MonoBehaviour:
   m_pause: 0
   m_attackDatas:
   - projectile_number: 8
-    speed: 40
+    speed: 20
     angle_range: 20
     randomize_distribution: 0
     fire_once: 1

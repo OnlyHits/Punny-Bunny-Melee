@@ -46,6 +46,21 @@ namespace GMTK
             EnableRagdoll(false);
             BindMaterial();
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision == null) return;
+            if (collision.gameObject == null) return;
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.PlayerUserProjectile_Layer))
+            {
+                OnGetHit();
+            }
+            if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.PlayerAIProjectile_Layer))
+            {
+                OnGetHit();
+            }
+        }
         #endregion
 
         #region BaseBehaviour_Cb

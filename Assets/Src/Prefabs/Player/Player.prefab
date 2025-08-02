@@ -1778,6 +1778,22 @@ MonoBehaviour:
   m_collider: {fileID: 9052623854443330176}
   m_animator: {fileID: 8107972089573924309}
   m_agent: {fileID: 8160173370956893709}
+  m_speed: 10
+  m_direction: {x: 0, y: 0, z: 0}
+  m_explostionForce: 250
+  m_ragdollTime: 2
+  m_ragdollRb:
+  - {fileID: 3382797375245884986}
+  - {fileID: 5357480838751740867}
+  - {fileID: 2788128757610893115}
+  - {fileID: 1409209779862536233}
+  - {fileID: 2261165030915027143}
+  - {fileID: 4983703649766713225}
+  - {fileID: 2649219524395976228}
+  - {fileID: 8730596592544694171}
+  - {fileID: 3474212904828970257}
+  - {fileID: 7113804347327605311}
+  - {fileID: 8489322610358660191}
   m_pistolPivot: {fileID: 0}
   m_renderers:
   - {fileID: 4953116773775357541}
@@ -1791,20 +1807,6 @@ MonoBehaviour:
   - {fileID: 4353736714282491623}
   - {fileID: 6805576096190558928}
   m_material: {fileID: 2100000, guid: 7e1b0d8bec90ad04691efd19bc8b9c4a, type: 2}
-  m_ragdollRb:
-  - {fileID: 3382797375245884986}
-  - {fileID: 5357480838751740867}
-  - {fileID: 2788128757610893115}
-  - {fileID: 1409209779862536233}
-  - {fileID: 2261165030915027143}
-  - {fileID: 4983703649766713225}
-  - {fileID: 2649219524395976228}
-  - {fileID: 8730596592544694171}
-  - {fileID: 3474212904828970257}
-  - {fileID: 7113804347327605311}
-  - {fileID: 8489322610358660191}
-  m_speed: 5
-  m_direction: {x: 0, y: 0, z: 0}
 --- !u!95 &8107972089573924309
 Animator:
   serializedVersion: 7

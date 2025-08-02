@@ -18,28 +18,26 @@ namespace GMTK
         [SerializeField] private RagdollArenaTransposer m_ragdollTransposer;
 
         [Title("Movement")]
-        [SerializeField] private float m_speed = 1f;
-        [SerializeField, ReadOnly] private Vector3 m_direction;
+        [SerializeField] protected float m_speed = 1f;
+        [SerializeField, ReadOnly] protected Vector3 m_direction;
 
         [Title("Ragdoll")]
-        [SerializeField] private float m_explostionForce = 5f;
-        [SerializeField] private float m_ragdollTime = 2f;
-        [SerializeField] private List<Rigidbody> m_ragdollRb;
+        [SerializeField] protected float m_explostionForce = 5f;
+        [SerializeField] protected float m_ragdollTime = 2f;
+        [SerializeField] protected List<Rigidbody> m_ragdollRb;
 
         [Title("Pistol pivot")]
-        [SerializeField] private Transform m_pistolPivot;
+        [SerializeField] protected Transform m_pistolPivot;
 
         [Title("Visual")]
-        [SerializeField] private List<Renderer> m_renderers;
-        [SerializeField] private Material m_material;
+        [SerializeField] protected List<Renderer> m_renderers;
+        [SerializeField] protected Material m_material;
 
-        private bool m_isMoving;
-        private Vector3 m_lastDirection = Vector3.zero;
-        private Vector3 m_shootDirection = Vector3.zero;
-        private Vector3 m_basePos;
+        protected bool m_isMoving;
+        protected Vector3 m_shootDirection = Vector3.zero;
+        protected Vector3 m_basePos;
 
         public bool IsMoving { get => m_isMoving; protected set { } }
-        public Vector3 LastDirection { get => m_lastDirection; protected set { } }
         public Vector3 ShootDirection { get => m_shootDirection; protected set { } }
         public Transform PistolPivot { get => m_pistolPivot; protected set { } }
 
@@ -126,7 +124,6 @@ namespace GMTK
         {
             m_direction = new Vector3(direction.x, 0, direction.y);
             m_direction = m_direction.normalized;
-            m_lastDirection = m_direction == Vector3.zero ? m_lastDirection : m_direction;
 
             if (m_direction == Vector3.zero) return;
 

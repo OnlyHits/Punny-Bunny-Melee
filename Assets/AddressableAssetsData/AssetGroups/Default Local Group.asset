@@ -20,6 +20,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f58b14cd1cc0da448ff1de39468e085
+    m_Address: Assets/Src/Prefabs/Projectile/Bullet_Fireball_Big.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c41c25cdaee86b47bd5a2345b22c811
+    m_Address: Assets/Src/Prefabs/Projectile/Bullet_Fireball.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d00f310aea748c45b838d7c0da9eaf0
     m_Address: Assets/Src/Prefabs/Projectile/Bouncy_Bullet.prefab
     m_ReadOnly: 0

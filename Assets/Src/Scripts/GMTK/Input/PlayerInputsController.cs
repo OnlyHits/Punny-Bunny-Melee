@@ -14,6 +14,7 @@ namespace GMTK
         private InputAction m_fireAction_2;
         private InputAction m_fireAction_3;
         private InputAction m_fireAction_4;
+        private InputAction m_counter;
 
         #endregion ACTIONS
 
@@ -24,6 +25,7 @@ namespace GMTK
         public Action<InputType, bool> onFire2;
         public Action<InputType, bool> onFire3;
         public Action<InputType, bool> onFire4;
+        public Action<InputType, bool> onCounter;
 
         #endregion CALLBACKS
 
@@ -57,6 +59,7 @@ namespace GMTK
             m_fireAction_2 = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Fire_2", true);
             m_fireAction_3 = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Fire_3", true);
             m_fireAction_4 = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Fire_4", true);
+            m_counter = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Counter", true);
         }
 
         private void InitInputActions()
@@ -66,12 +69,14 @@ namespace GMTK
             InputActionStruct<bool> iFire2 = new InputActionStruct<bool>(m_fireAction_2, onFire2, false);
             InputActionStruct<bool> iFire3 = new InputActionStruct<bool>(m_fireAction_3, onFire3, false);
             InputActionStruct<bool> iFire4 = new InputActionStruct<bool>(m_fireAction_4, onFire4, false);
+            InputActionStruct<bool> iCounter = new InputActionStruct<bool>(m_counter, onCounter, false);
 
             m_inputActionStructsV2.Add(iMove);
             m_inputActionStructsBool.Add(iFire1);
             m_inputActionStructsBool.Add(iFire2);
             m_inputActionStructsBool.Add(iFire3);
             m_inputActionStructsBool.Add(iFire4);
+            m_inputActionStructsBool.Add(iCounter);
         }
 
         public override void Pause(bool pause)

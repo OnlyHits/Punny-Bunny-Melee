@@ -18,7 +18,24 @@ namespace GMTK
         public bool fire_once = true;
         public bool bounce_on_collision = false;
         public float time_between_bullet = 0.1f;
+        public float max_distance_sqr = 50.0f;
         public BulletType bullet_type = BulletType.Bullet_Normal;
+
+        public AttackDatas Clone()
+        {
+            return new AttackDatas
+            {
+                projectile_number = this.projectile_number,
+                speed = this.speed,
+                angle_range = this.angle_range,
+                randomize_distribution = this.randomize_distribution,
+                fire_once = this.fire_once,
+                bounce_on_collision = this.bounce_on_collision,
+                time_between_bullet = this.time_between_bullet,
+                max_distance_sqr = this.max_distance_sqr,
+                bullet_type = this.bullet_type
+            };
+        }
     }
 
     public class AttackInterface : BaseBehaviour
@@ -46,6 +63,7 @@ namespace GMTK
 
             m_projectileManager = (ProjectileManager)parameters[0];
         }
+
         protected virtual IEnumerator FireCoroutine(Transform tr, Vector3 direction, AttackDatas datas, int projectile_layer)
         {
             List<Vector3> directions = null;
@@ -57,7 +75,15 @@ namespace GMTK
 
             foreach (var dir in directions)
             {
-                m_projectileManager.AllocateProjectile(datas.bullet_type, dir, tr.position, datas.speed, datas.bounce_on_collision, projectile_layer);
+                if (UnityEngine.Random.Range(0, 100) <= 1)
+                {
+                    AttackDatas d = datas.Clone();
+                    d.bullet_type = BulletType.Bullet_Fireball;
+
+                    m_projectileManager.AllocateProjectile(dir, tr.position, d, projectile_layer);
+                }
+                else
+                    m_projectileManager.AllocateProjectile(dir, tr.position, datas, projectile_layer);
                 if (directions.Count > 1 && !datas.fire_once)
                     yield return new WaitForSeconds(datas.time_between_bullet);
             }

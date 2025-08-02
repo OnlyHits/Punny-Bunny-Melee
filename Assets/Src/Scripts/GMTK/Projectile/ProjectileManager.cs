@@ -9,7 +9,7 @@ namespace GMTK
     {
         public static Vector3 GetRandomDirectionInAngle(Vector3 direction, float angle)
         {
-            float randomAngle = Random.Range(-angle, angle);
+            float randomAngle = Random.Range(-angle * .5f, angle * .5f);
             Vector3 rotated = Quaternion.AngleAxis(randomAngle, Vector3.up) * direction;
             return rotated.normalized;
         }
@@ -37,8 +37,8 @@ namespace GMTK
                 return directions;
             }
 
-            float startAngle = -angle;
-            float endAngle = angle;
+            float startAngle = -angle * .5f;
+            float endAngle = angle * .5f;
             float step = (endAngle - startAngle) / (nb_directions - 1);
 
             for (int i = 0; i < nb_directions; i++)
@@ -56,7 +56,9 @@ namespace GMTK
     {
         // Pools of bullets
         private AllocationPool<Projectile> m_normalBulletPool = null;
-        private AllocationPool<Projectile> m_bouncyBulletPool = null;
+        private AllocationPool<Projectile> m_bubbleBulletPool = null;
+        private AllocationPool<Projectile> m_fireballBulletPool = null;
+        private AllocationPool<Projectile> m_fireballBigBulletPool = null;
 
         private List<Projectile> m_currentProjectiles;
 
@@ -64,15 +66,21 @@ namespace GMTK
 
         public Player m_player;
 
-        public void AllocateProjectile(AttackUtils.BulletType type, Vector3 direction, Vector3 position, float speed, bool bounce, int projectile_layer)
+        public void AllocateProjectile(Vector3 direction, Vector3 position, AttackDatas datas, int projectile_layer)
         {
-            switch (type)
+            switch (datas.bullet_type)
             {
                 case AttackUtils.BulletType.Bullet_Normal:
-                    m_normalBulletPool?.AllocateElement(position, direction, speed, bounce, projectile_layer);
+                    m_normalBulletPool?.AllocateElement(position, direction, datas, projectile_layer);
                     break;
-                case AttackUtils.BulletType.Bullet_Bouncy:
-                    m_bouncyBulletPool?.AllocateElement(position, direction, speed, bounce, projectile_layer);
+                case AttackUtils.BulletType.Bullet_Bubble:
+                    m_bubbleBulletPool?.AllocateElement(position, direction, datas, projectile_layer);
+                    break;
+                case AttackUtils.BulletType.Bullet_Fireball:
+                    m_fireballBulletPool?.AllocateElement(position, direction, datas, projectile_layer);
+                    break;
+                case AttackUtils.BulletType.Bullet_Fireball_Big:
+                    m_fireballBigBulletPool?.AllocateElement(position, direction, datas, projectile_layer);
                     break;
             }
         }
@@ -84,7 +92,9 @@ namespace GMTK
         protected override void OnUpdate()
         {
             m_normalBulletPool?.Update(Time.deltaTime);
-            m_bouncyBulletPool?.Update(Time.deltaTime);
+            m_bubbleBulletPool?.Update(Time.deltaTime);
+            m_fireballBulletPool?.Update(Time.deltaTime);
+            m_fireballBigBulletPool?.Update(Time.deltaTime);
         }
         public override void LateInit(params object[] parameters)
         {
@@ -103,10 +113,17 @@ namespace GMTK
             {
                 m_normalBulletPool = new AllocationPool<Projectile>(normal, m_projectileContainer, 100, SortOrderMethod.Sort_None, null, OnInitProjectile);
             }
-
-            if (attacks.GetPrefabs().TryGetValue(AttackUtils.BulletType.Bullet_Bouncy, out var bouncy))
+            if (attacks.GetPrefabs().TryGetValue(AttackUtils.BulletType.Bullet_Bubble, out var bubble))
             {
-                m_bouncyBulletPool = new AllocationPool<Projectile>(bouncy, m_projectileContainer, 100, SortOrderMethod.Sort_None, null, OnInitProjectile);
+                m_bubbleBulletPool = new AllocationPool<Projectile>(bubble, m_projectileContainer, 100, SortOrderMethod.Sort_None, null, OnInitProjectile);
+            }
+            if (attacks.GetPrefabs().TryGetValue(AttackUtils.BulletType.Bullet_Fireball, out var fireball))
+            {
+                m_fireballBulletPool = new AllocationPool<Projectile>(fireball, m_projectileContainer, 100, SortOrderMethod.Sort_None, null, OnInitProjectile);
+            }
+            if (attacks.GetPrefabs().TryGetValue(AttackUtils.BulletType.Bullet_Fireball_Big, out var fireballBig))
+            {
+                m_fireballBigBulletPool = new AllocationPool<Projectile>(fireballBig, m_projectileContainer, 100, SortOrderMethod.Sort_None, null, OnInitProjectile);
             }
         }
         private void OnInitProjectile(Projectile projectile)

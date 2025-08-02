@@ -900,22 +900,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[0].bounce_on_collision
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[1].bounce_on_collision
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[2].bounce_on_collision
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[3].bounce_on_collision
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -986,5 +970,5 @@ SceneRoots:
   - {fileID: 2117342302}
   - {fileID: 1558446152}
   - {fileID: 1323338678}
-  - {fileID: 1977172990}
   - {fileID: 1117943490}
+  - {fileID: 1977172990}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4466329716724248}
   - component: {fileID: 198016328051256662}
   - component: {fileID: 199207112742755752}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4860,7 +4860,7 @@ GameObject:
   - component: {fileID: 4214713280581678}
   - component: {fileID: 198816002344442896}
   - component: {fileID: 199116402106846138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SparkleTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9799,7 +9799,7 @@ GameObject:
   - component: {fileID: 4402642995182844}
   - component: {fileID: 198689705277567484}
   - component: {fileID: 199802153100180678}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BubbleTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14717,7 +14717,7 @@ GameObject:
   - component: {fileID: 3484621451754469323}
   - component: {fileID: 3791821818757858445}
   - component: {fileID: 2006395970227583070}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bouncy_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

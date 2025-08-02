@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6709134884524298067, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 6709134884524298067, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 6709134884524298067, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 6970274755711963337, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
       propertyPath: m_Name
       value: Player User
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970274755711963337, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -116,7 +120,7 @@ MonoBehaviour:
     bullet_type: 0
     weapon_type: 1
   - projectile_number: 8
-    speed: 40
+    speed: 20
     angle_range: 20
     randomize_distribution: 0
     fire_once: 1
@@ -125,6 +129,16 @@ MonoBehaviour:
     max_distance_sqr: 50
     bullet_type: 0
     weapon_type: 2
+  - projectile_number: 30
+    speed: 90
+    angle_range: 45
+    randomize_distribution: 1
+    fire_once: 0
+    bounce_on_collision: 0
+    time_between_bullet: 0.05
+    max_distance_sqr: 50
+    bullet_type: 0
+    weapon_type: 0
   - projectile_number: 5
     speed: 50
     angle_range: 90
@@ -134,7 +148,7 @@ MonoBehaviour:
     time_between_bullet: 0.1
     max_distance_sqr: 50
     bullet_type: 1
-    weapon_type: 0
+    weapon_type: 3
   - projectile_number: 30
     speed: 15
     angle_range: 420
@@ -163,7 +177,6 @@ MonoBehaviour:
     m_Bits: 512
   m_outerRepulsionRadius: 4
   m_innerRepulsionRadius: 2
-  m_attackIndex: 0
   m_hits:
   - {fileID: 0}
   - {fileID: 0}

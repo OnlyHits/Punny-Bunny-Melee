@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pause: 0
   m_arenaTransform: {fileID: 950556011482229668}
-  m_mapBounds: {x: 52, y: 1, z: 28}
+  m_mapBounds: {x: 38, y: 1, z: 28}
   m_playerController: {fileID: 1805687835}
   m_aiControllers:
   - {fileID: 2049084115}
@@ -646,34 +646,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[2].speed
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[2].angle_range
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[2].bullet_type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[2].projectile_number
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[2].bounce_on_collision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[2].time_between_bullet
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364864115386470691, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
-      propertyPath: m_attackDatas.Array.data[2].randomize_distribution
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -792,8 +764,8 @@ Camera:
   m_GameObject: {fileID: 1966387518}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CustomArchitecture;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +15,15 @@ namespace GMTK
         [SerializeField] private Animator m_animator;
         [SerializeField] private NavMeshAgent m_agent;
 
+        [Title("Movement")]
+        [SerializeField] private float m_speed = 1f;
+        [SerializeField, ReadOnly] private Vector3 m_direction;
+
+        [Title("Ragdoll")]
+        [SerializeField] private float m_explostionForce = 5f;
+        [SerializeField] private float m_ragdollTime = 2f;
+        [SerializeField] private List<Rigidbody> m_ragdollRb;
+
         [Title("Pistol pivot")]
         [SerializeField] private Transform m_pistolPivot;
 
@@ -21,12 +31,6 @@ namespace GMTK
         [SerializeField] private List<Renderer> m_renderers;
         [SerializeField] private Material m_material;
 
-        [Title("Ragdoll")]
-        [SerializeField] private List<Rigidbody> m_ragdollRb;
-
-        [Title("Data")]
-        [SerializeField] private float m_speed = 1f;
-        [SerializeField, ReadOnly] private Vector3 m_direction;
         private bool m_isMoving;
         private Vector3 m_lastDirection = Vector3.zero;
         private Vector3 m_shootDirection = Vector3.zero;
@@ -46,25 +50,39 @@ namespace GMTK
             EnableRagdoll(false);
             BindMaterial();
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision == null) return;
+            if (collision.gameObject == null) return;
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.PlayerUserProjectile_Layer))
+            {
+                OnGetHit(collision);
+            }
+            if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.PlayerAIProjectile_Layer))
+            {
+                OnGetHit(collision);
+            }
+        }
         #endregion
 
         #region BaseBehaviour_Cb
-        public override void Init(params object[] parameters)
-        {
-        }
-
-        public override void LateInit(params object[] parameters)
-        {
-        }
-
-        protected override void OnFixedUpdate()
-        {
-        }
-
+        public override void Init(params object[] parameters) { }
+        public override void LateInit(params object[] parameters) { }
+        protected override void OnFixedUpdate() { }
         protected override void OnLateUpdate()
         {
-            transform.position = m_agent.transform.position;
-            m_agent.transform.localPosition = Vector3.zero;
+            if (m_agent.gameObject.activeSelf)
+            {
+                transform.position = m_agent.transform.position;
+                m_agent.transform.localPosition = Vector3.zero;
+            }
+            else
+            {
+                //transform.position = m_agent.transform.position;
+                //m_agent.transform.position = transform.position;
+            }
         }
 
         protected override void OnUpdate()
@@ -95,7 +113,9 @@ namespace GMTK
             worldMousePosition = mainCam.ScreenToWorldPoint(mouseScreenPos);
             worldMousePosition.y = 0f;
 
-            m_shootDirection = worldMousePosition - new Vector3(transform.position.x, 0f, transform.position.z);
+            Vector3 playerPos = new Vector3(transform.position.x, 0f, transform.position.z);
+
+            m_shootDirection = worldMousePosition - playerPos;
             m_shootDirection = m_shootDirection.normalized;
 
             if (m_shootDirection == Vector3.zero) return;
@@ -148,6 +168,13 @@ namespace GMTK
         #region Ragdoll
         public void EnableRagdoll(bool enable)
         {
+            if (!enable)
+            {
+                transform.position = m_ragdollRb[0].position;
+                m_agent.transform.position = transform.position;
+                m_ragdollRb[0].transform.localPosition = Vector3.zero;
+            }
+
             m_rb.useGravity = enable;
             m_collider.enabled = !enable;
             m_animator.enabled = !enable;
@@ -155,6 +182,8 @@ namespace GMTK
             {
                 m_animator.Rebind();
             }
+            m_agent.gameObject.SetActive(!enable);
+
             foreach (Rigidbody rb in m_ragdollRb)
             {
                 rb.isKinematic = !enable;
@@ -170,10 +199,21 @@ namespace GMTK
         #endregion
 
         #region Hit
-        public void OnGetHit()
+        public void OnGetHit(Collision collision = null)
         {
             EnableRagdoll(true);
-            StartCoroutine(CoroutineUtils.InvokeOnDelay(2f, DisableRagdoll));
+
+            if (collision != null)
+            {
+                Vector3 playerPos = new Vector3(transform.position.x, 0f, transform.position.z);
+                Vector3 hitPos = new Vector3(collision.transform.position.x, 0f, collision.transform.position.z);
+
+                Vector3 explulsionDir = playerPos - hitPos;
+
+                m_ragdollRb[0].AddForce(explulsionDir * m_explostionForce, ForceMode.Impulse);
+            }
+
+            StartCoroutine(CoroutineUtils.InvokeOnDelay(m_ragdollTime, DisableRagdoll));
         }
         #endregion
 

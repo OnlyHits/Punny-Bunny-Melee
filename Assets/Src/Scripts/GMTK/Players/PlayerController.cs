@@ -33,11 +33,6 @@ namespace GMTK
 
         protected override void OnUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                player.OnGetHit();
-            }
-
             Vector2 mouseDirection = Input.mousePosition;
             player.Rotate(mouseDirection);
 

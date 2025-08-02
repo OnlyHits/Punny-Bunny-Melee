@@ -28,7 +28,10 @@ namespace GMTK
 
         protected override void OnUpdate()
         {
-
+            if (!player.IsMoving)
+            {
+                player.NoMove();
+            }
         }
         #endregion BaseBehaviour_Cb
     }

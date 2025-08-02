@@ -113,6 +113,7 @@ MonoBehaviour:
     time_between_bullet: 0.1
     max_distance_sqr: 50
     bullet_type: 0
+    weapon_type: 2
   - projectile_number: 1
     speed: 50
     angle_range: 0
@@ -122,6 +123,7 @@ MonoBehaviour:
     time_between_bullet: 0
     max_distance_sqr: 50
     bullet_type: 0
+    weapon_type: 1
   - projectile_number: 5
     speed: 50
     angle_range: 90
@@ -131,6 +133,7 @@ MonoBehaviour:
     time_between_bullet: 0.1
     max_distance_sqr: 50
     bullet_type: 1
+    weapon_type: 0
   - projectile_number: 30
     speed: 15
     angle_range: 420
@@ -140,6 +143,7 @@ MonoBehaviour:
     time_between_bullet: 0.1
     max_distance_sqr: 50
     bullet_type: 1
+    weapon_type: 3
   - projectile_number: 1
     speed: 60
     angle_range: 0
@@ -149,11 +153,17 @@ MonoBehaviour:
     time_between_bullet: 0
     max_distance_sqr: 100
     bullet_type: 3
+    weapon_type: 1
   m_fireRate: 0
+  m_weaponParent: {fileID: 0}
+  m_weapons:
+  - m_type: 1
+  - m_type: 2
+  - m_type: 0
+  - m_type: 3
   m_layer:
     serializedVersion: 2
     m_Bits: 512
-  m_collider: {fileID: 0}
   m_outerRepulsionRadius: 4
   m_innerRepulsionRadius: 2
   m_hits:

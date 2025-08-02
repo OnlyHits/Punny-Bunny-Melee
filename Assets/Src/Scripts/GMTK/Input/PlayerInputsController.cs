@@ -15,6 +15,7 @@ namespace GMTK
         private InputAction m_fireAction_3;
         private InputAction m_fireAction_4;
         private InputAction m_counter;
+        private InputAction m_switchWeapon;
 
         #endregion ACTIONS
 
@@ -26,6 +27,7 @@ namespace GMTK
         public Action<InputType, bool> onFire3;
         public Action<InputType, bool> onFire4;
         public Action<InputType, bool> onCounter;
+        public Action<InputType, float> onSwitchWeapon;
 
         #endregion CALLBACKS
 
@@ -60,6 +62,7 @@ namespace GMTK
             m_fireAction_3 = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Fire_3", true);
             m_fireAction_4 = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Fire_4", true);
             m_counter = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Counter", true);
+            m_switchWeapon = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/SwitchWeapon", true);
         }
 
         private void InitInputActions()
@@ -70,6 +73,7 @@ namespace GMTK
             InputActionStruct<bool> iFire3 = new InputActionStruct<bool>(m_fireAction_3, onFire3, false);
             InputActionStruct<bool> iFire4 = new InputActionStruct<bool>(m_fireAction_4, onFire4, false);
             InputActionStruct<bool> iCounter = new InputActionStruct<bool>(m_counter, onCounter, false);
+            InputActionStruct<float> iSwitchWeapon = new InputActionStruct<float>(m_switchWeapon, onSwitchWeapon, 0, true);
 
             m_inputActionStructsV2.Add(iMove);
             m_inputActionStructsBool.Add(iFire1);
@@ -77,6 +81,7 @@ namespace GMTK
             m_inputActionStructsBool.Add(iFire3);
             m_inputActionStructsBool.Add(iFire4);
             m_inputActionStructsBool.Add(iCounter);
+            m_inputActionStructsFloat.Add(iSwitchWeapon);
         }
 
         public override void Pause(bool pause)

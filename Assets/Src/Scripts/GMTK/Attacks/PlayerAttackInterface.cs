@@ -9,10 +9,10 @@ namespace GMTK
         private string m_projectileLayerName = "PlayerProjectile";
         [SerializeField] private LayerMask m_layer;
 
-        [SerializeField] private SphereCollider m_collider;
         [SerializeField] private float m_outerRepulsionRadius;
         [SerializeField] private float m_innerRepulsionRadius;
         [SerializeField, ReadOnly] private Collider[] m_hits = new Collider[100];
+
         public override void Init(params object[] parameters)
         {
             base.Init(parameters);
@@ -26,10 +26,11 @@ namespace GMTK
             m_player = (Player)parameters[1];
 
             GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire1 += OnFire1;
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire2 += OnFire2;
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire3 += OnFire3;
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire4 += OnFire4;
+            //GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire2 += OnFire2;
+            //GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire3 += OnFire3;
+            //GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire4 += OnFire4;
             GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onCounter += OnCounter;
+            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onSwitchWeapon += OnSwitchWeapon;
 
             m_layer = LayerMask.NameToLayer(m_projectileLayerName);
         }
@@ -38,31 +39,42 @@ namespace GMTK
         {
             if (input == InputType.RELEASED)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 0, LayerMask.NameToLayer(m_projectileLayerName));
+                TryAttack(m_player.PistolPivot, m_player.LastDirection, LayerMask.NameToLayer(m_projectileLayerName));
             }
         }
 
-        private void OnFire2(InputType input, bool b)
-        {
-            if (input == InputType.RELEASED)
-            {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 1, LayerMask.NameToLayer(m_projectileLayerName));
-            }
-        }
+        //private void OnFire2(InputType input, bool b)
+        //{
+        //    if (input == InputType.RELEASED)
+        //    {
+        //        TryAttack(m_player.PistolPivot, m_player.LastDirection, LayerMask.NameToLayer(m_projectileLayerName));
+        //    }
+        //}
 
-        private void OnFire3(InputType input, bool b)
-        {
-            if (input == InputType.RELEASED)
-            {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 2, LayerMask.NameToLayer(m_projectileLayerName));
-            }
-        }
+        //private void OnFire3(InputType input, bool b)
+        //{
+        //    if (input == InputType.RELEASED)
+        //    {
+        //        TryAttack(m_player.PistolPivot, m_player.LastDirection, LayerMask.NameToLayer(m_projectileLayerName));
+        //    }
+        //}
 
-        private void OnFire4(InputType input, bool b)
+        //private void OnFire4(InputType input, bool b)
+        //{
+        //    if (input == InputType.RELEASED)
+        //    {
+        //        TryAttack(m_player.PistolPivot, m_player.LastDirection, LayerMask.NameToLayer(m_projectileLayerName));
+        //    }
+        //}
+        private void OnSwitchWeapon(InputType input, float b)
         {
-            if (input == InputType.RELEASED)
+            if ((int)b > 0)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 3, LayerMask.NameToLayer(m_projectileLayerName));
+                ChangeAttack(GetIndex() == 3 ? 0 : GetIndex() + 1);
+            }
+            else if ((int)b < 0)
+            {
+                ChangeAttack(GetIndex() == 0 ? 3 : GetIndex() - 1);
             }
         }
 
@@ -77,8 +89,6 @@ namespace GMTK
 
                 foreach (var hit in m_hits)
                 {
-                    Debug.Log("Presses space");
-
                     Vector3 toProjectile = hit.transform.position - transform.position;
                     float distance = toProjectile.magnitude;
 

@@ -13,6 +13,14 @@ namespace GMTK
             Bullet_Fireball_Big
         }
 
+        public enum WeaponType
+        {
+            Minigun,
+            Pistol,
+            Shotgun,
+            NotAnUzi,
+        }
+
         public static Dictionary<BulletType, string> s_bulletPath = new()
         {
             { BulletType.Bullet_Normal, "Assets/Src/Prefabs/Projectile/Normal_Bullet.prefab" },

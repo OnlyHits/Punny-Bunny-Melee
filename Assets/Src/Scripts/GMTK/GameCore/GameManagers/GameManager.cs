@@ -25,6 +25,9 @@ namespace GMTK
         public IEnumerator Load()
         {
             yield return StartCoroutine(m_playerController.Load());
+
+            foreach (var ai in m_aiControllers)
+                yield return StartCoroutine(ai.Load());
         }
 
         #region BaseBehaviour
@@ -56,10 +59,18 @@ namespace GMTK
                 m_playerController.Init(m_projectileManager);
             }
 
+            List<Player> allPlayers = new List<Player> { m_playerController };
+
             if (!m_aiControllers.IsNullOrEmpty())
             {
+                allPlayers.AddRange(m_aiControllers);
+
                 foreach (var ai in m_aiControllers)
-                    ai.Init(m_projectileManager);
+                {
+                    List<Player> enemies = new List<Player>(allPlayers);
+                    enemies.Remove(ai);
+                    ai.Init(enemies);
+                }
             }
         }
         #endregion

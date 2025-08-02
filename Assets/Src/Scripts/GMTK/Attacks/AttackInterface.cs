@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using static GMTK.AttackUtils;
+using Unity.VisualScripting;
 
 namespace GMTK
 {
@@ -57,6 +58,7 @@ namespace GMTK
         public int GetIndex() => m_attackIndex;
         public List<AttackDatas> AttackDatas() => m_attackDatas;
         public AttackDatas EquipedAttack() => m_equipedAttack;
+        public bool IsFiring() => m_fireCoroutines.Count > 0;
 
         #region BaseBehaviour
         public IEnumerator Load()

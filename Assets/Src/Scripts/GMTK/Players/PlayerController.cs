@@ -6,9 +6,8 @@ using static CustomArchitecture.CustomArchitecture;
 
 namespace GMTK
 {
-    public class PlayerController : BaseBehaviour
+    public class PlayerController : Player
     {
-        public Player player;
         private PlayerAttackInterface m_attackInterface = null;
 
         #region BaseBehaviour_Cb
@@ -22,7 +21,7 @@ namespace GMTK
 
         public override void Init(params object[] parameters)
         {
-            m_attackInterface?.Init(parameters[0], player);
+            m_attackInterface?.Init(parameters[0], this);
 
             GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onMoveAction += OnMove;
         }
@@ -34,11 +33,11 @@ namespace GMTK
         protected override void OnUpdate()
         {
             Vector2 mouseDirection = Input.mousePosition;
-            player.Rotate(mouseDirection);
+            Rotate(mouseDirection);
 
-            if (!player.IsMoving)
+            if (!IsMoving)
             {
-                player.NoMove();
+                NoMove();
             }
         }
         #endregion BaseBehaviour_Cb
@@ -48,13 +47,13 @@ namespace GMTK
             switch (input)
             {
                 case InputType.PRESSED:
-                    player.StartMove();
+                    StartMove();
                     break;
                 case InputType.COMPUTED:
-                    player.Move(vector);
+                    Move(vector);
                     break;
                 case InputType.RELEASED:
-                    player.StopMove();
+                    StopMove();
                     break;
                 default:
                     break;

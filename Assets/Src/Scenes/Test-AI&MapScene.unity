@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pause: 0
   m_arenaTransform: {fileID: 950556011482229668}
-  m_mapBounds: {x: 38, y: 1, z: 28}
+  m_mapBounds: {x: 41, y: 1, z: 28}
   m_playerController: {fileID: 1805687835}
   m_aiControllers:
   - {fileID: 2049084115}
@@ -765,7 +765,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -840,6 +840,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3118386441865236918, guid: ce36c259e184c5d378a95ec85fbb1108, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: e5968c92b65a7bb07909b61e9e794e80, type: 2}
     - target: {fileID: 3383369381240458568, guid: ce36c259e184c5d378a95ec85fbb1108, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

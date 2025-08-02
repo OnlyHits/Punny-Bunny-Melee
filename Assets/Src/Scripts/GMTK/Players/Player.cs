@@ -80,11 +80,6 @@ namespace GMTK
                 transform.position = m_agent.transform.position;
                 m_agent.transform.localPosition = Vector3.zero;
             }
-            else
-            {
-                //transform.position = m_agent.transform.position;
-                //m_agent.transform.position = transform.position;
-            }
         }
 
         protected override void OnUpdate()
@@ -138,7 +133,6 @@ namespace GMTK
             Vector3 destVel = Vector3.zero;
             Vector3 expVel = Vector3.zero;
 
-            //transform.forward = m_direction;
             destVel = m_direction * m_speed;
             expVel = destVel - m_rb.linearVelocity;
 

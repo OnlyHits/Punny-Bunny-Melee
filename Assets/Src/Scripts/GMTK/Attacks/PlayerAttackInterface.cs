@@ -6,7 +6,7 @@ namespace GMTK
     public class PlayerAttackInterface : AttackInterface
     {
         private Player m_player = null;
-        private string m_projectileLayerName = "PlayerProjectile";
+        private string m_projectileLayerName = GmtkUtils.PlayerUserProjectile_Layer;
         [SerializeField] private LayerMask m_layer;
 
         [SerializeField] private SphereCollider m_collider;

@@ -50,10 +50,10 @@ namespace GMTK
 
         protected override void OnUpdate()
         {
-            //if (!IsMoving)
-            //{
-            //    NoMove();
-            //}
+            if (!IsMoving)
+            {
+                NoMove();
+            }
 
             if (Input.GetKeyDown(KeyCode.F1))
                 ComputePathTo(m_target.position);

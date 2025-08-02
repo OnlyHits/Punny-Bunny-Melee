@@ -134,6 +134,8 @@ MonoBehaviour:
   m_collider: {fileID: 957347630564813372}
   m_animator: {fileID: 30683382071889257}
   m_agent: {fileID: 132448843677441713}
+  m_transposer: {fileID: 6749880515427119675}
+  m_ragdollTransposer: {fileID: 8503161239525252390}
   m_speed: 10
   m_direction: {x: 0, y: 0, z: 0}
   m_explostionForce: 250
@@ -426,6 +428,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3088482376859656503, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
   m_PrefabInstance: {fileID: 8135840652596531388}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6749880515427119675 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3261779752334123655, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
+  m_PrefabInstance: {fileID: 8135840652596531388}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176332315281277045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5d9abd8ef37484dba45c3acf02a9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &6780824264293830278 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 3382797375245884986, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
@@ -446,3 +459,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 399495793987849706, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
   m_PrefabInstance: {fileID: 8135840652596531388}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8503161239525252390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 497933561835752858, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
+  m_PrefabInstance: {fileID: 8135840652596531388}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176332315281277045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5337741f5086776493d7101c8b9e623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

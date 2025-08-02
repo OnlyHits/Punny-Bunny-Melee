@@ -27,11 +27,13 @@ namespace GMTK
         }
 
         public override void LateInit(params object[] parameters) { }
-        protected override void OnFixedUpdate() { }
-        protected override void OnLateUpdate() { }
+        protected override void OnFixedUpdate() { base.OnFixedUpdate(); }
+        protected override void OnLateUpdate() { base.OnLateUpdate(); }
 
         protected override void OnUpdate()
         {
+            base.OnUpdate();
+
             Vector2 mouseDirection = Input.mousePosition;
             Rotate(mouseDirection);
 

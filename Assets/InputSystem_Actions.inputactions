@@ -278,26 +278,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "d31eaefa-962d-4bd2-a6c3-75736bec0a1e",
+                    "name": "1D Axis",
+                    "id": "4b6ab43d-caa6-40e3-a32c-0e0c29d91ce3",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeapon",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "03f34039-dce0-436c-9154-28220540c3c6",
                     "path": "<Mouse>/scroll/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "SwitchWeapon",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "d802bd11-39a1-4613-b397-a92333d59105",
+                    "name": "positive",
+                    "id": "c914963a-8aca-4237-a219-19e7d7eaec69",
                     "path": "<Mouse>/scroll/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "SwitchWeapon",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 }
             ]
         },

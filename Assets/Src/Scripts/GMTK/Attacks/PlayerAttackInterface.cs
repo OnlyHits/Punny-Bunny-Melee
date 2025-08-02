@@ -41,8 +41,8 @@ namespace GMTK
         {
             if (f == 0) return;
 
-            m_attackIndex = (f >= 1) ? m_attackIndex + 1 : m_attackIndex;
-            m_attackIndex = (f <= -1) ? m_attackIndex - 1 : m_attackIndex;
+            m_attackIndex = (f >= 1) ? m_attackIndex - 1 : m_attackIndex;
+            m_attackIndex = (f <= -1) ? m_attackIndex + 1 : m_attackIndex;
 
             if (m_attackIndex >= m_attackDatas.Count)
             {
@@ -50,7 +50,7 @@ namespace GMTK
             }
             if (m_attackIndex < 0)
             {
-                m_attackIndex = m_attackDatas.Count;
+                m_attackIndex = m_attackDatas.Count - 1;
             }
 
             Debug.Log("ATTACK INDEX = " + m_attackIndex.ToString());

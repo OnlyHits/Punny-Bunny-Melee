@@ -70,7 +70,7 @@ namespace GMTK
 
             m_playerInput.LateInit();
             m_gameManager?.LateInit();
-            m_hudManager?.LateInit();
+            m_hudManager?.LateInit(m_gameManager);
 
             Compute = true;
 

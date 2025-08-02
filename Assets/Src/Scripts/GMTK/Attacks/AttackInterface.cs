@@ -42,25 +42,29 @@ namespace GMTK
 
     public class AttackInterface : BaseBehaviour
     {
-        [SerializeField] protected List<AttackDatas>  m_attackDatas = new();
-        [SerializeField] protected float              m_fireRate;
-        [SerializeField] protected Transform          m_weaponParent;
+        [SerializeField] protected List<AttackDatas> m_attackDatas = new();
+        [SerializeField] protected float m_fireRate;
+        [SerializeField] protected Transform m_weaponParent;
 
-        [SerializeField] protected List<WeaponType>   m_weapons = new();
-        protected Dictionary<WeaponType, Weapon>      m_currentWeapons = new();
+        [SerializeField] protected List<WeaponType> m_weapons = new();
+        protected Dictionary<WeaponType, Weapon> m_currentWeapons = new();
 
-        protected Weapon                m_currentWeapon = null;
-        protected AttackDatas           m_equipedAttack = null;
-        protected List<Coroutine>       m_fireCoroutines = new();
-        protected ProjectileManager     m_projectileManager;
-        protected int                   m_attackIndex = 0;
+        protected Weapon m_currentWeapon = null;
+        protected AttackDatas m_equipedAttack = null;
+        protected List<Coroutine> m_fireCoroutines = new();
+        protected ProjectileManager m_projectileManager;
+        protected int m_attackIndex = 0;
 
         public int GetIndex() => m_attackIndex;
         public List<AttackDatas> AttackDatas() => m_attackDatas;
         public AttackDatas EquipedAttack() => m_equipedAttack;
         public bool IsFiring() => m_fireCoroutines.Count > 0;
 
-        #region BaseBehaviour
+        private Action<WeaponType> m_onChangeWeapon;
+
+        public WeaponType GetWeaponType() => m_currentWeapon == null ? default : m_currentWeapon.GetWeaponType();
+
+
         public IEnumerator Load()
         {
             int total = s_bulletPath.Count;
@@ -90,6 +94,14 @@ namespace GMTK
                 yield return null;
         }
 
+        public void RegisterOnSwitchWeapon(Action<WeaponType> function)
+        {
+            m_onChangeWeapon -= function;
+            m_onChangeWeapon += function;
+        }
+
+        #region BaseBehaviour
+
         protected override void OnFixedUpdate()
         { }
         protected override void OnLateUpdate()
@@ -109,7 +121,9 @@ namespace GMTK
             m_projectileManager = (ProjectileManager)parameters[0];
 
             foreach (var weapon in m_currentWeapons)
+            {
                 weapon.Value.Init();
+            }
 
             ChangeAttack(0);
         }
@@ -122,8 +136,11 @@ namespace GMTK
             if (m_currentWeapons.TryGetValue(datas.weapon_type, out m_currentWeapon))
             {
                 if (old_weapon != null)
+                {
                     old_weapon.gameObject.SetActive(false);
+                }
                 m_currentWeapon.gameObject.SetActive(true);
+                m_onChangeWeapon?.Invoke(m_currentWeapon.GetWeaponType());
                 return true;
             }
 
@@ -240,7 +257,7 @@ namespace GMTK
         public virtual bool TryAttack(int projectile_layer)
         {
             if (m_currentWeapon == null
-                ||m_currentWeapon.GetFireDirection() == Vector3.zero
+                || m_currentWeapon.GetFireDirection() == Vector3.zero
                 || m_attackDatas.Count == 0)
                 return false;
 

@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using CustomArchitecture;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+
+using static GMTK.AttackUtils;
 
 namespace GMTK
 {
@@ -16,10 +18,14 @@ namespace GMTK
         [SerializeField] private NavMeshAgent m_agent;
         [SerializeField] private ArenaTransposer m_transposer;
         [SerializeField] private RagdollArenaTransposer m_ragdollTransposer;
+        [SerializeField] private AttackInterface m_attackManager;
 
         [Title("Movement")]
         [SerializeField] protected float m_speed = 1f;
         [SerializeField, ReadOnly] protected Vector3 m_direction;
+
+        [Title("Life")]
+        [SerializeField] protected float m_prctDamages = 0f;
 
         [Title("Ragdoll")]
         [SerializeField] protected float m_explostionForce = 5f;
@@ -37,9 +43,21 @@ namespace GMTK
         protected Vector3 m_shootDirection = Vector3.zero;
         protected Vector3 m_basePos;
 
+        public float GetPrcntDamages() => m_prctDamages;
+        public Color GetMainColor() => m_material.GetColor("_BaseColor");
         public bool IsMoving { get => m_isMoving; protected set { } }
         public Vector3 ShootDirection { get => m_shootDirection; protected set { } }
         public Transform PistolPivot { get => m_pistolPivot; protected set { } }
+        public AttackInterface GetAttackManager()
+        {
+            if (m_attackManager == null)
+            {
+                Debug.LogWarning($"none attack interface set on player {gameObject.name}");
+                return null;
+            }
+            return m_attackManager;
+        }
+        private event Action m_onGetHit;
 
         private readonly string ANIM_RUN = "Run";
 
@@ -58,11 +76,11 @@ namespace GMTK
 
             if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.PlayerUserProjectile_Layer))
             {
-                OnGetHit(collision);
+                GetHit(collision);
             }
             if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.PlayerAIProjectile_Layer))
             {
-                OnGetHit(collision);
+                GetHit(collision);
             }
         }
         #endregion
@@ -97,7 +115,7 @@ namespace GMTK
         #endregion
 
         #region Rotation
-        public void Rotate(Vector3 mouseScreenPos)
+        protected void Rotate(Vector3 mouseScreenPos)
         {
             //Camera mainCam = GMTKGameCore.Instance.MainGameMode.;
             Camera mainCam = Camera.main;
@@ -120,7 +138,7 @@ namespace GMTK
         #endregion
 
         #region Movement
-        public void Move(Vector2 direction)
+        protected void Move(Vector2 direction)
         {
             m_direction = new Vector3(direction.x, 0, direction.y);
             m_direction = m_direction.normalized;
@@ -136,12 +154,12 @@ namespace GMTK
             m_rb.AddForce(expVel, ForceMode.VelocityChange);
             m_rb.position = new Vector3(m_rb.position.x, m_basePos.y, m_rb.position.z);
         }
-        public void StartMove()
+        protected void StartMove()
         {
             m_isMoving = true;
             m_animator.SetBool(ANIM_RUN, true);
         }
-        public void StopMove()
+        protected void StopMove()
         {
             m_isMoving = false;
             m_animator.SetBool(ANIM_RUN, false);
@@ -150,7 +168,7 @@ namespace GMTK
             m_rb.angularVelocity = Vector3.zero;
             m_direction = Vector3.zero;
         }
-        public void NoMove()
+        protected void NoMove()
         {
             m_rb.linearVelocity = Vector3.zero;
             m_rb.angularVelocity = Vector3.zero;
@@ -159,7 +177,7 @@ namespace GMTK
         #endregion
 
         #region Ragdoll
-        public void EnableRagdoll(bool enable)
+        protected void EnableRagdoll(bool enable)
         {
             m_ragdollTransposer.enabled = enable;
             m_transposer.enabled = !enable;
@@ -196,10 +214,18 @@ namespace GMTK
         #endregion
 
         #region Hit
-        public void OnGetHit(Collision collision = null)
+        public void RegisterOnGetHit(Action function)
+        {
+            m_onGetHit -= function;
+            m_onGetHit += function;
+        }
+        private void GetHit(Collision collision = null)
         {
             EnableRagdoll(true);
 
+            m_prctDamages += 10f;
+
+            // @note: throw ragdoll
             if (collision != null)
             {
                 Vector3 playerPos = new Vector3(transform.position.x, 0f, transform.position.z);
@@ -210,6 +236,10 @@ namespace GMTK
                 m_ragdollRb[0].AddForce(explulsionDir * m_explostionForce, ForceMode.Impulse);
             }
 
+            // @note: call after update stats like health to update ui properly
+            m_onGetHit?.Invoke();
+
+            // @note: reset ragdoll in x seconds
             StartCoroutine(CoroutineUtils.InvokeOnDelay(m_ragdollTime, DisableRagdoll));
         }
         #endregion

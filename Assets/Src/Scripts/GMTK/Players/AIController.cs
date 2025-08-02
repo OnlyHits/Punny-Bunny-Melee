@@ -1,28 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine.AI;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace GMTK
 {
     public class AIController : Player
     {
+        [Title("Ai Controller")]
+        [SerializeField, ReadOnly] private Transform m_target;
+        [SerializeField] private float m_cornerReachThreshold;
+
         private List<Player> m_enemies = null;
         private int currentCornerIndex = 0;
 
         private Vector3[] m_currentPath;
         private int m_currentPathIndex = 0;
 
-        [SerializeField] private Transform  m_target;
-        [SerializeField] private float      m_cornerReachThreshold;
         private NavMeshPath m_navPath;
 
+
         #region BaseBehaviour_Cb
-        public IEnumerator Load()
-        {
-            yield return null;
-        }
 
         public override void Init(params object[] parameters)
         {
@@ -59,6 +58,11 @@ namespace GMTK
                 ComputePathTo(m_target.position);
         }
         #endregion BaseBehaviour_Cb
+
+        public IEnumerator Load()
+        {
+            yield return null;
+        }
 
         private void FollowPath()
         {

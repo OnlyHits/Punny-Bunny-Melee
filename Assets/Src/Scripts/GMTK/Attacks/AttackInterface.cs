@@ -40,7 +40,7 @@ namespace GMTK
 
     public class AttackInterface : BaseBehaviour
     {
-        [SerializeField] private List<AttackDatas> m_attackDatas = new();
+        [SerializeField] protected List<AttackDatas> m_attackDatas = new();
         [SerializeField] private float m_fireRate; // 1 / fire rate as scd
 
         private ProjectileManager m_projectileManager;

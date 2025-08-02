@@ -29,10 +29,12 @@ namespace GMTK
         [SerializeField, ReadOnly] private Vector3 m_direction;
         private bool m_isMoving;
         private Vector3 m_lastDirection = Vector3.zero;
+        private Vector3 m_shootDirection = Vector3.zero;
         private Vector3 m_basePos;
 
         public bool IsMoving { get => m_isMoving; protected set { } }
         public Vector3 LastDirection { get => m_lastDirection; protected set { } }
+        public Vector3 ShootDirection { get => m_shootDirection; protected set { } }
         public Transform PistolPivot { get => m_pistolPivot; protected set { } }
 
         private readonly string ANIM_RUN = "Run";
@@ -81,7 +83,46 @@ namespace GMTK
         }
         #endregion
 
+        #region Rotation
+        public void Rotate(Vector3 mouseScreenPos)
+        {
+            //Camera mainCam = GMTKGameCore.Instance.MainGameMode.;
+            Camera mainCam = Camera.main;
+            float distanceToGround = mainCam.transform.position.y;
+            Vector3 worldMousePosition = Vector3.zero;
+
+            mouseScreenPos.z = distanceToGround;
+            worldMousePosition = mainCam.ScreenToWorldPoint(mouseScreenPos);
+            worldMousePosition.y = 0f;
+
+            m_shootDirection = worldMousePosition - new Vector3(transform.position.x, 0f, transform.position.z);
+            m_shootDirection = m_shootDirection.normalized;
+
+            if (m_shootDirection == Vector3.zero) return;
+
+            transform.forward = m_shootDirection;
+        }
+        #endregion
+
         #region Movement
+        public void Move(Vector2 direction)
+        {
+            m_direction = new Vector3(direction.x, 0, direction.y);
+            m_direction = m_direction.normalized;
+            m_lastDirection = m_direction == Vector3.zero ? m_lastDirection : m_direction;
+
+            if (m_direction == Vector3.zero) return;
+
+            Vector3 destVel = Vector3.zero;
+            Vector3 expVel = Vector3.zero;
+
+            //transform.forward = m_direction;
+            destVel = m_direction * m_speed;
+            expVel = destVel - m_rb.linearVelocity;
+
+            m_rb.AddForce(expVel, ForceMode.VelocityChange);
+            m_rb.position = new Vector3(m_rb.position.x, m_basePos.y, m_rb.position.z);
+        }
         public void StartMove()
         {
             m_isMoving = true;
@@ -101,24 +142,6 @@ namespace GMTK
             m_rb.linearVelocity = Vector3.zero;
             m_rb.angularVelocity = Vector3.zero;
             m_direction = Vector3.zero;
-        }
-        public void Move(Vector2 direction)
-        {
-            m_direction = new Vector3(direction.x, 0, direction.y);
-            m_direction = m_direction.normalized;
-            m_lastDirection = m_direction == Vector3.zero ? m_lastDirection : m_direction;
-
-            if (m_direction == Vector3.zero) return;
-
-            Vector3 destVel = Vector3.zero;
-            Vector3 expVel = Vector3.zero;
-
-            transform.forward = m_direction;
-            destVel = transform.forward * m_speed;
-            expVel = destVel - m_rb.linearVelocity;
-
-            m_rb.AddForce(expVel, ForceMode.VelocityChange);
-            m_rb.position = new Vector3(m_rb.position.x, m_basePos.y, m_rb.position.z);
         }
         #endregion
 

@@ -114,7 +114,7 @@ MonoBehaviour:
     max_distance_sqr: 50
     bullet_type: 0
   - projectile_number: 1
-    speed: 50
+    speed: 20
     angle_range: 0
     randomize_distribution: 0
     fire_once: 1

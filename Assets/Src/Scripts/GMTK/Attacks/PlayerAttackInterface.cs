@@ -12,6 +12,7 @@ namespace GMTK
         [SerializeField] private SphereCollider m_collider;
         [SerializeField] private float m_outerRepulsionRadius;
         [SerializeField] private float m_innerRepulsionRadius;
+        [SerializeField, ReadOnly] private int m_attackIndex = 0;
         [SerializeField, ReadOnly] private Collider[] m_hits = new Collider[100];
         public override void Init(params object[] parameters)
         {
@@ -25,20 +26,50 @@ namespace GMTK
 
             m_player = (Player)parameters[1];
 
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire1 += OnFire1;
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire2 += OnFire2;
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire3 += OnFire3;
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire4 += OnFire4;
+            //GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire1 += OnFire1;
+            //GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire2 += OnFire2;
+            //GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire3 += OnFire3;
+            //GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire4 += OnFire4;
+            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire += OnFire;
+            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onSwitchWeapon += onSwitchWeapon;
             GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onCounter += OnCounter;
 
             m_layer = LayerMask.NameToLayer(m_projectileLayerName);
         }
 
+        private void onSwitchWeapon(InputType input, float f)
+        {
+            if (f == 0) return;
+
+            m_attackIndex = (f >= 1) ? m_attackIndex + 1 : m_attackIndex;
+            m_attackIndex = (f <= -1) ? m_attackIndex - 1 : m_attackIndex;
+
+            if (m_attackIndex >= m_attackDatas.Count)
+            {
+                m_attackIndex = 0;
+            }
+            if (m_attackIndex < 0)
+            {
+                m_attackIndex = m_attackDatas.Count;
+            }
+
+            Debug.Log("ATTACK INDEX = " + m_attackIndex.ToString());
+        }
+
+        private void OnFire(InputType input, bool b)
+        {
+            if (input == InputType.RELEASED)
+            {
+                TryAttack(m_player.PistolPivot, m_player.ShootDirection, m_attackIndex, LayerMask.NameToLayer(m_projectileLayerName));
+            }
+        }
+
+        /*
         private void OnFire1(InputType input, bool b)
         {
             if (input == InputType.RELEASED)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 0, LayerMask.NameToLayer(m_projectileLayerName));
+                TryAttack(m_player.PistolPivot, m_player.ShootDirection, 0, LayerMask.NameToLayer(m_projectileLayerName));
             }
         }
 
@@ -46,7 +77,7 @@ namespace GMTK
         {
             if (input == InputType.RELEASED)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 1, LayerMask.NameToLayer(m_projectileLayerName));
+                TryAttack(m_player.PistolPivot, m_player.ShootDirection, 1, LayerMask.NameToLayer(m_projectileLayerName));
             }
         }
 
@@ -54,7 +85,7 @@ namespace GMTK
         {
             if (input == InputType.RELEASED)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 2, LayerMask.NameToLayer(m_projectileLayerName));
+                TryAttack(m_player.PistolPivot, m_player.ShootDirection, 2, LayerMask.NameToLayer(m_projectileLayerName));
             }
         }
 
@@ -62,9 +93,10 @@ namespace GMTK
         {
             if (input == InputType.RELEASED)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, 3, LayerMask.NameToLayer(m_projectileLayerName));
+                TryAttack(m_player.PistolPivot, m_player.ShootDirection, 3, LayerMask.NameToLayer(m_projectileLayerName));
             }
         }
+        */
 
         private void OnCounter(InputType input, bool b)
         {

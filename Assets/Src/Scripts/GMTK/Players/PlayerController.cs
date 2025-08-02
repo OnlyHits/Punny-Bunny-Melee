@@ -32,6 +32,9 @@ namespace GMTK
                 player.OnGetHit();
             }
 
+            Vector2 mouseDirection = Input.mousePosition;
+            player.Rotate(mouseDirection);
+
             if (!player.IsMoving)
             {
                 player.NoMove();

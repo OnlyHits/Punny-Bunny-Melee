@@ -15,6 +15,33 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Counter",
+                    "type": "Button",
+                    "id": "bf01d7a6-38a4-44de-9519-5b8bb11840b4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "155222a1-b4f3-4776-84c7-3d193902aeeb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchWeapon",
+                    "type": "Value",
+                    "id": "626555c0-a6ff-4ea2-90c8-24b561b0cd7b",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Fire_1",
                     "type": "Button",
                     "id": "3ff85a22-7446-4d85-be72-c8d4c53ffb67",
@@ -45,15 +72,6 @@
                     "name": "Fire_4",
                     "type": "Button",
                     "id": "61fb725d-b837-4ef6-a51d-b5ca2bafa363",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Counter",
-                    "type": "Button",
-                    "id": "bf01d7a6-38a4-44de-9519-5b8bb11840b4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -240,11 +258,44 @@
                 {
                     "name": "",
                     "id": "588b1d3d-f5be-44f7-a605-1caddf4adfac",
-                    "path": "<Keyboard>/p",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Counter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9dab0c02-49de-4c24-a785-4016ac9de040",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d31eaefa-962d-4bd2-a6c3-75736bec0a1e",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d802bd11-39a1-4613-b397-a92333d59105",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

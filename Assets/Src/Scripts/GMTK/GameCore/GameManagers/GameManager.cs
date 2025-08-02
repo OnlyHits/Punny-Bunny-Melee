@@ -24,7 +24,7 @@ namespace GMTK
 
         public IEnumerator Load()
         {
-            yield return null;
+            yield return StartCoroutine(m_playerController.Load());
         }
 
         #region BaseBehaviour

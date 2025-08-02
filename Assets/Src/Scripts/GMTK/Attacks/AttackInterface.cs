@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using System;
-
 using static GMTK.AttackUtils;
 
 namespace GMTK
@@ -20,6 +19,7 @@ namespace GMTK
         public float time_between_bullet = 0.1f;
         public float max_distance_sqr = 50.0f;
         public BulletType bullet_type = BulletType.Bullet_Normal;
+        public WeaponType weapon_type = WeaponType.Pistol;
 
         public AttackDatas Clone()
         {
@@ -33,17 +33,60 @@ namespace GMTK
                 bounce_on_collision = this.bounce_on_collision,
                 time_between_bullet = this.time_between_bullet,
                 max_distance_sqr = this.max_distance_sqr,
-                bullet_type = this.bullet_type
+                bullet_type = this.bullet_type,
+                weapon_type = this.weapon_type
             };
         }
     }
 
     public class AttackInterface : BaseBehaviour
     {
-        [SerializeField] protected List<AttackDatas> m_attackDatas = new();
-        [SerializeField] private float m_fireRate; // 1 / fire rate as scd
+        [SerializeField] protected List<AttackDatas>  m_attackDatas = new();
+        [SerializeField] protected float              m_fireRate;
+        [SerializeField] protected Transform          m_weaponParent;
 
-        private ProjectileManager m_projectileManager;
+        [SerializeField] protected List<WeaponType>   m_weapons = new();
+        protected Dictionary<WeaponType, Weapon>      m_currentWeapons = new();
+
+        protected Weapon                m_currentWeapon = null;
+        protected AttackDatas           m_equipedAttack = null;
+        protected List<Coroutine>       m_fireCoroutines = new();
+        protected ProjectileManager     m_projectileManager;
+        protected int                   m_attackIndex = 0;
+
+        public int GetIndex() => m_attackIndex;
+        public List<AttackDatas> AttackDatas() => m_attackDatas;
+        public AttackDatas EquipedAttack() => m_equipedAttack;
+
+        #region BaseBehaviour
+        public IEnumerator Load()
+        {
+            int total = s_bulletPath.Count;
+            int completed = 0;
+
+            foreach (var kvp in s_weaponPath)
+            {
+                WeaponType bulletType = kvp.Key;
+                string address = kvp.Value;
+
+                yield return AddressableFactory.CreateAsync(address, m_weaponParent, (go) =>
+                {
+                    if (go != null)
+                    {
+                        m_currentWeapons[bulletType] = go.GetComponent<Weapon>();
+                        go.SetActive(false);
+                    }
+                    else
+                    {
+                        Debug.LogError($"Failed to load bullet prefab for {bulletType} at address: {address}");
+                    }
+                    completed++;
+                });
+            }
+
+            while (completed < total)
+                yield return null;
+        }
 
         protected override void OnFixedUpdate()
         { }
@@ -62,42 +105,162 @@ namespace GMTK
             }
 
             m_projectileManager = (ProjectileManager)parameters[0];
+
+            foreach (var weapon in m_currentWeapons)
+                weapon.Value.Init();
+
+            ChangeAttack(0);
+        }
+        #endregion BaseBehaviour
+
+        #region Attack management
+        private bool ChangeWeapon(AttackDatas datas)
+        {
+            Weapon old_weapon = m_currentWeapon;
+            if (m_currentWeapons.TryGetValue(datas.weapon_type, out m_currentWeapon))
+            {
+                if (old_weapon != null)
+                    old_weapon.gameObject.SetActive(false);
+                m_currentWeapon.gameObject.SetActive(true);
+                return true;
+            }
+
+            return false;
         }
 
-        protected virtual IEnumerator FireCoroutine(Transform tr, Vector3 direction, AttackDatas datas, int projectile_layer)
+        public void ChangeAttack(int index)
         {
-            List<Vector3> directions = null;
+            if (m_attackDatas.Count == 0 || index >= m_attackDatas.Count)
+                return;
+
+            m_equipedAttack = m_attackDatas[index];
+            m_attackIndex = index;
+
+            if (!ChangeWeapon(m_equipedAttack))
+            {
+                Debug.LogWarning("You try to equip an unexistant weapon");
+                return;
+            }
+
+            StopAllAttacks();
+        }
+
+        #endregion Attack management
+
+        public void StopAllAttacks()
+        {
+            foreach (var coroutine in m_fireCoroutines)
+            {
+                if (coroutine != null)
+                    StopCoroutine(coroutine);
+            }
+            m_fireCoroutines.Clear();
+        }
+
+        private IEnumerator TrackFireCoroutine(IEnumerator fireCoroutine)
+        {
+            yield return StartCoroutine(fireCoroutine); // run actual attack
+
+            Coroutine self = null;
+            for (int i = 0; i < m_fireCoroutines.Count; ++i)
+            {
+                if (m_fireCoroutines[i] == null)
+                    continue;
+
+                self = m_fireCoroutines[i];
+                break;
+            }
+
+            m_fireCoroutines.Remove(self);
+        }
+
+        protected virtual IEnumerator FireCoroutine(Vector3 position, Vector3 direction, AttackDatas datas, int projectile_layer)
+        {
+            List<float> steps = null;
 
             if (datas.randomize_distribution)
-                directions = ProjectileUtils.GetRandomDirectionsInAngle(direction, datas.angle_range, datas.projectile_number);
+                steps = ProjectileUtils.GetRandomStepsInAngle(datas.angle_range, datas.projectile_number);
             else
-                directions = ProjectileUtils.GetEvenlyDistributedDirectionsInAngle(direction, datas.angle_range, datas.projectile_number);
+                steps = ProjectileUtils.GetEvenlyDistributedStepsInAngle(datas.angle_range, datas.projectile_number);
 
-            foreach (var dir in directions)
+            foreach (var angle in steps)
             {
+                Vector3 rotated = Quaternion.AngleAxis(angle, Vector3.up) * direction;
+
                 if (UnityEngine.Random.Range(0, 100) <= 1)
                 {
                     AttackDatas d = datas.Clone();
                     d.bullet_type = BulletType.Bullet_Fireball;
 
-                    m_projectileManager.AllocateProjectile(dir, tr.position, d, projectile_layer);
+                    m_projectileManager.AllocateProjectile(rotated, position, d, projectile_layer);
                 }
                 else
-                    m_projectileManager.AllocateProjectile(dir, tr.position, datas, projectile_layer);
-                if (directions.Count > 1 && !datas.fire_once)
+                    m_projectileManager.AllocateProjectile(rotated, position, datas, projectile_layer);
+
+                if (steps.Count > 1 && !datas.fire_once)
                     yield return new WaitForSeconds(datas.time_between_bullet);
             }
 
-            yield return null;
+            m_fireCoroutines.RemoveAll(c => c == null);
         }
 
-        public virtual bool TryAttack(Transform tr, Vector3 direction, int index, int projectile_layer)
+        protected virtual IEnumerator FireCoroutine(AttackDatas datas, int projectile_layer)
         {
-            if (index >= m_attackDatas.Count || direction == Vector3.zero)
+            List<float> steps = null;
+
+            if (datas.randomize_distribution)
+                steps = ProjectileUtils.GetRandomStepsInAngle(datas.angle_range, datas.projectile_number);
+            else
+                steps = ProjectileUtils.GetEvenlyDistributedStepsInAngle(datas.angle_range, datas.projectile_number);
+
+            foreach (var angle in steps)
+            {
+                Vector3 rotated = Quaternion.AngleAxis(angle, Vector3.up) * m_currentWeapon.GetFireDirection();
+
+                if (UnityEngine.Random.Range(0, 100) <= 1)
+                {
+                    AttackDatas d = datas.Clone();
+                    d.bullet_type = BulletType.Bullet_Fireball;
+
+                    m_projectileManager.AllocateProjectile(rotated, m_currentWeapon.GetFirePosition(), d, projectile_layer);
+                }
+                else
+                    m_projectileManager.AllocateProjectile(rotated, m_currentWeapon.GetFirePosition(), datas, projectile_layer);
+
+                if (steps.Count > 1 && !datas.fire_once)
+                    yield return new WaitForSeconds(datas.time_between_bullet);
+            }
+
+            m_fireCoroutines.RemoveAll(c => c == null);
+        }
+
+        // use this if you want to use the current attack 
+        public virtual bool TryAttack(int projectile_layer)
+        {
+            if (m_currentWeapon == null
+                ||m_currentWeapon.GetFireDirection() == Vector3.zero
+                || m_attackDatas.Count == 0)
                 return false;
 
-            StartCoroutine(FireCoroutine(tr, direction, m_attackDatas[index], projectile_layer));
+            Coroutine wrapper = StartCoroutine(
+                FireCoroutine(m_equipedAttack, projectile_layer)
+            );
 
+            m_fireCoroutines.Add(wrapper);
+            return true;
+        }
+
+        // use this if you want to land a projectile from m_attackDatas[index]
+        public virtual bool TryAttack(Vector3 position, Vector3 direction, int index, int projectile_layer)
+        {
+            if (direction == Vector3.zero || index >= m_attackDatas.Count)
+                return false;
+
+            Coroutine wrapper = StartCoroutine(
+                FireCoroutine(position, direction, m_attackDatas[index], projectile_layer)
+            );
+
+            m_fireCoroutines.Add(wrapper);
             return true;
         }
     }

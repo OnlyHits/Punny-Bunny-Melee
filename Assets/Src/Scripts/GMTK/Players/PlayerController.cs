@@ -1,3 +1,4 @@
+using System.Collections;
 using CustomArchitecture;
 using UnityEngine;
 
@@ -8,15 +9,20 @@ namespace GMTK
     public class PlayerController : BaseBehaviour
     {
         public Player player;
-        private PlayerAttackInterface m_attackInterface;
+        private PlayerAttackInterface m_attackInterface = null;
 
         #region BaseBehaviour_Cb
-        public override void Init(params object[] parameters)
+        public IEnumerator Load()
         {
             if (ComponentUtils.GetOrCreateComponent<PlayerAttackInterface>(gameObject, out m_attackInterface))
             {
-                m_attackInterface.Init(parameters[0], player);
+                yield return StartCoroutine(m_attackInterface.Load());
             }
+        }
+
+        public override void Init(params object[] parameters)
+        {
+            m_attackInterface?.Init(parameters[0], player);
 
             GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onMoveAction += OnMove;
         }

@@ -27,7 +27,7 @@ namespace GMTK
         [SerializeField] private List<Rigidbody> m_ragdollRb;
 
         [Title("Pistol pivot")]
-        [SerializeField] private Transform m_pistolPivot; // waiting for weapon
+        [SerializeField] private Transform m_pistolPivot;
 
         [Title("Visual")]
         [SerializeField] private List<Renderer> m_renderers;

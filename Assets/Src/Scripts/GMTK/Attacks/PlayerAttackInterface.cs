@@ -25,47 +25,21 @@ namespace GMTK
 
             m_player = (Player)parameters[1];
 
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire1 += OnFire1;
-            //GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire2 += OnFire2;
-            //GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire3 += OnFire3;
-            //GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire4 += OnFire4;
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onCounter += OnCounter;
+            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire += OnFire;
             GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onSwitchWeapon += OnSwitchWeapon;
+            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onCounter += OnCounter;
 
             m_layer = LayerMask.NameToLayer(m_projectileLayerName);
         }
 
-        private void OnFire1(InputType input, bool b)
+        private void OnFire(InputType input, bool b)
         {
             if (input == InputType.RELEASED)
             {
-                TryAttack(m_player.PistolPivot, m_player.LastDirection, LayerMask.NameToLayer(m_projectileLayerName));
+                TryAttack(LayerMask.NameToLayer(m_projectileLayerName));
             }
         }
 
-        //private void OnFire2(InputType input, bool b)
-        //{
-        //    if (input == InputType.RELEASED)
-        //    {
-        //        TryAttack(m_player.PistolPivot, m_player.LastDirection, LayerMask.NameToLayer(m_projectileLayerName));
-        //    }
-        //}
-
-        //private void OnFire3(InputType input, bool b)
-        //{
-        //    if (input == InputType.RELEASED)
-        //    {
-        //        TryAttack(m_player.PistolPivot, m_player.LastDirection, LayerMask.NameToLayer(m_projectileLayerName));
-        //    }
-        //}
-
-        //private void OnFire4(InputType input, bool b)
-        //{
-        //    if (input == InputType.RELEASED)
-        //    {
-        //        TryAttack(m_player.PistolPivot, m_player.LastDirection, LayerMask.NameToLayer(m_projectileLayerName));
-        //    }
-        //}
         private void OnSwitchWeapon(InputType input, float b)
         {
             if ((int)b > 0)
@@ -84,9 +58,6 @@ namespace GMTK
             {
                 // consider using OverlapSphereNonAlloc
                 m_hits = Physics.OverlapSphere(transform.position, m_outerRepulsionRadius);
-
-                Debug.Log(m_hits.Length);
-
                 foreach (var hit in m_hits)
                 {
                     Vector3 toProjectile = hit.transform.position - transform.position;
@@ -107,7 +78,7 @@ namespace GMTK
                         Vector3 normal = (hit.transform.position - transform.position).normalized; // crude surface normal
                         Vector3 reflectedDir = Vector3.Reflect(incomingDir, normal);
 
-                        TryAttack(hit.transform, reflectedDir, 4, m_layer);
+                        TryAttack(hit.transform.position, reflectedDir, 4, m_layer);
                     }
                 }
             }

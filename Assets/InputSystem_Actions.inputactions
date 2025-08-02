@@ -15,6 +15,33 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Counter",
+                    "type": "Button",
+                    "id": "bf01d7a6-38a4-44de-9519-5b8bb11840b4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "155222a1-b4f3-4776-84c7-3d193902aeeb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchWeapon",
+                    "type": "Value",
+                    "id": "626555c0-a6ff-4ea2-90c8-24b561b0cd7b",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Fire_1",
                     "type": "Button",
                     "id": "3ff85a22-7446-4d85-be72-c8d4c53ffb67",
@@ -49,24 +76,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Counter",
-                    "type": "Button",
-                    "id": "bf01d7a6-38a4-44de-9519-5b8bb11840b4",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SwitchWeapon",
-                    "type": "Value",
-                    "id": "f742392b-0e23-4f00-878c-6cf212279bfe",
-                    "expectedControlType": "Axis",
-                    "processors": "Normalize(min=-1,max=1)",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -260,7 +269,7 @@
                 {
                     "name": "",
                     "id": "588b1d3d-f5be-44f7-a605-1caddf4adfac",
-                    "path": "<Keyboard>/p",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -270,14 +279,47 @@
                 },
                 {
                     "name": "",
-                    "id": "aa244854-9c0c-48b2-b4ee-f55af094e3d5",
-                    "path": "<Mouse>/scroll/y",
+                    "id": "9dab0c02-49de-4c24-a785-4016ac9de040",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
-                    "processors": "Normalize(min=-1,max=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "4b6ab43d-caa6-40e3-a32c-0e0c29d91ce3",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeapon",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "03f34039-dce0-436c-9154-28220540c3c6",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
                     "action": "SwitchWeapon",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "c914963a-8aca-4237-a219-19e7d7eaec69",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

@@ -404,7 +404,7 @@ MonoBehaviour:
   m_pause: 0
   m_arenaTransform: {fileID: 1323338678}
   m_mapBounds: {x: 10, y: 1, z: 10}
-  m_playerController: {fileID: 0}
+  m_playerController: {fileID: 1977172992}
   m_aiControllers: []
 --- !u!4 &857951775
 Transform:
@@ -916,6 +916,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbdd18e67d79a093bf08c4b4126cd77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1977172992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2138546455926779303, guid: 6b75109141b103ae09cb18ecdbd0e09a, type: 3}
+  m_PrefabInstance: {fileID: 1977172990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09596ee62fff29712a9b35ad349f529e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2117342301
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,5 +970,5 @@ SceneRoots:
   - {fileID: 2117342302}
   - {fileID: 1558446152}
   - {fileID: 1323338678}
-  - {fileID: 1977172990}
   - {fileID: 1117943490}
+  - {fileID: 1977172990}

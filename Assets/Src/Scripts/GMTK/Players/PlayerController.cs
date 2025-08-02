@@ -1,8 +1,7 @@
-using System;
-using System.Collections.Generic;
+using System.Collections;
 using CustomArchitecture;
-using Sirenix.OdinInspector;
 using UnityEngine;
+
 using static CustomArchitecture.CustomArchitecture;
 
 namespace GMTK
@@ -10,15 +9,20 @@ namespace GMTK
     public class PlayerController : BaseBehaviour
     {
         public Player player;
-        private PlayerAttackInterface m_attackInterface;
+        private PlayerAttackInterface m_attackInterface = null;
 
         #region BaseBehaviour_Cb
-        public override void Init(params object[] parameters)
+        public IEnumerator Load()
         {
             if (ComponentUtils.GetOrCreateComponent<PlayerAttackInterface>(gameObject, out m_attackInterface))
             {
-                m_attackInterface.Init(parameters[0], player);
+                yield return StartCoroutine(m_attackInterface.Load());
             }
+        }
+
+        public override void Init(params object[] parameters)
+        {
+            m_attackInterface?.Init(parameters[0], player);
 
             GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onMoveAction += OnMove;
         }
@@ -33,6 +37,9 @@ namespace GMTK
             {
                 player.OnGetHit();
             }
+
+            Vector2 mouseDirection = Input.mousePosition;
+            player.Rotate(mouseDirection);
 
             if (!player.IsMoving)
             {

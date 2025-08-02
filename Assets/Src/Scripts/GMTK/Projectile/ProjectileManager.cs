@@ -7,48 +7,38 @@ namespace GMTK
 {
     public static class ProjectileUtils
     {
-        public static Vector3 GetRandomDirectionInAngle(Vector3 direction, float angle)
+        public static List<float> GetRandomStepsInAngle(float angle, int nb_steps)
         {
-            float randomAngle = Random.Range(-angle * .5f, angle * .5f);
-            Vector3 rotated = Quaternion.AngleAxis(randomAngle, Vector3.up) * direction;
-            return rotated.normalized;
+            List<float> steps = new List<float>(nb_steps);
+
+            for (int i = 0; i < nb_steps; i++)
+                steps.Add(Random.Range(-angle * .5f, angle * .5f));
+
+            return steps;
         }
 
-        public static List<Vector3> GetRandomDirectionsInAngle(Vector3 direction, float angle, int nb_directions)
+        public static List<float> GetEvenlyDistributedStepsInAngle(float angle, int nb_steps)
         {
-            List<Vector3> directions = new List<Vector3>(nb_directions);
+            List<float> steps = new List<float>(nb_steps);
 
-            direction.y = 0;
-            direction.Normalize();
-
-            for (int i = 0; i < nb_directions; i++)
-                directions.Add(GetRandomDirectionInAngle(direction, angle));
-
-            return directions;
-        }
-
-        public static List<Vector3> GetEvenlyDistributedDirectionsInAngle(Vector3 direction, float angle, int nb_directions)
-        {
-            List<Vector3> directions = new List<Vector3>(nb_directions);
-
-            if (nb_directions <= 1)
+            if (nb_steps <= 1)
             {
-                directions.Add(direction);
-                return directions;
+                steps.Add(0.0f);
+                return steps;
             }
 
             float startAngle = -angle * .5f;
             float endAngle = angle * .5f;
-            float step = (endAngle - startAngle) / (nb_directions - 1);
+            float step = (endAngle - startAngle) / (nb_steps - 1);
 
-            for (int i = 0; i < nb_directions; i++)
+            for (int i = 0; i < nb_steps; i++)
             {
-                float currentAngle = startAngle + step * i;
-                Vector3 rotated = Quaternion.AngleAxis(currentAngle, Vector3.up) * direction;
-                directions.Add(rotated.normalized);
+                steps.Add(startAngle + step * i);
+                //Vector3 rotated = Quaternion.AngleAxis(currentAngle, Vector3.up) * direction;
+                //directions.Add(rotated.normalized);
             }
 
-            return directions;
+            return steps;
         }
     }
 

@@ -20,8 +20,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 434879f05bcc3d34996732d9f1fec3d9
+    m_Address: Assets/Src/Prefabs/Weapon/Shotgun03_standardShader.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4f58b14cd1cc0da448ff1de39468e085
     m_Address: Assets/Src/Prefabs/Projectile/Bullet_Fireball_Big.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 533e495b0fce72244beb72a1271088d2
+    m_Address: Assets/Src/Prefabs/Weapon/Minigun_standardShader.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -32,6 +42,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d00f310aea748c45b838d7c0da9eaf0
     m_Address: Assets/Src/Prefabs/Projectile/Bouncy_Bullet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca992e1e536292c49809af82acb7a5f9
+    m_Address: Assets/Src/Prefabs/Weapon/BlusterPistol01_standardShader.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4290d7f714c65847a1ec85f9473c1e1
+    m_Address: Assets/Src/Prefabs/Weapon/Shotgun04_standardShader.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

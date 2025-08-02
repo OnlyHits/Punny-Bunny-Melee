@@ -61,7 +61,8 @@ PrefabInstance:
       value: Player User
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -6713955630399167559, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6970274755711963337, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
@@ -104,6 +105,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pause: 0
   m_attackDatas:
+  - projectile_number: 1
+    speed: 20
+    angle_range: 0
+    randomize_distribution: 0
+    fire_once: 1
+    bounce_on_collision: 1
+    time_between_bullet: 0
+    max_distance_sqr: 50
+    bullet_type: 0
+    weapon_type: 1
   - projectile_number: 8
     speed: 40
     angle_range: 20
@@ -114,16 +125,6 @@ MonoBehaviour:
     max_distance_sqr: 50
     bullet_type: 0
     weapon_type: 2
-  - projectile_number: 1
-    speed: 50
-    angle_range: 0
-    randomize_distribution: 0
-    fire_once: 1
-    bounce_on_collision: 1
-    time_between_bullet: 0
-    max_distance_sqr: 50
-    bullet_type: 0
-    weapon_type: 1
   - projectile_number: 5
     speed: 50
     angle_range: 90
@@ -155,17 +156,14 @@ MonoBehaviour:
     bullet_type: 3
     weapon_type: 1
   m_fireRate: 0
-  m_weaponParent: {fileID: 0}
-  m_weapons:
-  - m_type: 1
-  - m_type: 2
-  - m_type: 0
-  - m_type: 3
+  m_weaponParent: {fileID: 4404734476886829890}
+  m_weapons: 00000000010000000200000003000000
   m_layer:
     serializedVersion: 2
     m_Bits: 512
   m_outerRepulsionRadius: 4
   m_innerRepulsionRadius: 2
+  m_attackIndex: 0
   m_hits:
   - {fileID: 0}
   - {fileID: 0}
@@ -267,6 +265,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!4 &4404734476886829890 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5604885165491076094, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}
+  m_PrefabInstance: {fileID: 8135840652596531388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8451148836403519684 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 405549233185976440, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}

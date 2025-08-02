@@ -9,16 +9,19 @@ namespace GMTK
         private Vector3         m_direction = Vector3.zero;
         private float           m_speed = 0.0f;
         private float           m_maxDistanceSqr = 60.0f;
-        private float           m_currentDistance = 0.0f;
-        private ParticleSystem  m_particleSystem;
         private bool            m_bounceOnCollide = false;
 
         private Rigidbody       m_rigidbody;
+        private ParticleSystem  m_particleSystem;
         private Vector3         m_lastVelocity = Vector3.zero;
         private Vector3         m_lastPosition = Vector3.zero;
         private float           m_distanceSinceAllocate = 0;
+
+        private AttackUtils.BulletType m_type;
+
         public Vector3 Direction { get => m_direction; set => m_direction = value; }
         public float Speed { get => m_speed; set => m_speed = value; }
+        public AttackUtils.BulletType Type { get => m_type; set => m_type = value; }
         public float MaxDistanceSqr { get => m_maxDistanceSqr; set => m_maxDistanceSqr = value; }
 
         public override void Init(params object[] parameter)
@@ -99,32 +102,32 @@ namespace GMTK
                 Debug.LogWarning("wrong parameters");
                 return;
             }
-            if (parameter.Length < 3 || parameter[2] is not float)
+            if (parameter.Length < 3 || parameter[2] is not AttackDatas)
             {
                 Debug.LogWarning("wrong parameters");
                 return;
             }
-            if (parameter.Length < 4 || parameter[3] is not bool)
-            {
-                Debug.LogWarning("wrong parameters");
-                return;
-            }
-            if (parameter.Length < 5 || parameter[4] is not int)
+            if (parameter.Length < 4 || parameter[3] is not int)
             {
                 Debug.LogWarning("wrong parameters");
                 return;
             }
 
+
             transform.position = (Vector3)parameter[0];
             m_direction = (Vector3)parameter[1];
-            m_speed = (float)parameter[2];
-            m_bounceOnCollide = (bool)parameter[3];
-            gameObject.layer = (int)parameter[4];
+            AttackDatas datas = (AttackDatas)parameter[2];
+
+            m_speed = datas.speed;
+            m_bounceOnCollide = datas.bounce_on_collision;
+            m_maxDistanceSqr = datas.max_distance_sqr;
+            m_type = datas.bullet_type;
+
+            gameObject.layer = (int)parameter[3];
             m_distanceSinceAllocate = 0.0f;
 
             m_rigidbody.linearVelocity = Vector2.zero;
 
-            m_currentDistance = 0.0f;
             m_lastPosition = transform.position;
 
             m_particleSystem.Stop();
@@ -140,7 +143,6 @@ namespace GMTK
             m_distanceSinceAllocate = 0.0f;
             m_lastVelocity = Vector3.zero;
             m_lastPosition = Vector3.zero;
-            m_currentDistance = 0.0f;
             Compute = false;
         }
     }

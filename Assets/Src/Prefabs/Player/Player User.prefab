@@ -111,6 +111,7 @@ MonoBehaviour:
     fire_once: 1
     bounce_on_collision: 0
     time_between_bullet: 0.1
+    max_distance_sqr: 50
     bullet_type: 0
   - projectile_number: 1
     speed: 50
@@ -119,6 +120,7 @@ MonoBehaviour:
     fire_once: 1
     bounce_on_collision: 1
     time_between_bullet: 0
+    max_distance_sqr: 50
     bullet_type: 0
   - projectile_number: 5
     speed: 50
@@ -127,6 +129,7 @@ MonoBehaviour:
     fire_once: 0
     bounce_on_collision: 0
     time_between_bullet: 0.1
+    max_distance_sqr: 50
     bullet_type: 1
   - projectile_number: 30
     speed: 15
@@ -135,8 +138,125 @@ MonoBehaviour:
     fire_once: 0
     bounce_on_collision: 1
     time_between_bullet: 0.1
+    max_distance_sqr: 50
     bullet_type: 1
+  - projectile_number: 1
+    speed: 60
+    angle_range: 0
+    randomize_distribution: 0
+    fire_once: 1
+    bounce_on_collision: 1
+    time_between_bullet: 0
+    max_distance_sqr: 100
+    bullet_type: 3
   m_fireRate: 0
+  m_layer:
+    serializedVersion: 2
+    m_Bits: 512
+  m_collider: {fileID: 0}
+  m_outerRepulsionRadius: 4
+  m_innerRepulsionRadius: 2
+  m_hits:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &8451148836403519684 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 405549233185976440, guid: 060aefd10c1a7882ab92565b51ed66ce, type: 3}

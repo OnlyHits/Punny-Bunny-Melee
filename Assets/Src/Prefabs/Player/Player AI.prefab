@@ -136,7 +136,7 @@ MonoBehaviour:
   m_agent: {fileID: 132448843677441713}
   m_transposer: {fileID: 6749880515427119675}
   m_ragdollTransposer: {fileID: 8503161239525252390}
-  m_speed: 10
+  m_speed: 5
   m_direction: {x: 0, y: 0, z: 0}
   m_prctDamages: 0
   m_explostionForce: 250
@@ -181,14 +181,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pause: 0
   m_attackDatas:
-  - projectile_number: 5
-    speed: 60
+  - projectile_number: 1
+    speed: 20
     angle_range: 5
     randomize_distribution: 1
     fire_once: 0
     bounce_on_collision: 0
     time_between_bullet: 0.05
     max_distance_sqr: 20
+    max_bounces: 2
     bullet_type: 0
     weapon_type: 1
   - projectile_number: 9
@@ -199,6 +200,7 @@ MonoBehaviour:
     bounce_on_collision: 0
     time_between_bullet: 0.1
     max_distance_sqr: 50
+    max_bounces: 1
     bullet_type: 0
     weapon_type: 3
   m_fireRate: 1

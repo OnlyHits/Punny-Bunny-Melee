@@ -19,6 +19,7 @@ namespace GMTK
         public bool bounce_on_collision = false;
         public float time_between_bullet = 0.1f;
         public float max_distance_sqr = 50.0f;
+        public int max_bounces = 1;
         public BulletType bullet_type = BulletType.Bullet_Normal;
         public WeaponType weapon_type = WeaponType.Pistol;
 
@@ -34,6 +35,7 @@ namespace GMTK
                 bounce_on_collision = this.bounce_on_collision,
                 time_between_bullet = this.time_between_bullet,
                 max_distance_sqr = this.max_distance_sqr,
+                max_bounces = this.max_bounces,
                 bullet_type = this.bullet_type,
                 weapon_type = this.weapon_type
             };
@@ -42,19 +44,19 @@ namespace GMTK
 
     public class AttackInterface : BaseBehaviour
     {
-        [SerializeField] protected List<AttackDatas>  m_attackDatas = new();
-        [SerializeField] protected float              m_fireRate = 2.0f; // 1 / firerate
-        [SerializeField] protected Transform          m_weaponParent;
+        [SerializeField] protected List<AttackDatas> m_attackDatas = new();
+        [SerializeField] protected float m_fireRate = 2.0f; // 1 / firerate
+        [SerializeField] protected Transform m_weaponParent;
 
         [SerializeField] protected List<WeaponType> m_weapons = new();
         protected Dictionary<WeaponType, Weapon> m_currentWeapons = new();
 
-        protected Weapon                m_currentWeapon = null;
-        protected AttackDatas           m_equipedAttack = null;
-        protected List<Coroutine>       m_fireCoroutines = new();
-        protected ProjectileManager     m_projectileManager;
-        protected int                   m_attackIndex = 0;
-        protected float                 m_cooldownTimer = 0.0f;
+        protected Weapon m_currentWeapon = null;
+        protected AttackDatas m_equipedAttack = null;
+        protected List<Coroutine> m_fireCoroutines = new();
+        protected ProjectileManager m_projectileManager;
+        protected int m_attackIndex = 0;
+        protected float m_cooldownTimer = 0.0f;
 
         public int GetIndex() => m_attackIndex;
         public List<AttackDatas> AttackDatas() => m_attackDatas;

@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_virtualCamera: {fileID: 732469147}
-  m_startAnimTarget: {x: 0, y: 44, z: -10}
+  m_startAnimTarget: {x: 0, y: 48, z: 0}
   m_startAnimDuration: 1
 --- !u!114 &310479707
 MonoBehaviour:

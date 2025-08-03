@@ -84,32 +84,33 @@ namespace GMTK
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.BonusLayer))
+            if (other != null && other.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.BonusLayer))
             {
                 if (!IsRagdoll && !IsDead())
+                {
                     CollideBonus(other);
+                }
             }
         }
         #endregion
 
         private void CollideBonus(Collider other)
         {
-            if (other.GetComponent<Bonus>().GetBonusType() == BonusType.Bullet)
+            if (other.gameObject.GetComponent<Bonus>().GetBonusType() == BonusType.Bullet)
             {
                 GetAttackManager().TryMinigunBonus();
             }
-            else if (other.GetComponent<Bonus>().GetBonusType() == BonusType.Heal)
+            else if (other.gameObject.GetComponent<Bonus>().GetBonusType() == BonusType.Heal)
+            {
+                m_prctDamages *= .5f; // hehe boys
+            }
+            else if (other.gameObject.GetComponent<Bonus>().GetBonusType() == BonusType.Shield)
             {
 
             }
-            else if (other.GetComponent<Bonus>().GetBonusType() == BonusType.Shield)
-            {
 
-            }
-
-            other.GetComponent<Bonus>().Compute = false;
+            other.gameObject.GetComponent<Bonus>().Compute = false;
         }
-
 
         private void OnCollisionWithWall(Collision collision)
         {
@@ -303,6 +304,9 @@ namespace GMTK
 
         protected virtual void GetHit(Collision collision)
         {
+            if (GetAttackManager().UseMinigun())
+                return;
+
             StopMove();
 
             EnableRagdoll(true);

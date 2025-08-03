@@ -198,9 +198,8 @@ namespace GMTK
         public GameObject LevelDesignPrefab { get => m_levelDesignPrefab; protected set { } }
         public (Vector3, Vector3) GetArenaTransposerDatas() => (m_mainLevelDesignInstance.transform.position, m_mainLevelDesignInstance.GetPlaneSize());
 
-        private float m_bonusTimer = 15f;
+        private float m_bonusTimer = 0f;
         private bool m_isInit = false;
-
 
         protected override void OnFixedUpdate()
         { }
@@ -217,7 +216,9 @@ namespace GMTK
             {
                 if (GetRandomNavMeshPoint(out var pos))
                 {
-                    GMTKGameCore.Instance.MainGameMode.GetGameManager().GetProjectileManager().AllocateBonus(pos, (BonusType)UnityEngine.Random.Range(0, 2));
+                    BonusType type = UnityEngine.Random.Range(0, 10) < 5 ? BonusType.Heal : BonusType.Bullet;
+
+                    GMTKGameCore.Instance.MainGameMode.GetGameManager().GetProjectileManager().AllocateBonus(pos, type);
                 }
                 m_bonusTimer = UnityEngine.Random.Range(10f, 15f);
             }

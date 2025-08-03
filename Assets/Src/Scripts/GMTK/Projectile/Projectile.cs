@@ -78,7 +78,7 @@ namespace GMTK
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (!m_bounceOnCollide)
+            if (!m_bounceOnCollide || collision.gameObject.layer != LayerMask.NameToLayer("Obstacle"))
             {
                 Compute = false;
                 return;

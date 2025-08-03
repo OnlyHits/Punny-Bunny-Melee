@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4798848030345600}
   - component: {fileID: 198944175069237878}
   - component: {fileID: 199832904055683838}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: GlowCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 4375892072121928}
   - component: {fileID: 198139902823757756}
   - component: {fileID: 199124899751383230}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Tinysparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9764,7 +9764,8 @@ GameObject:
   - component: {fileID: 198767938309153172}
   - component: {fileID: 199621546519427832}
   - component: {fileID: 198214410877264418}
-  m_Layer: 0
+  - component: {fileID: -3064053283582847676}
+  m_Layer: 14
   m_Name: PowerboxHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14709,3 +14710,24 @@ MonoBehaviour:
   m_pause: 0
   m_type: 0
   m_particleSystem: {fileID: 198767938309153172}
+--- !u!65 &-3064053283582847676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886116890264956}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

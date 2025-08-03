@@ -52,6 +52,9 @@ namespace GMTK
 
         protected override void GetHit(Collision collision)
         {
+            if (GetAttackManager().UseMinigun())
+                return;
+
             m_attackInterface.StopAllAttacks();
 
             base.GetHit(collision);

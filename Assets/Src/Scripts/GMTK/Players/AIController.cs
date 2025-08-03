@@ -170,6 +170,9 @@ namespace GMTK
         #endregion BaseBehaviour_Cb
         protected override void GetHit(Collision collision)
         {
+            if (GetAttackManager().UseMinigun())
+                return;
+
             m_attackInterface.StopAllAttacks();
             ClearPath();
 

@@ -66,6 +66,7 @@ namespace GMTK
         public Weapon CurrentWeapon() => m_currentWeapon;
         public AttackDatas EquipedAttack() => m_equipedAttack;
         public bool IsFiring() => m_fireCoroutines.Count > 0;
+        public bool UseMinigun() => m_useMinigunBonus;
 
         private Action<WeaponType> m_onChangeWeapon;
         private Action<WeaponType> m_onShoot;

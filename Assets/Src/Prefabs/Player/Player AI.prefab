@@ -155,6 +155,7 @@ MonoBehaviour:
   - {fileID: 1319836899348953731}
   - {fileID: 376171619337141475}
   m_fireRate: 5
+  m_particleSystem: {fileID: 4015766428253561172, guid: c13daa9b992e5c94fbad423c0538d740, type: 3}
   m_pistolPivot: {fileID: 0}
   m_renderers:
   - {fileID: 3771006580172678873}
@@ -184,18 +185,18 @@ MonoBehaviour:
   m_pause: 0
   m_attackDatas:
   - projectile_number: 1
-    speed: 20
-    angle_range: 5
-    randomize_distribution: 1
-    fire_once: 0
-    bounce_on_collision: 0
-    time_between_bullet: 0.05
-    max_distance_sqr: 20
-    max_bounces: 2
+    speed: 15
+    angle_range: 0
+    randomize_distribution: 0
+    fire_once: 1
+    bounce_on_collision: 1
+    time_between_bullet: 0
+    max_distance_sqr: 50
+    max_bounces: 3
     bullet_type: 0
     weapon_type: 1
-  - projectile_number: 9
-    speed: 20
+  - projectile_number: 8
+    speed: 15
     angle_range: 20
     randomize_distribution: 0
     fire_once: 1
@@ -204,7 +205,51 @@ MonoBehaviour:
     max_distance_sqr: 50
     max_bounces: 1
     bullet_type: 0
+    weapon_type: 2
+  - projectile_number: 30
+    speed: 90
+    angle_range: 45
+    randomize_distribution: 1
+    fire_once: 0
+    bounce_on_collision: 0
+    time_between_bullet: 0.05
+    max_distance_sqr: 50
+    max_bounces: 1
+    bullet_type: 0
+    weapon_type: 0
+  - projectile_number: 5
+    speed: 50
+    angle_range: 90
+    randomize_distribution: 0
+    fire_once: 0
+    bounce_on_collision: 0
+    time_between_bullet: 0.1
+    max_distance_sqr: 50
+    max_bounces: 1
+    bullet_type: 1
     weapon_type: 3
+  - projectile_number: 1
+    speed: 60
+    angle_range: 0
+    randomize_distribution: 0
+    fire_once: 1
+    bounce_on_collision: 1
+    time_between_bullet: 0
+    max_distance_sqr: 100
+    max_bounces: 1
+    bullet_type: 3
+    weapon_type: 3
+  - projectile_number: 1
+    speed: 30
+    angle_range: 0
+    randomize_distribution: 0
+    fire_once: 1
+    bounce_on_collision: 0
+    time_between_bullet: 0.1
+    max_distance_sqr: 50
+    max_bounces: 1
+    bullet_type: 0
+    weapon_type: 1
   m_fireRate: 1
   m_weaponParent: {fileID: 4404734476886829890}
   m_weapons: 0100000003000000

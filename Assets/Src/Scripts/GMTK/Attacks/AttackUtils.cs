@@ -36,5 +36,20 @@ namespace GMTK
             { BulletType.Bullet_Fireball, "Assets/Src/Prefabs/Projectile/Bullet_Fireball.prefab" },
             { BulletType.Bullet_Fireball_Big, "Assets/Src/Prefabs/Projectile/Bullet_Fireball_Big.prefab" },
         };
+
+        public static AttackDatas m_minigunBonusData = new()
+        {
+            projectile_number = 100,
+            speed = 50,
+            angle_range = 20f,
+            randomize_distribution = true,
+            fire_once = false,
+            bounce_on_collision = false,
+            time_between_bullet = 0.2f,
+            max_distance_sqr = 10.0f,
+            max_bounces = 1,
+            bullet_type = BulletType.Bullet_Fireball,
+            weapon_type = WeaponType.Minigun,
+        };
     }
 }

@@ -121,12 +121,6 @@ namespace GMTK
                 Debug.LogWarning("wrong parameters");
                 return;
             }
-            if (parameter.Length < 4 || parameter[3] is not int)
-            {
-                Debug.LogWarning("wrong parameters");
-                return;
-            }
-
 
             transform.position = (Vector3)parameter[0];
             m_direction = (Vector3)parameter[1];
@@ -138,7 +132,6 @@ namespace GMTK
             m_maxBounces = datas.max_bounces;
             m_type = datas.bullet_type;
 
-            gameObject.layer = (int)parameter[3];
             m_distanceSinceAllocate = 0.0f;
 
             m_rigidbody.linearVelocity = Vector2.zero;

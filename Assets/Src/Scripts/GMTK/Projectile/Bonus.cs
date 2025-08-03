@@ -15,7 +15,7 @@ namespace GMTK
         [SerializeField] private BonusType m_type = BonusType.Heal;
         [SerializeField] private ParticleSystem m_particleSystem = null;
 
-        public BonusType Type => m_type;
+        public BonusType GetBonusType() => m_type;
 
         protected override void OnUpdate()
         {

@@ -47,7 +47,7 @@ namespace GMTK
         [SerializeField] protected List<AttackDatas> m_attackDatas = new();
         [SerializeField] protected float m_fireRate = 2.0f; // 1 / firerate
         [SerializeField] protected Transform m_weaponParent;
-
+        [SerializeField] protected Player m_player;
         [SerializeField] protected List<WeaponType> m_weapons = new();
         protected Dictionary<WeaponType, Weapon> m_currentWeapons = new();
 
@@ -70,8 +70,9 @@ namespace GMTK
         private Action<WeaponType> m_onChangeWeapon;
         private Action<WeaponType> m_onShoot;
 
-        public WeaponType GetWeaponType() => m_currentWeapon == null ? default : m_currentWeapon.GetWeaponType();
+        private bool m_useMinigunBonus = false;
 
+        public WeaponType GetWeaponType() => m_currentWeapon == null ? default : m_currentWeapon.GetWeaponType();
 
         public IEnumerator Load()
         {
@@ -134,6 +135,15 @@ namespace GMTK
                 return;
             }
 
+            if (parameters.Length < 2 || parameters[1] is not Player)
+            {
+                Debug.LogWarning("wrong parameters");
+                return;
+            }
+
+            m_player = (Player)parameters[1];
+
+
             m_projectileManager = (ProjectileManager)parameters[0];
 
             foreach (var weapon in m_currentWeapons)
@@ -166,7 +176,8 @@ namespace GMTK
 
         public void ChangeAttack(int index)
         {
-            if (m_attackDatas.Count == 0 || index >= m_attackDatas.Count)
+            if (m_attackDatas.Count == 0 || index >= m_attackDatas.Count
+                || m_useMinigunBonus)
                 return;
 
             m_equipedAttack = m_attackDatas[index];
@@ -194,7 +205,7 @@ namespace GMTK
             m_fireCoroutines.Clear();
         }
 
-        protected virtual IEnumerator FireCoroutine(Vector3 position, Vector3 direction, AttackDatas datas, int projectile_layer)
+        protected virtual IEnumerator FireCoroutine(Vector3 position, Vector3 direction, AttackDatas datas)
         {
             List<float> steps = null;
 
@@ -212,19 +223,25 @@ namespace GMTK
                     AttackDatas d = datas.Clone();
                     d.bullet_type = BulletType.Bullet_Fireball;
 
-                    m_projectileManager.AllocateProjectile(rotated, position, d, projectile_layer);
+                    m_projectileManager.AllocateProjectile(rotated, position, d, m_player.GetCollider());
                 }
                 else
-                    m_projectileManager.AllocateProjectile(rotated, position, datas, projectile_layer);
+                    m_projectileManager.AllocateProjectile(rotated, position, datas, m_player.GetCollider());
 
                 if (steps.Count > 1 && !datas.fire_once)
                     yield return new WaitForSeconds(datas.time_between_bullet);
             }
 
+            if (m_useMinigunBonus)
+            {
+                ChangeWeapon(m_equipedAttack);
+                m_useMinigunBonus = false;
+            }
+
             m_fireCoroutines.RemoveAll(c => c == null);
         }
 
-        protected virtual IEnumerator FireCoroutine(AttackDatas datas, int projectile_layer)
+        protected virtual IEnumerator FireCoroutine(AttackDatas datas)
         {
             List<float> steps = null;
 
@@ -237,18 +254,16 @@ namespace GMTK
             {
                 Vector3 rotated = Quaternion.AngleAxis(angle, Vector3.up) * m_currentWeapon.GetFireDirection();
 
-                if (UnityEngine.Random.Range(0, 100) <= 1)
-                {
-                    AttackDatas d = datas.Clone();
-                    d.bullet_type = BulletType.Bullet_Fireball;
-
-                    m_projectileManager.AllocateProjectile(rotated, m_currentWeapon.GetFirePosition(), d, projectile_layer);
-                }
-                else
-                    m_projectileManager.AllocateProjectile(rotated, m_currentWeapon.GetFirePosition(), datas, projectile_layer);
+                m_projectileManager.AllocateProjectile(rotated, m_currentWeapon.GetFirePosition(), datas, m_player.GetCollider());
 
                 if (steps.Count > 1 && !datas.fire_once)
                     yield return new WaitForSeconds(datas.time_between_bullet);
+            }
+
+            if (m_useMinigunBonus)
+            {
+                ChangeWeapon(m_equipedAttack);
+                m_useMinigunBonus = false;
             }
 
             m_fireCoroutines.RemoveAll(c => c == null);
@@ -257,9 +272,9 @@ namespace GMTK
         #endregion
 
         // use this if you want to use the current attack 
-        public virtual bool TryAttack(int projectile_layer)
+        public virtual bool TryAttack()
         {
-            if (m_cooldownTimer != 0f)
+            if (m_cooldownTimer != 0f || m_useMinigunBonus)
                 return false;
 
             if (m_currentWeapon == null
@@ -277,7 +292,7 @@ namespace GMTK
             }
 
             Coroutine wrapper = StartCoroutine(
-                FireCoroutine(datas, projectile_layer)
+                FireCoroutine(datas)
             );
 
             m_fireCoroutines.Add(wrapper);
@@ -286,16 +301,52 @@ namespace GMTK
             return true;
         }
 
+        public bool TryMinigunBonus()
+        {
+            m_useMinigunBonus = true;
+
+            if (!ChangeWeapon(m_minigunBonusData))
+            {
+                Debug.LogWarning("You try to equip an unexistant weapon");
+                return false;
+            }
+
+            StopAllAttacks();
+
+            if (m_currentWeapon.GetFireDirection() == Vector3.zero)
+                return false;
+
+            AttackDatas datas = m_minigunBonusData.Clone();
+
+            if (m_berserkMode)
+            {
+                datas.max_distance_sqr *= 1.3f;
+                datas.speed *= 1.3f;
+                datas.time_between_bullet *= .8f;
+                datas.bullet_type = BulletType.Bullet_Fireball_Big;
+            }
+
+            Coroutine wrapper = StartCoroutine(
+                FireCoroutine(datas)
+            );
+
+            m_fireCoroutines.Add(wrapper);
+            m_onShoot?.Invoke(m_currentWeapon.GetWeaponType());
+
+            return true;
+
+        }
+
         // use this if you want to land a projectile from m_attackDatas[index]
         public virtual bool TryAttack(Vector3 position, Vector3 direction, int index, int projectile_layer)
         {
-            if (m_cooldownTimer != 0f)
+            if (m_cooldownTimer != 0f || m_useMinigunBonus)
                 return false;
             if (direction == Vector3.zero || index >= m_attackDatas.Count)
                 return false;
 
             Coroutine wrapper = StartCoroutine(
-                FireCoroutine(position, direction, m_attackDatas[index], projectile_layer)
+                FireCoroutine(position, direction, m_attackDatas[index])
             );
 
             m_fireCoroutines.Add(wrapper);

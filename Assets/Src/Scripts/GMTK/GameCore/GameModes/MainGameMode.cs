@@ -8,11 +8,20 @@ using static CustomArchitecture.CustomArchitecture;
 using static GMTK.GmtkUtils;
 using DG.Tweening;
 using Unity.Cinemachine;
+using System.Linq;
 
 namespace GMTK
 {
     public class MainGameMode : AGameMode<GMTKGameCore>
     {
+        public enum GameState
+        {
+            None,
+            Running,
+            Win,
+            Lose
+        }
+
 #if UNITY_EDITOR && !DEVELOPMENT_BUILD
         private bool m_playStartAnimation_DEBUG = true;
 #endif
@@ -28,6 +37,8 @@ namespace GMTK
         private HudManager m_hudManager;
         private GameManager m_gameManager;
         private ArenaManager m_arenaManager;
+
+        private GameState m_gameState = GameState.None;
 
         // ---- Managers ----
         public GameManager GetGameManager() => m_gameManager;
@@ -95,11 +106,42 @@ namespace GMTK
 #if UNITY_EDITOR && !DEVELOPMENT_BUILD
             if (m_playStartAnimation_DEBUG)
             {
-                m_arenaManager.GetArenaCamera().PlayStartAnim(() => { ; });
+                m_arenaManager.GetArenaCamera().PlayStartAnim(() => { m_gameState = GameState.Running; });
             }
 #else
                 m_arenaManager.GetArenaCamera().PlayStartAnim(() => { ; });
 #endif
+        }
+
+        private void OnWin()
+        { }
+
+        private void OnLose()
+        { }
+
+        private void Update()
+        {
+            if (!Compute)
+                return;
+
+            GameState state;
+
+            if (m_gameManager.PlayerController.IsDead())
+                state = GameState.Lose;
+            else if (m_gameManager.AiControllers.All<AIController>(e => e.IsDead()))
+                state = GameState.Win;
+            else
+                state = GameState.Running;
+
+            if (state != m_gameState)
+            {
+                if (state == GameState.Lose)
+                    OnLose();
+                else if (state == GameState.Win)
+                    OnWin();
+
+                m_gameState = state;
+            }
         }
 
         #region Pause

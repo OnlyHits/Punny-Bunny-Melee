@@ -137,7 +137,7 @@ namespace GMTK
             GMTK.GMTKGameCore.Instance.GetGameMode<MainGameMode>().GetGameManager().Pause(m_paused);
             m_pauseMenu.gameObject.SetActive(m_paused);
             Time.timeScale = m_paused ? 0 : 1f;
-            //Cursor.visible = m_paused;
+            Cursor.visible = false;
             //m_cursor.gameObject.SetActive(!m_paused);
 
             if (m_paused)

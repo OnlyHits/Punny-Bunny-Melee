@@ -213,8 +213,8 @@ MonoBehaviour:
     max_bounces: 1
     bullet_type: 0
     weapon_type: 2
-  - projectile_number: 30
-    speed: 90
+  - projectile_number: 15
+    speed: 50
     angle_range: 45
     randomize_distribution: 1
     fire_once: 0
@@ -259,10 +259,8 @@ MonoBehaviour:
     weapon_type: 1
   m_fireRate: 3
   m_weaponParent: {fileID: 4404734476886829890}
+  m_player: {fileID: 0}
   m_weapons: 00000000010000000200000003000000
-  m_layer:
-    serializedVersion: 2
-    m_Bits: 512
   m_outerRepulsionRadius: 4
   m_innerRepulsionRadius: 2
   m_hits:

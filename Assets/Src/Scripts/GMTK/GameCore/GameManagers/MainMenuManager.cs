@@ -73,9 +73,14 @@ namespace GMTK
             });
         }
 
+        private void OnEnable()
+        {
+            Cursor.visible = false;
+        }
+
         private void OnDestroy()
         {
-            Cursor.visible = true;
+            Cursor.visible = false;
         }
 
         #endregion

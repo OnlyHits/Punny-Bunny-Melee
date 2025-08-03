@@ -3,17 +3,14 @@ using UnityEngine.AI;
 using Unity.AI.Navigation;
 using System.Collections.Generic;
 using CustomArchitecture;
-using System;
-
-
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-#if UNITY_EDITOR
 namespace GMTK
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(ArenaManager))]
     public class ArenaManagerEditor : Editor
     {
@@ -177,14 +174,14 @@ namespace GMTK
     public class ArenaManager : BaseBehaviour
     {
         [Header("Setup")]
-        [SerializeField] private GameObject         m_levelDesignPrefab;
-        [SerializeField] private NavMeshSurface     m_aiPathNMSurface;
-        [SerializeField] private ArenaCamera        m_arenaCamera;
+        [SerializeField] private GameObject m_levelDesignPrefab;
+        [SerializeField] private NavMeshSurface m_aiPathNMSurface;
+        [SerializeField] private ArenaCamera m_arenaCamera;
 
 
         [Header("Runtime State")]
         [SerializeField, ReadOnly] private LevelDesign m_mainLevelDesignInstance;
-        
+
         private NavMeshPath m_navPath1;
         private NavMeshPath m_navPath2;
 
@@ -406,6 +403,7 @@ namespace GMTK
             return intersection;
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             Vector3 center = m_mainLevelDesignInstance.transform.position;
@@ -414,5 +412,6 @@ namespace GMTK
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(center, size);
         }
+#endif
     }
 }

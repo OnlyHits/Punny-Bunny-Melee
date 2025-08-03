@@ -9757,7 +9757,11 @@ GameObject:
   - component: {fileID: 8297978}
   - component: {fileID: 10886134}
   - component: {fileID: 11401060}
+<<<<<<< HEAD
   - component: {fileID: -8306687244648696916}
+=======
+  - component: {fileID: -8107973673763754344}
+>>>>>>> 07c88299dcf73d2a4a3c9972ca2dc01733059068
   m_Layer: 0
   m_Name: SoulExplosionOrange
   m_TagString: Untagged
@@ -14758,7 +14762,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0.3
   onLifeEnd: 2
+<<<<<<< HEAD
 --- !u!114 &-8306687244648696916
+=======
+--- !u!114 &-8107973673763754344
+>>>>>>> 07c88299dcf73d2a4a3c9972ca2dc01733059068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -25,9 +25,9 @@ namespace GMTK
 
             m_player = (Player)parameters[1];
 
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFire += OnFire;
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onSwitchWeapon += OnSwitchWeapon;
-            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onCounter += OnCounter;
+            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onFireAction += OnFire;
+            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onSwitchWeaponAction += OnSwitchWeapon;
+            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onCounterAction += OnCounter;
 
             m_layer = LayerMask.NameToLayer(m_projectileLayerName);
         }

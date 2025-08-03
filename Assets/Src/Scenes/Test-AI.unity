@@ -119,6 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!114 &34166225 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6652181980770647339, guid: 1d88ce7b61202b541852b53018d87b42, type: 3}
@@ -224,6 +225,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1709337021206892034, guid: 1d88ce7b61202b541852b53018d87b42, type: 3}
   m_PrefabInstance: {fileID: 511872297}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> 07c88299dcf73d2a4a3c9972ca2dc01733059068
 --- !u!1001 &719852165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -401,7 +404,11 @@ MonoBehaviour:
   m_levelDesignPrefab: {fileID: 4410983790458790900, guid: 1d88ce7b61202b541852b53018d87b42, type: 3}
   m_aiPathNMSurface: {fileID: 831567454}
   m_arenaCamera: {fileID: 831567455}
+<<<<<<< HEAD
   m_mainLevelDesignInstance: {fileID: 1125601013}
+=======
+  m_mainLevelDesignInstance: {fileID: 1162553640}
+>>>>>>> 07c88299dcf73d2a4a3c9972ca2dc01733059068
 --- !u!4 &831567453
 Transform:
   m_ObjectHideFlags: 0
@@ -415,8 +422,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+<<<<<<< HEAD
   - {fileID: 511872299}
   - {fileID: 1125601014}
+=======
+  - {fileID: 1162553641}
+>>>>>>> 07c88299dcf73d2a4a3c9972ca2dc01733059068
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &831567454
@@ -463,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b2d0f4f61193d4eb7657f865cc6e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_virtualCamera: {fileID: 34166225}
+  m_virtualCamera: {fileID: 0}
   m_startAnimTarget: {x: 0, y: 40, z: -30}
   m_startAnimDuration: 1
 --- !u!1 &910235662
@@ -601,7 +612,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d25629a8b9d68f22b0f4d74ec5d8aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!1001 &1125601012
+=======
+--- !u!1001 &1162553639
+>>>>>>> 07c88299dcf73d2a4a3c9972ca2dc01733059068
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -658,10 +673,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d88ce7b61202b541852b53018d87b42, type: 3}
+<<<<<<< HEAD
 --- !u!114 &1125601013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2446961964249836432, guid: 1d88ce7b61202b541852b53018d87b42, type: 3}
   m_PrefabInstance: {fileID: 1125601012}
+=======
+--- !u!114 &1162553640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2446961964249836432, guid: 1d88ce7b61202b541852b53018d87b42, type: 3}
+  m_PrefabInstance: {fileID: 1162553639}
+>>>>>>> 07c88299dcf73d2a4a3c9972ca2dc01733059068
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -669,10 +691,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df0d24b651dee04e91beb6130da31fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!4 &1125601014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1709337021206892034, guid: 1d88ce7b61202b541852b53018d87b42, type: 3}
   m_PrefabInstance: {fileID: 1125601012}
+=======
+--- !u!4 &1162553641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1709337021206892034, guid: 1d88ce7b61202b541852b53018d87b42, type: 3}
+  m_PrefabInstance: {fileID: 1162553639}
+>>>>>>> 07c88299dcf73d2a4a3c9972ca2dc01733059068
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1378184154
 GameObject:

@@ -5,11 +5,15 @@ using CustomArchitecture.ExtensionMethods;
 using Sirenix.OdinInspector;
 
 using static GMTK.AttackUtils;
+using static CustomArchitecture.CustomArchitecture;
 
 namespace GMTK
 {
     public class HudManager : BaseBehaviour
     {
+        [Title("Pause")]
+        [SerializeField] private PauseMenu m_pauseMenu;
+
         [Title("Cursor")]
         [SerializeField] private Transform m_cursor;
         // @note: time to complete one rotation
@@ -18,15 +22,34 @@ namespace GMTK
         [SerializeField] private float m_speedAfterShoot = 2f;
         private float m_angleCursor;
         private float m_timerAfterShoot;
-        float lerpT;
+        private float lerpT;
 
         [Title("Players Stats")]
         [SerializeField] private PlayerStatHUD m_playerStatPrefab;
         [SerializeField] private List<RectTransform> m_statRectRefs;
         [SerializeField, ReadOnly] private List<PlayerStatHUD> m_playerStats;
-
+        public bool Paused { get { return m_paused; } private set { m_paused = value; } }
+        private bool m_paused = false;
 
         #region BaseBehaviour
+        public override void Init(params object[] parameters)
+        {
+            Cursor.visible = false;
+
+            GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onPauseAction += OnPause;
+
+            m_pauseMenu.RegisterOnResume(() =>
+            {
+                TogglePause();
+            });
+            m_pauseMenu.RegisterOnQuitMainMenu(() =>
+            {
+                Time.timeScale = 1;
+            });
+
+            m_pauseMenu.gameObject.SetActive(false);
+        }
+
         public override void LateInit(params object[] parameters)
         {
             if (parameters.Length < 1 || parameters[0] is not GameManager)
@@ -46,14 +69,8 @@ namespace GMTK
             playerAtkInterface.RegisterOnShoot(OnPlayerShoot);
         }
 
-        public override void Init(params object[] parameters)
-        {
-//            Cursor.visible = false;
-        }
 
-        protected override void OnFixedUpdate()
-        { }
-
+        protected override void OnFixedUpdate() { }
         protected override void OnLateUpdate()
         {
             m_cursor.transform.position = Input.mousePosition;
@@ -62,18 +79,49 @@ namespace GMTK
         protected override void OnUpdate()
         {
             UpdateCursor();
-
         }
         #endregion
 
         #region Unity_Cb
         private void OnDestroy()
         {
-            Cursor.visible = true;
+            Cursor.visible = false;
         }
 
         #endregion
 
+        #region Pause
+        public void TogglePause()
+        {
+            m_paused = !m_paused;
+
+            GMTK.GMTKGameCore.Instance.GetGameMode<MainGameMode>().GetGameManager().Pause(m_paused);
+            m_pauseMenu.gameObject.SetActive(m_paused);
+            Time.timeScale = m_paused ? 0 : 1f;
+            //Cursor.visible = m_paused;
+            //m_cursor.gameObject.SetActive(!m_paused);
+
+            if (m_paused)
+            {
+                m_cursor.transform.localScale = Vector3.one * 0.6f;
+                m_cursor.transform.localEulerAngles = new Vector3(0, 0, 45f);
+            }
+            else
+            {
+                m_cursor.transform.localScale = Vector3.one;
+            }
+        }
+
+        private void OnPause(InputType inputType, bool b)
+        {
+            if (inputType == InputType.PRESSED)
+            {
+                TogglePause();
+            }
+        }
+        #endregion
+
+        #region Cursor
         private void UpdateCursor()
         {
             float multiplierSpeed = m_timerAfterShoot > 0f ? m_speedAfterShoot : 1f;
@@ -98,7 +146,9 @@ namespace GMTK
         {
             m_timerAfterShoot = m_timerSpeedAfterShoot;
         }
+        #endregion
 
+        #region Player_Stats
         private void InstantiatePlayerStat(RectTransform rect, Player playerAssigned)
         {
             PlayerStatHUD stat = Instantiate(m_playerStatPrefab, rect.parent);
@@ -107,5 +157,6 @@ namespace GMTK
 
             m_playerStats.Add(stat);
         }
+        #endregion
     }
 }

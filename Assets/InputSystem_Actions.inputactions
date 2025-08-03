@@ -42,34 +42,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire_1",
-                    "type": "Button",
-                    "id": "3ff85a22-7446-4d85-be72-c8d4c53ffb67",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Fire_2",
-                    "type": "Button",
-                    "id": "a8b24d01-4eb2-4fea-b476-b6bf41381a65",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Fire_3",
-                    "type": "Button",
-                    "id": "178833fa-8940-4a2b-8328-607c188e3efc",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Fire_4",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "61fb725d-b837-4ef6-a51d-b5ca2bafa363",
                     "expectedControlType": "",
@@ -213,56 +186,12 @@
                 },
                 {
                     "name": "",
-                    "id": "5bb8b89e-87a3-4efd-81d7-d88f05cd8e25",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire_1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9d5736b3-a721-4f52-a1dd-10843fa8456f",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire_1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "363fbb4d-27bf-4572-8f1d-027d0c9c8267",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire_2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c5cd735a-ca5b-45e4-96d9-5686557ac709",
-                    "path": "<Keyboard>/l",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire_3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7bb00fb0-19c2-4fce-a954-03cc3ca55c79",
-                    "path": "<Keyboard>/semicolon",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire_4",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

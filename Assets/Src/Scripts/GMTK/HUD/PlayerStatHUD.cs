@@ -106,7 +106,7 @@ namespace GMTK
         {
             string str = m_textLifeTemplate;
 
-            str = str.Replace("{v}", m_player.GetPrcntDamages().ToString());
+            str = str.Replace("{v}", m_player.GetPrcntDamages().ToString("0"));
             m_tLife.text = str;
         }
     }

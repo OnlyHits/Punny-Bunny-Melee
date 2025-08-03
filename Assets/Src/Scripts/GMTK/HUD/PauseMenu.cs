@@ -51,12 +51,12 @@ namespace GMTK
             m_bSettings.onClick.AddListener(() =>
             {
                 SpawnDecal(m_bSettings);
-                EnableAllButtons(false);
+                //EnableAllButtons(false);
 
-                StartCoroutine(CoroutineUtils.InvokeNextFrame(() =>
-                {
-                    // settings
-                }));
+                //StartCoroutine(CoroutineUtils.InvokeNextFrame(() =>
+                //{
+                //    // settings
+                //}));
             });
 
             m_bQuitMainMenu.onClick.AddListener(() =>

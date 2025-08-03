@@ -57,11 +57,11 @@ namespace GMTK
             });
             m_bSettings.onClick.AddListener(() =>
             {
-                EnableAllButtons(false); StartCoroutine(CoroutineUtils.InvokeOnDelay(0.3f, () =>
-                {
-                    EnableAllButtons(true);
-                    // settings
-                }));
+                //EnableAllButtons(false); StartCoroutine(CoroutineUtils.InvokeOnDelay(0.3f, () =>
+                //{
+                //    EnableAllButtons(true);
+                //    // settings
+                //}));
             });
             m_bQuit.onClick.AddListener(() =>
             {

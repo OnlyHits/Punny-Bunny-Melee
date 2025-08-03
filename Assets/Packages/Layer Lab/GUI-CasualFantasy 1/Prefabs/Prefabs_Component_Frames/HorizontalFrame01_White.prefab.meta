@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c0ff8d933eb12415ab08c156b991d49c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_Frames/HorizontalFrame01_White.prefab
+  uploadId: 714409

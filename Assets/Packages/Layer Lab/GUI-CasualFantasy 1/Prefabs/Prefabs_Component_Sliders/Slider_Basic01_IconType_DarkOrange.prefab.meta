@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f0fa3ccd8fdeb477bb54284e9f14cd72
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_Sliders/Slider_Basic01_IconType_DarkOrange.prefab
+  uploadId: 714409

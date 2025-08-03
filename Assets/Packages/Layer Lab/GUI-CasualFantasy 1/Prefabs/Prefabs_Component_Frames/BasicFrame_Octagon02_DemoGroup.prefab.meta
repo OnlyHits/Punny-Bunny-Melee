@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 75cfc0a525ca04ab7b5fba19dfbea0c3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_Frames/BasicFrame_Octagon02_DemoGroup.prefab
+  uploadId: 714409

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a775ec83c88b7440383fd641932785a7
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_Sliders/Slider_Basic01_Sky.prefab
+  uploadId: 714409

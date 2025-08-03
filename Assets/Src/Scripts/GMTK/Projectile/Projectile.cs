@@ -6,16 +6,18 @@ namespace GMTK
 {
     public class Projectile : APoolElement
     {
-        private Vector3         m_direction = Vector3.zero;
-        private float           m_speed = 0.0f;
-        private float           m_maxDistanceSqr = 60.0f;
-        private bool            m_bounceOnCollide = false;
+        private Vector3 m_direction = Vector3.zero;
+        private float m_speed = 0.0f;
+        private float m_maxDistanceSqr = 60.0f;
+        private int m_maxBounces = 1;
+        private bool m_bounceOnCollide = false;
 
-        private Rigidbody       m_rigidbody;
-        private ParticleSystem  m_particleSystem;
-        private Vector3         m_lastVelocity = Vector3.zero;
-        private Vector3         m_lastPosition = Vector3.zero;
-        private float           m_distanceSinceAllocate = 0;
+        private Rigidbody m_rigidbody;
+        private ParticleSystem m_particleSystem;
+        private Vector3 m_lastVelocity = Vector3.zero;
+        private Vector3 m_lastPosition = Vector3.zero;
+        private float m_distanceSinceAllocate = 0;
+        private int m_bounces = 0;
 
         private AttackUtils.BulletType m_type;
 
@@ -23,6 +25,7 @@ namespace GMTK
         public float Speed { get => m_speed; set => m_speed = value; }
         public AttackUtils.BulletType Type { get => m_type; set => m_type = value; }
         public float MaxDistanceSqr { get => m_maxDistanceSqr; set => m_maxDistanceSqr = value; }
+        public int MaxBounces { get => m_maxBounces; set => m_maxBounces = value; }
 
         public override void Init(params object[] parameter)
         {
@@ -79,12 +82,21 @@ namespace GMTK
                 return;
             }
 
+            m_bounces += 1;
+
+            if (m_bounces >= m_maxBounces)
+            {
+                Compute = false;
+                m_bounces = 0;
+                return;
+            }
+
             ContactPoint contact = collision.contacts[0];
             m_direction = Vector3.Reflect(m_direction.normalized, contact.normal);
 
             m_particleSystem.Stop();
             m_particleSystem.Play(true);
-;
+
             m_rigidbody.linearVelocity = Vector3.zero;
 
             Impulse(m_lastVelocity.magnitude);
@@ -121,6 +133,7 @@ namespace GMTK
             m_speed = datas.speed;
             m_bounceOnCollide = datas.bounce_on_collision;
             m_maxDistanceSqr = datas.max_distance_sqr;
+            m_maxBounces = datas.max_bounces;
             m_type = datas.bullet_type;
 
             gameObject.layer = (int)parameter[3];

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bb06557e467f04573afc67eeb98673da
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_Buttons/Button_Side01_Demo.prefab
+  uploadId: 714409

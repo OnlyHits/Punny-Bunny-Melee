@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6109667229996435940}
   - component: {fileID: 577936414492152812}
   - component: {fileID: 8929675069588923866}
-  - component: {fileID: -2457590319289420135}
-  m_Layer: 0
+  - component: {fileID: 3549111237354127040}
+  - component: {fileID: 4504028751354166804}
+  m_Layer: 8
   m_Name: 'House 5 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,10 +28,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8181453423359535207}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.67, y: 0.67, z: 0.67}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87,8 +88,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-2457590319289420135
-MeshCollider:
+--- !u!208 &3549111237354127040
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8181453423359535207}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.9560003, y: 3.6000001, z: 3.3930001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.768, y: 3.6000001, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!65 &4504028751354166804
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,7 +122,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8843736894466332856, guid: 593d4f7dc5f444843b2b02f101b56b8c, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 9.911443, y: 7.2008405, z: 6.7854247}
+  m_Center: {x: 0.76785326, y: 3.6004202, z: -0.00000049972095}

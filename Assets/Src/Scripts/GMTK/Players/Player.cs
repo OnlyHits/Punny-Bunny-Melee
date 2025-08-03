@@ -10,12 +10,12 @@ namespace GMTK
     public class Player : BaseBehaviour
     {
         [Title("Dependancies")]
-        [SerializeField] private Rigidbody m_rb;
-        [SerializeField] private Collider m_collider;
-        [SerializeField] private Animator m_animator;
-        [SerializeField] private NavMeshAgent m_agent;
-        [SerializeField] private ArenaTransposer m_transposer;
-        [SerializeField] private RagdollArenaTransposer m_ragdollTransposer;
+        [SerializeField] protected Rigidbody m_rb;
+        [SerializeField] protected Collider m_collider;
+        [SerializeField] protected Animator m_animator;
+        [SerializeField] protected NavMeshAgent m_agent;
+        [SerializeField] protected ArenaTransposer m_transposer;
+        [SerializeField] protected RagdollArenaTransposer m_ragdollTransposer;
 
         [Title("Movement")]
         [SerializeField] protected float m_speed = 1f;
@@ -68,7 +68,21 @@ namespace GMTK
         #endregion
 
         #region BaseBehaviour_Cb
-        public override void Init(params object[] parameters) { }
+        public override void Init(params object[] parameters)
+        {
+            m_transposer.RegisterOnTeleport(OnTeleport);
+        }
+
+        protected virtual void OnTeleport(Vector3 position)
+        {
+            transform.position = position;
+
+            if (m_agent.gameObject.activeSelf && m_agent.enabled && m_agent.isOnNavMesh)
+            {
+                m_agent.Warp(position);
+            }
+        }
+
         public override void LateInit(params object[] parameters) { }
         protected override void OnFixedUpdate() { }
         protected override void OnLateUpdate()
@@ -80,15 +94,12 @@ namespace GMTK
             }
             else
             {
-                //transform.position = m_agent.transform.position;
-                //m_agent.transform.position = transform.position;
+                transform.position = m_agent.transform.position;
+                m_agent.transform.position = transform.position;
             }
         }
 
-        protected override void OnUpdate()
-        {
-
-        }
+        protected override void OnUpdate() { }
         #endregion BaseBehaviour_Cb
 
         #region Visual
@@ -104,7 +115,6 @@ namespace GMTK
         #region Rotation
         public void Rotate(Vector3 mouseScreenPos)
         {
-            //Camera mainCam = GMTKGameCore.Instance.MainGameMode.;
             Camera mainCam = Camera.main;
             float distanceToGround = mainCam.transform.position.y;
             Vector3 worldMousePosition = Vector3.zero;
@@ -122,6 +132,18 @@ namespace GMTK
 
             transform.forward = m_shootDirection;
         }
+        public void Rotate()
+        {
+            Vector3 velocity = m_rb.linearVelocity;
+            velocity.y = 0f;
+
+            if (velocity.sqrMagnitude < 0.001f)
+                return;
+
+            m_shootDirection = velocity.normalized;
+            transform.forward = m_shootDirection;
+        }
+
         #endregion
 
         #region Movement
@@ -142,6 +164,7 @@ namespace GMTK
             m_rb.AddForce(expVel, ForceMode.VelocityChange);
             m_rb.position = new Vector3(m_rb.position.x, m_basePos.y, m_rb.position.z);
         }
+
         public void StartMove()
         {
             m_isMoving = true;

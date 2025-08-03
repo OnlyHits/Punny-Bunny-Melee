@@ -43,7 +43,7 @@ namespace GMTK
     public class AttackInterface : BaseBehaviour
     {
         [SerializeField] protected List<AttackDatas>  m_attackDatas = new();
-        [SerializeField] protected float              m_fireRate;
+        [SerializeField] protected float              m_fireRate = 2.0f; // 1 / firerate
         [SerializeField] protected Transform          m_weaponParent;
 
         [SerializeField] protected List<WeaponType>   m_weapons = new();
@@ -54,22 +54,24 @@ namespace GMTK
         protected List<Coroutine>       m_fireCoroutines = new();
         protected ProjectileManager     m_projectileManager;
         protected int                   m_attackIndex = 0;
+        protected float                 m_cooldownTimer = 0.0f;
 
         public int GetIndex() => m_attackIndex;
         public List<AttackDatas> AttackDatas() => m_attackDatas;
+        public Weapon CurrentWeapon() => m_currentWeapon;
         public AttackDatas EquipedAttack() => m_equipedAttack;
         public bool IsFiring() => m_fireCoroutines.Count > 0;
 
         #region BaseBehaviour
         public IEnumerator Load()
         {
-            int total = s_bulletPath.Count;
+            int total = m_weapons.Count;
             int completed = 0;
 
-            foreach (var kvp in s_weaponPath)
+            foreach (var kvp in m_weapons)
             {
-                WeaponType bulletType = kvp.Key;
-                string address = kvp.Value;
+                WeaponType bulletType = kvp;
+                string address = s_weaponPath[bulletType];
 
                 yield return AddressableFactory.CreateAsync(address, m_weaponParent, (go) =>
                 {
@@ -95,7 +97,9 @@ namespace GMTK
         protected override void OnLateUpdate()
         { }
         protected override void OnUpdate()
-        { }
+        {
+            m_cooldownTimer = Mathf.Clamp(m_cooldownTimer - Time.deltaTime, 0.0f, 1f / m_fireRate);
+        }
         public override void LateInit(params object[] parameters)
         { }
         public override void Init(params object[] parameters)
@@ -157,23 +161,6 @@ namespace GMTK
                     StopCoroutine(coroutine);
             }
             m_fireCoroutines.Clear();
-        }
-
-        private IEnumerator TrackFireCoroutine(IEnumerator fireCoroutine)
-        {
-            yield return StartCoroutine(fireCoroutine); // run actual attack
-
-            Coroutine self = null;
-            for (int i = 0; i < m_fireCoroutines.Count; ++i)
-            {
-                if (m_fireCoroutines[i] == null)
-                    continue;
-
-                self = m_fireCoroutines[i];
-                break;
-            }
-
-            m_fireCoroutines.Remove(self);
         }
 
         protected virtual IEnumerator FireCoroutine(Vector3 position, Vector3 direction, AttackDatas datas, int projectile_layer)
@@ -239,6 +226,9 @@ namespace GMTK
         // use this if you want to use the current attack 
         public virtual bool TryAttack(int projectile_layer)
         {
+            if (m_cooldownTimer != 0f)
+                return false;
+
             if (m_currentWeapon == null
                 ||m_currentWeapon.GetFireDirection() == Vector3.zero
                 || m_attackDatas.Count == 0)
@@ -249,12 +239,15 @@ namespace GMTK
             );
 
             m_fireCoroutines.Add(wrapper);
+            m_cooldownTimer = 1 / m_fireRate;
             return true;
         }
 
         // use this if you want to land a projectile from m_attackDatas[index]
         public virtual bool TryAttack(Vector3 position, Vector3 direction, int index, int projectile_layer)
         {
+            if (m_cooldownTimer != 0f)
+                return false;
             if (direction == Vector3.zero || index >= m_attackDatas.Count)
                 return false;
 
@@ -263,6 +256,7 @@ namespace GMTK
             );
 
             m_fireCoroutines.Add(wrapper);
+            m_cooldownTimer = 1 / m_fireRate;
             return true;
         }
     }

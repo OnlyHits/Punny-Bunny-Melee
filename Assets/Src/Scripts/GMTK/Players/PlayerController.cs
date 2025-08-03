@@ -21,6 +21,7 @@ namespace GMTK
 
         public override void Init(params object[] parameters)
         {
+            base.Init();
             m_attackInterface?.Init(parameters[0], this);
 
             GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onMoveAction += OnMove;

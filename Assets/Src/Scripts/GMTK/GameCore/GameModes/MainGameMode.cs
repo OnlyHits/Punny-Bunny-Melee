@@ -25,14 +25,16 @@ namespace GMTK
         // ---- Local datas ----
         private HudManager m_hudManager;
         private GameManager m_gameManager;
+        private ArenaManager m_arenaManager;
 
         // ---- Managers ----
         public GameManager GetGameManager() => m_gameManager;
         public HudManager GetHudManager() => m_hudManager;
         public GameConfig GetGameConfig() => m_gameConfig;
         public PlayerInputsController GetPlayerInput() => m_playerInput;
+        public ArenaManager ArenaManager() => m_arenaManager;
 
-        public (Vector3, Vector3) GetArenaTransposerDatas() => m_gameManager.GetArenaTransposerDatas();
+        public (Vector3, Vector3) GetArenaTransposerDatas() => m_arenaManager.GetArenaTransposerDatas();
 
         public override void InitGameMode(params object[] parameters)
         {
@@ -53,6 +55,7 @@ namespace GMTK
         {
             m_hudManager = ComponentUtils.FindObjectAcrossScenes<HudManager>();
             m_gameManager = ComponentUtils.FindObjectAcrossScenes<GameManager>();
+            m_arenaManager = ComponentUtils.FindObjectAcrossScenes<ArenaManager>();
 
             ComponentUtils.GetOrCreateComponent<PlayerInputsController>(gameObject, out m_playerInput);
 

@@ -20,7 +20,7 @@ namespace GMTK
         [SerializeField] private List<AIController> m_aiControllers;
 
         public ProjectileManager GetProjectileManager() => m_projectileManager;
-        public (Vector3, Vector3) GetArenaTransposerDatas() => (m_arenaTransform.position, Vector3.Scale(m_arenaTransform.localScale, m_mapBounds));
+        //public (Vector3, Vector3) GetArenaTransposerDatas() => (m_arenaTransform.position, Vector3.Scale(m_arenaTransform.localScale, m_mapBounds));
 
         public IEnumerator Load()
         {
@@ -69,7 +69,7 @@ namespace GMTK
                 {
                     List<Player> enemies = new List<Player>(allPlayers);
                     enemies.Remove(ai);
-                    ai.Init(enemies);
+                    ai.Init(enemies, m_projectileManager);
                 }
             }
         }

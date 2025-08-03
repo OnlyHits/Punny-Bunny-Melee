@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8344490353556159687}
   - component: {fileID: 8929449058887835291}
   - component: {fileID: 4974344035950764713}
-  - component: {fileID: 2857692135417247829}
-  m_Layer: 0
+  - component: {fileID: 6972456188695541672}
+  - component: {fileID: 3193990336280312460}
+  m_Layer: 8
   m_Name: 'House 2 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,10 +28,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477598291328391428}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.75, y: 0.5625, z: 0.75}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87,8 +88,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2857692135417247829
-MeshCollider:
+--- !u!208 &6972456188695541672
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477598291328391428}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.045, y: 3.6880002, z: 6.354}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 3.6880002, z: 0.462}
+  m_TimeToStationary: 0.5
+--- !u!65 &3193990336280312460
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,7 +122,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8200808124077858765, guid: 593d4f7dc5f444843b2b02f101b56b8c, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 8.089792, y: 7.3761644, z: 12.70828}
+  m_Center: {x: 0.00000023841858, y: 3.6880822, z: 0.4615383}

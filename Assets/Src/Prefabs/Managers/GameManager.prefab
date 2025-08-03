@@ -66,5 +66,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pause: 0
+  m_nukePrefab: {fileID: 2056206701331661491, guid: c13daa9b992e5c94fbad423c0538d740, type: 3}
+  m_bulletBonusPrefab: {fileID: 1740226591187340, guid: a1e7882d78b870c4b90b1b697bb15e1a, type: 3}
+  m_healBonusPrefab: {fileID: 1886116890264956, guid: 7f074316d8e5ff14eae3f537153c1842, type: 3}
+  m_shieldBonusPrefab: {fileID: 1360735731553936, guid: 765205ccebc4d4b4ea756b596947e2a0, type: 3}
   m_projectileContainer: {fileID: 0}
   m_player: {fileID: 0}

@@ -50,18 +50,40 @@ namespace GMTK
         private AllocationPool<Projectile> m_fireballBulletPool = null;
         private AllocationPool<Projectile> m_fireballBigBulletPool = null;
         private AllocationPool<Explosion> m_nukeExplosionPool = null;
+        private AllocationPool<Bonus> m_bulletBonusPool = null;
+        private AllocationPool<Bonus> m_healBonusPool = null;
+        private AllocationPool<Bonus> m_shieldBonusPool = null;
 
         [SerializeField] private GameObject m_nukePrefab = null;
+        [SerializeField] private GameObject m_bulletBonusPrefab = null;
+        [SerializeField] private GameObject m_healBonusPrefab = null;
+        [SerializeField] private GameObject m_shieldBonusPrefab = null;
 
         private List<Projectile> m_currentProjectiles;
 
         [SerializeField] private Transform m_projectileContainer;
 
         public Player m_player;
-        
+
         public void AllocateExplosion(Vector3 position)
         {
             m_nukeExplosionPool?.AllocateElement(position);
+        }
+
+        public void AllocateBonus(Vector3 position, BonusType type)
+        {
+            switch (type)
+            {
+                case BonusType.Bullet:
+                    m_bulletBonusPool?.AllocateElement(position);
+                    break;
+                case BonusType.Heal:
+                    m_healBonusPool?.AllocateElement(position);
+                    break;
+                case BonusType.Shield:
+                    m_shieldBonusPool?.AllocateElement(position);
+                    break;
+            }
         }
 
         public void AllocateProjectile(Vector3 direction, Vector3 position, AttackDatas datas, Collider collider)
@@ -106,6 +128,9 @@ namespace GMTK
             m_fireballBulletPool?.Update(Time.deltaTime);
             m_fireballBigBulletPool?.Update(Time.deltaTime);
             m_nukeExplosionPool?.Update(Time.deltaTime);
+            m_bulletBonusPool?.Update(Time.deltaTime);
+            m_healBonusPool?.Update(Time.deltaTime);
+            m_shieldBonusPool?.Update(Time.deltaTime);
         }
         public override void LateInit(params object[] parameters)
         {
@@ -137,6 +162,9 @@ namespace GMTK
                 m_fireballBigBulletPool = new AllocationPool<Projectile>(fireballBig, m_projectileContainer, 100, SortOrderMethod.Sort_None, null, OnInitProjectile);
             }
             m_nukeExplosionPool = new AllocationPool<Explosion>(m_nukePrefab, m_projectileContainer, 4, SortOrderMethod.Sort_None, null, null);
+            m_bulletBonusPool = new AllocationPool<Bonus>(m_bulletBonusPrefab, m_projectileContainer, 5, SortOrderMethod.Sort_None, null, null);
+            m_healBonusPool = new AllocationPool<Bonus>(m_healBonusPrefab, m_projectileContainer, 5, SortOrderMethod.Sort_None, null, null);
+            m_shieldBonusPool = new AllocationPool<Bonus>(m_shieldBonusPrefab, m_projectileContainer, 5, SortOrderMethod.Sort_None, null, null);
         }
         private void OnInitProjectile(Projectile projectile)
         {

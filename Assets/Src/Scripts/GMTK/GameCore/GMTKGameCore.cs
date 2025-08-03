@@ -18,8 +18,8 @@ namespace GMTK
             CreateGameMode<MainMenuGameMode>();
             CreateGameMode<MainGameMode>();
 
-            SetStartingGameMode<MainGameMode>();
-            //SetStartingGameMode<MainMenuGameMode>();
+            //SetStartingGameMode<MainGameMode>();
+            SetStartingGameMode<MainMenuGameMode>();
         }
     }
 }

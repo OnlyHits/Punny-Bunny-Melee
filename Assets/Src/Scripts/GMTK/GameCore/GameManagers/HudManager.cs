@@ -34,6 +34,9 @@ namespace GMTK
         [SerializeField, ReadOnly] private List<PlayerStatHUD> m_playerStats;
         public bool Paused { get { return m_paused; } private set { m_paused = value; } }
         private bool m_paused = false;
+        private bool m_hasWin = false;
+        private bool m_hasLose = false;
+
 
         #region BaseBehaviour
         public override void Init(params object[] parameters)
@@ -96,6 +99,36 @@ namespace GMTK
 
         #endregion
 
+        #region Win_Lose
+        public void Win()
+        {
+            if (m_hasWin || m_hasLose)
+            {
+                return;
+            }
+            m_hasWin = true;
+            StartCoroutine(CoroutineUtils.InvokeOnDelay(1f, () =>
+            {
+                Time.timeScale = 0;
+                m_winMenu.gameObject.SetActive(true);
+            }));
+        }
+
+        public void Lose()
+        {
+            if (m_hasWin || m_hasLose)
+            {
+                return;
+            }
+            m_hasLose = true;
+            StartCoroutine(CoroutineUtils.InvokeOnDelay(1f, () =>
+            {
+                Time.timeScale = 0;
+                m_loseMenu.gameObject.SetActive(true);
+            }));
+        }
+        #endregion
+
         #region Pause
         public void TogglePause()
         {
@@ -104,7 +137,7 @@ namespace GMTK
             GMTK.GMTKGameCore.Instance.GetGameMode<MainGameMode>().GetGameManager().Pause(m_paused);
             m_pauseMenu.gameObject.SetActive(m_paused);
             Time.timeScale = m_paused ? 0 : 1f;
-            //Cursor.visible = m_paused;
+            Cursor.visible = false;
             //m_cursor.gameObject.SetActive(!m_paused);
 
             if (m_paused)

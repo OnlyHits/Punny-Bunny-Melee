@@ -115,11 +115,33 @@ namespace GMTK
 #endif
         }
 
+        public void ReplayGame()
+        {
+            Destroy(GMTK.GMTKGameCore.Instance.GetComponent<PlayerInputsController>());
+            Destroy(GMTK.GMTKGameCore.Instance.GetComponent<AttackLoader>());
+            //Destroy(GMTK.GMTKGameCore.Instance.GetComponent<MainGameMode>());
+
+            GMTK.GMTKGameCore.Instance.StartGameMode<MainGameMode>();
+        }
+
+        public void GoMainMenu()
+        {
+            Destroy(GMTK.GMTKGameCore.Instance.GetComponent<PlayerInputsController>());
+            Destroy(GMTK.GMTKGameCore.Instance.GetComponent<AttackLoader>());
+            //Destroy(GMTK.GMTKGameCore.Instance.GetComponent<MainGameMode>());
+
+            GMTK.GMTKGameCore.Instance.StartGameMode<MainMenuGameMode>();
+        }
+
         private void OnWin()
-        { }
+        {
+            m_hudManager.Win();
+        }
 
         private void OnLose()
-        { }
+        {
+            m_hudManager.Lose();
+        }
 
         private void Update()
         {

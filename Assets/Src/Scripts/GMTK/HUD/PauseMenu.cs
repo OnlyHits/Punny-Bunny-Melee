@@ -67,7 +67,7 @@ namespace GMTK
                 StartCoroutine(CoroutineUtils.InvokeNextFrame(() =>
                 {
                     m_onQuitMainMenu?.Invoke();
-                    GMTK.GMTKGameCore.Instance.StartGameMode<MainMenuGameMode>();
+                    GMTK.GMTKGameCore.Instance.MainGameMode.GoMainMenu();
                 }));
             });
 

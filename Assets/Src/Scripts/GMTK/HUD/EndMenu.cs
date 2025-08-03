@@ -45,7 +45,8 @@ namespace GMTK
                 StartCoroutine(CoroutineUtils.InvokeNextFrame(() =>
                 {
                     //GMTK.GMTKGameCore.Instance.DestroyGameMode<MainGameMode>();
-                    GMTK.GMTKGameCore.Instance.StartGameMode<MainGameMode>();
+                    //GMTK.GMTKGameCore.Instance.StartGameMode<MainGameMode>();
+                    GMTK.GMTKGameCore.Instance.MainGameMode.ReplayGame();
                 }));
             });
 
@@ -56,7 +57,8 @@ namespace GMTK
                 StartCoroutine(CoroutineUtils.InvokeNextFrame(() =>
                 {
                     //GMTK.GMTKGameCore.Instance.DestroyGameMode<MainGameMode>();
-                    GMTK.GMTKGameCore.Instance.StartGameMode<MainMenuGameMode>();
+                    //GMTK.GMTKGameCore.Instance.StartGameMode<MainMenuGameMode>();
+                    GMTK.GMTKGameCore.Instance.MainGameMode.GoMainMenu();
                 }));
             });
         }

@@ -6,13 +6,15 @@ using System.Collections;
 
 using static CustomArchitecture.CustomArchitecture;
 using static GMTK.GmtkUtils;
+using DG.Tweening;
+using Unity.Cinemachine;
 
 namespace GMTK
 {
     public class MainGameMode : AGameMode<GMTKGameCore>
     {
 #if UNITY_EDITOR && !DEVELOPMENT_BUILD
-        private bool m_playStartAnimation_DEBUG = false;
+        private bool m_playStartAnimation_DEBUG = true;
 #endif
 
         // ---- Config & Save ____
@@ -93,8 +95,10 @@ namespace GMTK
 #if UNITY_EDITOR && !DEVELOPMENT_BUILD
             if (m_playStartAnimation_DEBUG)
             {
+                m_arenaManager.GetArenaCamera().PlayStartAnim(() => { ; });
             }
 #else
+                m_arenaManager.GetArenaCamera().PlayStartAnim(() => { ; });
 #endif
         }
 

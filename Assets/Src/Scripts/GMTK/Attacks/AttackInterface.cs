@@ -12,7 +12,7 @@ namespace GMTK
     public class AttackDatas
     {
         public int projectile_number = 1;
-        public int speed = 30;
+        public float speed = 30;
         public float angle_range = 0.0f;
         public bool randomize_distribution = false;
         public bool fire_once = true;
@@ -55,7 +55,10 @@ namespace GMTK
         protected ProjectileManager     m_projectileManager;
         protected int                   m_attackIndex = 0;
         protected float                 m_cooldownTimer = 0.0f;
+        protected bool                  m_berserkMode = false;
 
+        public void SetFireRate(float fire_rate) => m_fireRate = fire_rate;
+        public void SetBerserk(bool berserk) => m_berserkMode = berserk;
         public int GetIndex() => m_attackIndex;
         public List<AttackDatas> AttackDatas() => m_attackDatas;
         public Weapon CurrentWeapon() => m_currentWeapon;
@@ -262,8 +265,17 @@ namespace GMTK
                 || m_attackDatas.Count == 0)
                 return false;
 
+            AttackDatas datas = m_equipedAttack.Clone();
+            if (m_berserkMode)
+            {
+                datas.max_distance_sqr *= 1.3f;
+                datas.speed *= 1.3f;
+                datas.time_between_bullet *= .8f;
+                datas.bullet_type = BulletType.Bullet_Fireball_Big;
+            }
+
             Coroutine wrapper = StartCoroutine(
-                FireCoroutine(m_equipedAttack, projectile_layer)
+                FireCoroutine(datas, projectile_layer)
             );
 
             m_fireCoroutines.Add(wrapper);

@@ -49,6 +49,7 @@ namespace GMTK
             }
         }
         #endregion BaseBehaviour_Cb
+
         protected override void GetHit(Collision collision)
         {
             m_attackInterface.StopAllAttacks();

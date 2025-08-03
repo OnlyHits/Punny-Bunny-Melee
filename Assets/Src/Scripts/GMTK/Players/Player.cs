@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using CustomArchitecture;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,12 +25,16 @@ namespace GMTK
         [SerializeField, ReadOnly] protected Vector3 m_direction;
 
         [Title("Life")]
-        [SerializeField] protected float m_prctDamages = 0f;
+        [SerializeField] protected float m_prctDamages = 1f;
 
         [Title("Ragdoll")]
-        [SerializeField] protected float m_explostionForce = 5f;
-        [SerializeField] protected float m_ragdollTime = 2f;
+        [SerializeField] protected float m_dieRepulsionForce = 400f;
+        [SerializeField] protected Vector2 m_repulseForceRange = Vector2.zero;
+        [SerializeField] protected Vector2 m_ragdollTimeRange = Vector2.zero;
         [SerializeField] protected List<Rigidbody> m_ragdollRb;
+
+        [Title("Low life modifier")]
+        [SerializeField] protected float m_fireRate = 5;
 
         [Title("Pistol pivot")]
         [SerializeField] protected Transform m_pistolPivot;
@@ -69,19 +74,39 @@ namespace GMTK
 
             if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.PlayerUserProjectile_Layer))
             {
-                GetHit(collision);
+                if (!IsRagdoll)
+                    GetHit(collision);
             }
             if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.PlayerAIProjectile_Layer))
             {
-                GetHit(collision);
+                if (!IsRagdoll)
+                    GetHit(collision);
             }
         }
         #endregion
+
+        private void OnCollisionWithWall(Collision collision)
+        {
+            if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.ObstacleLayer))
+            {
+                //Debug.Log("bite");
+
+                if (IsRagdoll && m_prctDamages == 100f)
+                    Die(collision);
+            }
+        }
 
         #region BaseBehaviour_Cb
         public override void Init(params object[] parameters)
         {
             m_transposer.RegisterOnTeleport(OnTeleport);
+
+            foreach (var item in m_ragdollRb)
+            {
+                item.AddComponent<ColliderWrapper>();
+                item.GetComponent<ColliderWrapper>().LayerToCollide = LayerMask.GetMask(GmtkUtils.ObstacleLayer);
+                item.GetComponent<ColliderWrapper>().onCollisionEnter += OnCollisionWithWall;
+            }
         }
 
         protected virtual void OnTeleport(Vector3 position)
@@ -241,13 +266,39 @@ namespace GMTK
             m_onGetHit -= function;
             m_onGetHit += function;
         }
+        protected virtual void Die(Collision collision)
+        {
+            Debug.Log("You die");
+
+            StopMove();
+
+            EnableRagdoll(true);
+
+            if (collision == null || m_ragdollRb == null || m_ragdollRb.Count == 0)
+                return;
+
+            ContactPoint contact = collision.GetContact(0);
+            Vector3 hitDir = (transform.position - contact.point).normalized;
+            Vector3 reflectDir = Vector3.Reflect(hitDir, contact.normal).normalized;
+            Vector3 forceDir = reflectDir + Vector3.up * 0.7f; // tweak 0.7f for vertical pop strength
+            forceDir.Normalize();
+
+            m_ragdollRb[0].AddForce(forceDir * m_dieRepulsionForce, ForceMode.Impulse);
+        }
+
         protected virtual void GetHit(Collision collision)
         {
             StopMove();
 
             EnableRagdoll(true);
 
-            m_prctDamages += 10f;
+            m_prctDamages = Mathf.Min(m_prctDamages * 1.1f + 5f, 100f);
+
+            float repulseForce = ScaleByPercent(m_prctDamages, m_repulseForceRange);
+            float ragdollTime = ScaleByPercent(m_prctDamages, m_ragdollTimeRange);
+
+            if (m_prctDamages > 80f)
+                GetAttackManager().SetBerserk(true);
 
             // @note: throw ragdoll
             if (collision != null)
@@ -258,16 +309,21 @@ namespace GMTK
                 Vector3 explulsionDir = (playerPos - hitPos).normalized;
                 explulsionDir.y = 0f;
 
-                m_ragdollRb[0].AddForce(explulsionDir * m_explostionForce, ForceMode.Impulse);
+                m_ragdollRb[0].AddForce(explulsionDir * repulseForce, ForceMode.Impulse);
             }
 
             // @note: call after update stats like health to update ui properly
             m_onGetHit?.Invoke();
 
             // @note: reset ragdoll in x seconds
-            StartCoroutine(CoroutineUtils.InvokeOnDelay(m_ragdollTime, DisableRagdoll));
+            StartCoroutine(CoroutineUtils.InvokeOnDelay(ragdollTime, DisableRagdoll));
         }
         #endregion
+        protected float ScaleByPercent(float percent, Vector2 range)
+        {
+            percent = Mathf.Clamp01(percent / 100f);
+            return Mathf.Lerp(range.x, range.y, percent);
+        }
 
     }
 }

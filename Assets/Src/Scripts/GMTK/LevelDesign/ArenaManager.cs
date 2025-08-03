@@ -177,8 +177,10 @@ namespace GMTK
     public class ArenaManager : BaseBehaviour
     {
         [Header("Setup")]
-        [SerializeField] private GameObject m_levelDesignPrefab;
-        [SerializeField] private NavMeshSurface m_aiPathNMSurface;
+        [SerializeField] private GameObject         m_levelDesignPrefab;
+        [SerializeField] private NavMeshSurface     m_aiPathNMSurface;
+        [SerializeField] private ArenaCamera        m_arenaCamera;
+
 
         [Header("Runtime State")]
         [SerializeField, ReadOnly] private LevelDesign m_mainLevelDesignInstance;
@@ -191,6 +193,7 @@ namespace GMTK
         private Vector3[] m_lastPath;
         private int m_lastTeleportIndex = -1;
 
+        public ArenaCamera GetArenaCamera() => m_arenaCamera;
         public NavMeshSurface AiUnwrapPathNavMeshSurface { get => m_aiPathNMSurface; protected set { } }
         public GameObject LevelDesignPrefab { get => m_levelDesignPrefab; protected set { } }
         public (Vector3, Vector3) GetArenaTransposerDatas() => (m_mainLevelDesignInstance.transform.position, m_mainLevelDesignInstance.GetPlaneSize());

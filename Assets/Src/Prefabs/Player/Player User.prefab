@@ -147,8 +147,9 @@ MonoBehaviour:
   m_speed: 10
   m_direction: {x: 0, y: 0, z: 0}
   m_prctDamages: 0
-  m_explostionForce: 250
-  m_ragdollTime: 2
+  m_dieRepulsionForce: 300
+  m_repulseForceRange: {x: 0, y: 200}
+  m_ragdollTimeRange: {x: 0, y: 2}
   m_ragdollRb:
   - {fileID: 6780824264293830278}
   - {fileID: 4229398503185494911}
@@ -161,6 +162,7 @@ MonoBehaviour:
   - {fileID: 4674364559729522093}
   - {fileID: 1319836899348953731}
   - {fileID: 376171619337141475}
+  m_fireRate: 5
   m_pistolPivot: {fileID: 8458609718130793814}
   m_renderers:
   - {fileID: 3771006580172678873}
@@ -238,6 +240,16 @@ MonoBehaviour:
     max_distance_sqr: 100
     bullet_type: 3
     weapon_type: 3
+  - projectile_number: 1
+    speed: 30
+    angle_range: 0
+    randomize_distribution: 0
+    fire_once: 1
+    bounce_on_collision: 0
+    time_between_bullet: 0.1
+    max_distance_sqr: 50
+    bullet_type: 0
+    weapon_type: 1
   m_fireRate: 3
   m_weaponParent: {fileID: 4404734476886829890}
   m_weapons: 00000000010000000200000003000000

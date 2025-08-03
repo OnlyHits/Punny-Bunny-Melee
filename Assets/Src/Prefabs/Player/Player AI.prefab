@@ -189,6 +189,7 @@ MonoBehaviour:
     bounce_on_collision: 0
     time_between_bullet: 0.05
     max_distance_sqr: 20
+    max_bounces: 2
     bullet_type: 0
     weapon_type: 1
   - projectile_number: 9
@@ -199,6 +200,7 @@ MonoBehaviour:
     bounce_on_collision: 0
     time_between_bullet: 0.1
     max_distance_sqr: 50
+    max_bounces: 1
     bullet_type: 0
     weapon_type: 3
   m_fireRate: 1

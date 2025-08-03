@@ -2,11 +2,13 @@ namespace GMTK
 {
     static class GmtkUtils
     {
-        // replace by yours
+        // @note: replace by yours
         public static readonly string GameSceneName = "Test-AI&MapScene";
-        //public static readonly string GameSceneName = "Test-Projectile";
-        // replace by yours, keep null if you dont want hud scene
+
+        // @note: replace by yours, keep null if you dont want hud scene
         public static readonly string HudSceneName = "HudScene";
+
+        public static readonly string MainMenuSceneName = "MainMenuScene";
 
         public static readonly string PlayerUserProjectile_Layer = "UserProjectile";
         public static readonly string PlayerAIProjectile_Layer = "AIProjectile";

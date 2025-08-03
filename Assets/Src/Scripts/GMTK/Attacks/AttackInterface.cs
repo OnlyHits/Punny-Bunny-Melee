@@ -61,6 +61,7 @@ namespace GMTK
         public bool IsFiring() => m_fireCoroutines.Count > 0;
 
         private Action<WeaponType> m_onChangeWeapon;
+        private Action<WeaponType> m_onShoot;
 
         public WeaponType GetWeaponType() => m_currentWeapon == null ? default : m_currentWeapon.GetWeaponType();
 
@@ -98,6 +99,12 @@ namespace GMTK
         {
             m_onChangeWeapon -= function;
             m_onChangeWeapon += function;
+        }
+
+        public void RegisterOnShoot(Action<WeaponType> function)
+        {
+            m_onShoot -= function;
+            m_onShoot += function;
         }
 
         #region BaseBehaviour
@@ -166,6 +173,7 @@ namespace GMTK
 
         #endregion Attack management
 
+        #region Attack_Couroutines
         public void StopAllAttacks()
         {
             foreach (var coroutine in m_fireCoroutines)
@@ -253,6 +261,8 @@ namespace GMTK
             m_fireCoroutines.RemoveAll(c => c == null);
         }
 
+        #endregion
+
         // use this if you want to use the current attack 
         public virtual bool TryAttack(int projectile_layer)
         {
@@ -266,6 +276,7 @@ namespace GMTK
             );
 
             m_fireCoroutines.Add(wrapper);
+            m_onShoot?.Invoke(m_currentWeapon.GetWeaponType());
             return true;
         }
 
@@ -280,6 +291,7 @@ namespace GMTK
             );
 
             m_fireCoroutines.Add(wrapper);
+            m_onShoot?.Invoke(m_currentWeapon.GetWeaponType());
             return true;
         }
     }

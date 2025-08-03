@@ -22,6 +22,7 @@ namespace GMTK
         public ProjectileManager GetProjectileManager() => m_projectileManager;
         public (Vector3, Vector3) GetArenaTransposerDatas() => (m_arenaTransform.position, Vector3.Scale(m_arenaTransform.localScale, m_mapBounds));
         public int GetPlayerCount() => (m_aiControllers?.Count ?? 0) + (m_playerController != null ? 1 : 0);
+        public Player GetPlayerUser() => m_playerController;
         public List<Player> GetPlayers()
         {
             List<Player> players = new List<Player>();

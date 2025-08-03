@@ -15,8 +15,10 @@ namespace GMTK
         protected override void InstantiateGameModes()
         {
             Application.targetFrameRate = 60;
+            CreateGameMode<MainMenuGameMode>();
             CreateGameMode<MainGameMode>();
-            SetStartingGameMode<MainGameMode>();
+
+            SetStartingGameMode<MainMenuGameMode>();
         }
     }
 }

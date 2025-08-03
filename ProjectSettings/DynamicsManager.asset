@@ -34,4 +34,4 @@ PhysicsManager:
   m_DefaultMaxAngularSpeed: 50
   m_ScratchBufferChunkCount: 4
   m_CurrentBackendId: 4072204805
-  m_FastMotionThreshold: 3.4028235e+38
+  m_FastMotionThreshold: 3.402823e+38

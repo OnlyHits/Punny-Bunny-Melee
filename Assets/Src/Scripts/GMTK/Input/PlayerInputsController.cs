@@ -12,7 +12,6 @@ namespace GMTK
         private InputAction m_moveAction;
         private InputAction m_fireAction;
         private InputAction m_switchWeaponAction;
-        private InputAction m_counterAction;
         private InputAction m_pauseAction;
 
         #endregion ACTIONS
@@ -21,7 +20,6 @@ namespace GMTK
         public Action<InputType, Vector2> onMoveAction;
         public Action<InputType, bool> onFireAction;
         public Action<InputType, float> onSwitchWeaponAction;
-        public Action<InputType, bool> onCounterAction;
         public Action<InputType, bool> onPauseAction;
 
         #endregion CALLBACKS
@@ -53,7 +51,7 @@ namespace GMTK
         {
             m_moveAction = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Move", true);
             m_fireAction = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Fire", true);
-            m_counterAction = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Counter", true);
+            //m_counterAction = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Counter", true);
             m_switchWeaponAction = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/SwitchWeapon", true);
             m_pauseAction = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Pause", true);
         }
@@ -62,14 +60,12 @@ namespace GMTK
         {
             InputActionStruct<Vector2> iMove = new InputActionStruct<Vector2>(m_moveAction, onMoveAction, Vector2.zero, true);
             InputActionStruct<bool> iFire = new InputActionStruct<bool>(m_fireAction, onFireAction, false);
-            InputActionStruct<bool> iCounter = new InputActionStruct<bool>(m_counterAction, onCounterAction, false);
             InputActionStruct<float> iSwitchWeapon = new InputActionStruct<float>(m_switchWeaponAction, onSwitchWeaponAction, 0, false);
             InputActionStruct<bool> iPause = new InputActionStruct<bool>(m_pauseAction, onPauseAction, false, false);
 
             m_inputActionStructsV2.Add(iMove);
             m_inputActionStructsBool.Add(iFire);
             m_inputActionStructsFloat.Add(iSwitchWeapon);
-            m_inputActionStructsBool.Add(iCounter);
             m_inputActionStructsBool.Add(iPause);
         }
 

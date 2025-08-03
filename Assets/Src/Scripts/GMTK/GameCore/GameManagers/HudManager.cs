@@ -103,7 +103,12 @@ namespace GMTK
 
             if (m_paused)
             {
-                m_cursor.transform.rotation = Quaternion.identity;
+                m_cursor.transform.localScale = Vector3.one * 0.6f;
+                m_cursor.transform.localEulerAngles = new Vector3(0, 0, 45f);
+            }
+            else
+            {
+                m_cursor.transform.localScale = Vector3.one;
             }
         }
 

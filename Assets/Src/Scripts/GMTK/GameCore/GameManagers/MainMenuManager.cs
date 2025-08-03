@@ -52,7 +52,6 @@ namespace GMTK
                 EnableAllButtons(false); StartCoroutine(CoroutineUtils.InvokeOnDelay(0.3f, () =>
                 {
                     EnableAllButtons(true);
-                    Debug.Log("Play");
                     GMTK.GMTKGameCore.Instance.StartGameMode<MainGameMode>();
                 }));
             });
@@ -61,7 +60,7 @@ namespace GMTK
                 EnableAllButtons(false); StartCoroutine(CoroutineUtils.InvokeOnDelay(0.3f, () =>
                 {
                     EnableAllButtons(true);
-                    Debug.Log("Settings");
+                    // settings
                 }));
             });
             m_bQuit.onClick.AddListener(() =>

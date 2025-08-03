@@ -46,8 +46,8 @@ namespace GMTK
         [SerializeField] protected float              m_fireRate = 2.0f; // 1 / firerate
         [SerializeField] protected Transform          m_weaponParent;
 
-        [SerializeField] protected List<WeaponType>   m_weapons = new();
-        protected Dictionary<WeaponType, Weapon>      m_currentWeapons = new();
+        [SerializeField] protected List<WeaponType> m_weapons = new();
+        protected Dictionary<WeaponType, Weapon> m_currentWeapons = new();
 
         protected Weapon                m_currentWeapon = null;
         protected AttackDatas           m_equipedAttack = null;
@@ -62,7 +62,12 @@ namespace GMTK
         public AttackDatas EquipedAttack() => m_equipedAttack;
         public bool IsFiring() => m_fireCoroutines.Count > 0;
 
-        #region BaseBehaviour
+        private Action<WeaponType> m_onChangeWeapon;
+        private Action<WeaponType> m_onShoot;
+
+        public WeaponType GetWeaponType() => m_currentWeapon == null ? default : m_currentWeapon.GetWeaponType();
+
+
         public IEnumerator Load()
         {
             int total = m_weapons.Count;
@@ -92,6 +97,20 @@ namespace GMTK
                 yield return null;
         }
 
+        public void RegisterOnSwitchWeapon(Action<WeaponType> function)
+        {
+            m_onChangeWeapon -= function;
+            m_onChangeWeapon += function;
+        }
+
+        public void RegisterOnShoot(Action<WeaponType> function)
+        {
+            m_onShoot -= function;
+            m_onShoot += function;
+        }
+
+        #region BaseBehaviour
+
         protected override void OnFixedUpdate()
         { }
         protected override void OnLateUpdate()
@@ -113,7 +132,9 @@ namespace GMTK
             m_projectileManager = (ProjectileManager)parameters[0];
 
             foreach (var weapon in m_currentWeapons)
+            {
                 weapon.Value.Init();
+            }
 
             ChangeAttack(0);
         }
@@ -126,8 +147,11 @@ namespace GMTK
             if (m_currentWeapons.TryGetValue(datas.weapon_type, out m_currentWeapon))
             {
                 if (old_weapon != null)
+                {
                     old_weapon.gameObject.SetActive(false);
+                }
                 m_currentWeapon.gameObject.SetActive(true);
+                m_onChangeWeapon?.Invoke(m_currentWeapon.GetWeaponType());
                 return true;
             }
 
@@ -153,6 +177,7 @@ namespace GMTK
 
         #endregion Attack management
 
+        #region Attack_Couroutines
         public void StopAllAttacks()
         {
             foreach (var coroutine in m_fireCoroutines)
@@ -223,6 +248,8 @@ namespace GMTK
             m_fireCoroutines.RemoveAll(c => c == null);
         }
 
+        #endregion
+
         // use this if you want to use the current attack 
         public virtual bool TryAttack(int projectile_layer)
         {
@@ -230,7 +257,7 @@ namespace GMTK
                 return false;
 
             if (m_currentWeapon == null
-                ||m_currentWeapon.GetFireDirection() == Vector3.zero
+                || m_currentWeapon.GetFireDirection() == Vector3.zero
                 || m_attackDatas.Count == 0)
                 return false;
 
@@ -240,6 +267,7 @@ namespace GMTK
 
             m_fireCoroutines.Add(wrapper);
             m_cooldownTimer = 1 / m_fireRate;
+            m_onShoot?.Invoke(m_currentWeapon.GetWeaponType());
             return true;
         }
 
@@ -257,6 +285,7 @@ namespace GMTK
 
             m_fireCoroutines.Add(wrapper);
             m_cooldownTimer = 1 / m_fireRate;
+            m_onShoot?.Invoke(m_currentWeapon.GetWeaponType());
             return true;
         }
     }

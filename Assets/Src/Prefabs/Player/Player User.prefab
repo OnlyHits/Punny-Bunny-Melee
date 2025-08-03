@@ -144,8 +144,10 @@ MonoBehaviour:
   m_agent: {fileID: 132448843677441713}
   m_transposer: {fileID: 6749880515427119675}
   m_ragdollTransposer: {fileID: 8503161239525252390}
+  m_attackManager: {fileID: 6364864115386470691}
   m_speed: 10
   m_direction: {x: 0, y: 0, z: 0}
+  m_prctDamages: 0
   m_explostionForce: 250
   m_ragdollTime: 2
   m_ragdollRb:

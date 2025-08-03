@@ -8,7 +8,9 @@ namespace GMTK
 {
     public class PlayerController : Player
     {
-        private PlayerAttackInterface m_attackInterface = null;
+        private new PlayerAttackInterface m_attackInterface = null;
+
+        public override AttackInterface GetAttackManager() => m_attackInterface;
 
         #region BaseBehaviour_Cb
         public IEnumerator Load()

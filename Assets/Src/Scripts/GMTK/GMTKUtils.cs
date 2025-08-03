@@ -9,6 +9,8 @@ namespace GMTK
         // replace by yours, keep null if you dont want hud scene
         public static readonly string HudSceneName = "HudScene";
 
+        public static readonly string MainMenuSceneName = "MainMenuScene";
+
         public static readonly string PlayerUserProjectile_Layer = "UserProjectile";
         public static readonly string PlayerAIProjectile_Layer = "AIProjectile";
         public static readonly string PlayerUserHitBox_Layer = "PlayerUser";

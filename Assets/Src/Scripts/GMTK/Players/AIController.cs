@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine.AI;
 using UnityEngine;
 using Unity.VisualScripting;
@@ -11,21 +10,24 @@ namespace GMTK
 {
     public class AIController : Player
     {
+        [SerializeField] private float m_cornerReachThreshold;
+
         private List<Player> m_enemies = null;
         private Player m_targetEnemy = null;
 
         private Vector3[] m_currentPath = null;
         private int m_currentPathIndex = 0;
 
-        [SerializeField] private float m_cornerReachThreshold;
 
 
         private bool m_justTeleport = false;
         private int m_teleportIndex = -1;
 
         private AIAttackInterface m_attackInterface = null;
+        public override AttackInterface GetAttackManager() => m_attackInterface;
 
         bool m_isInit = false;
+
 
         #region BaseBehaviour_Cb
         public IEnumerator Load()

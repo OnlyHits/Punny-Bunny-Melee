@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1409209779862536233}
   - component: {fileID: 4267457477840617940}
   m_Layer: 6
-  m_Name: LegR-----------
+  m_Name: LegR
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 7113804347327605311}
   - component: {fileID: 8745560730746996079}
   m_Layer: 6
-  m_Name: Pivot (7)-----------
+  m_Name: Pivot (7)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 9063367823057809287}
   - component: {fileID: 5357480838751740867}
   m_Layer: 6
-  m_Name: Hips-----------
+  m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -857,7 +857,7 @@ GameObject:
   - component: {fileID: 8489322610358660191}
   - component: {fileID: 2888673382719587255}
   m_Layer: 6
-  m_Name: Pivot (8)-----------
+  m_Name: Pivot (8)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1003,8 +1003,7 @@ Transform:
   m_LocalPosition: {x: -0, y: -0.493, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8270072483903175579}
+  m_Children: []
   m_Father: {fileID: 5135047772652388781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4458546750804831247
@@ -1268,7 +1267,7 @@ GameObject:
   - component: {fileID: 2788128757610893115}
   - component: {fileID: 1636797778716018220}
   m_Layer: 6
-  m_Name: LegL-----------
+  m_Name: LegL
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1605,7 +1604,7 @@ GameObject:
   - component: {fileID: 4983703649766713225}
   - component: {fileID: 1705348823256167248}
   m_Layer: 6
-  m_Name: Pivot (3)-----------
+  m_Name: Pivot (3)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1732,7 +1731,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6709134884524298067}
-  - component: {fileID: 405549233185976440}
   - component: {fileID: 8107972089573924309}
   - component: {fileID: 6560054934559429062}
   - component: {fileID: 9052623854443330176}
@@ -1762,54 +1760,6 @@ Transform:
   - {fileID: 404082846609094110}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &405549233185976440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6970274755711963337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfbdd18e67d79a093bf08c4b4126cd77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_pause: 0
-  m_rb: {fileID: 6560054934559429062}
-  m_collider: {fileID: 9052623854443330176}
-  m_animator: {fileID: 8107972089573924309}
-  m_agent: {fileID: 8160173370956893709}
-  m_transposer: {fileID: 3261779752334123655}
-  m_ragdollTransposer: {fileID: 497933561835752858}
-  m_speed: 10
-  m_direction: {x: 0, y: 0, z: 0}
-  m_explostionForce: 250
-  m_ragdollTime: 2
-  m_ragdollRb:
-  - {fileID: 3382797375245884986}
-  - {fileID: 5357480838751740867}
-  - {fileID: 2788128757610893115}
-  - {fileID: 1409209779862536233}
-  - {fileID: 2261165030915027143}
-  - {fileID: 4983703649766713225}
-  - {fileID: 2649219524395976228}
-  - {fileID: 8730596592544694171}
-  - {fileID: 3474212904828970257}
-  - {fileID: 7113804347327605311}
-  - {fileID: 8489322610358660191}
-  m_pistolPivot: {fileID: 0}
-  m_renderers:
-  - {fileID: 4953116773775357541}
-  - {fileID: 2676821728499323287}
-  - {fileID: 3088482376859656503}
-  - {fileID: 3913366514672633206}
-  - {fileID: 8284413465308084832}
-  - {fileID: 6474307108141893505}
-  - {fileID: 9099324603400259604}
-  - {fileID: 2315159864036343346}
-  - {fileID: 4353736714282491623}
-  - {fileID: 6805576096190558928}
-  m_material: {fileID: 2100000, guid: 7e1b0d8bec90ad04691efd19bc8b9c4a, type: 2}
 --- !u!95 &8107972089573924309
 Animator:
   serializedVersion: 7
@@ -1929,7 +1879,7 @@ GameObject:
   - component: {fileID: 2649219524395976228}
   - component: {fileID: 2847658792214277146}
   m_Layer: 6
-  m_Name: Pivot (4)-----------
+  m_Name: Pivot (4)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2060,7 +2010,7 @@ GameObject:
   - component: {fileID: 8730596592544694171}
   - component: {fileID: 5082835493089082832}
   m_Layer: 6
-  m_Name: Pivot (5)-----------
+  m_Name: Pivot (5)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2277,7 +2227,7 @@ GameObject:
   - component: {fileID: 3474212904828970257}
   - component: {fileID: 429165462973548359}
   m_Layer: 6
-  m_Name: Pivot (6)-----------
+  m_Name: Pivot (6)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2494,7 +2444,7 @@ GameObject:
   - component: {fileID: 2261165030915027143}
   - component: {fileID: 6014870598885865572}
   m_Layer: 6
-  m_Name: Pivot (2)-----------
+  m_Name: Pivot (2)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2784,65 +2734,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &2981545074271194657
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 5604885165491076094}
-    m_Modifications:
-    - target: {fileID: 1441338416614986952, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_Name
-      value: Weapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
---- !u!4 &8270072483903175579 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6603860804729566650, guid: c4727d3036b960d1f9e0ac0e46e1addd, type: 3}
-  m_PrefabInstance: {fileID: 2981545074271194657}
-  m_PrefabAsset: {fileID: 0}

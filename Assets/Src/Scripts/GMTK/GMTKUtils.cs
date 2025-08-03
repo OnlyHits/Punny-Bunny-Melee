@@ -14,9 +14,11 @@ namespace GMTK
         public static readonly string MainMenuSceneName = "MainMenuScene";
 
         public static readonly string ObstacleLayer = "Obstacle";
+        public static readonly string BonusLayer = "Bonus";
         public static readonly string PlayerUserProjectile_Layer = "UserProjectile";
         public static readonly string PlayerAIProjectile_Layer = "AIProjectile";
         public static readonly string PlayerUserHitBox_Layer = "PlayerUser";
         public static readonly string PlayerAIHitBox_Layer = "PlayerAI";
+        public static readonly string ProjectileLayer = "Projectile";
     }
 }

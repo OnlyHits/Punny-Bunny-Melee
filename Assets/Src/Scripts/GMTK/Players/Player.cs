@@ -50,6 +50,7 @@ namespace GMTK
         protected bool m_isRagdoll = false;
         protected bool m_isDead = false;
 
+        public Collider GetCollider() => m_collider;
         public bool IsDead() => m_isDead;
         public float GetPrcntDamages() => m_prctDamages;
         public Color GetMainColor() => m_material.GetColor("_BaseColor");
@@ -75,18 +76,40 @@ namespace GMTK
             if (collision == null) return;
             if (collision.gameObject == null) return;
 
-            if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.PlayerUserProjectile_Layer))
-            {
-                if (!IsRagdoll)
-                    GetHit(collision);
-            }
-            if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.PlayerAIProjectile_Layer))
+            if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.ProjectileLayer))
             {
                 if (!IsRagdoll)
                     GetHit(collision);
             }
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.BonusLayer))
+            {
+                if (!IsRagdoll && !IsDead())
+                    CollideBonus(other);
+            }
+        }
         #endregion
+
+        private void CollideBonus(Collider other)
+        {
+            if (other.GetComponent<Bonus>().GetBonusType() == BonusType.Bullet)
+            {
+                GetAttackManager().TryMinigunBonus();
+            }
+            else if (other.GetComponent<Bonus>().GetBonusType() == BonusType.Heal)
+            {
+
+            }
+            else if (other.GetComponent<Bonus>().GetBonusType() == BonusType.Shield)
+            {
+
+            }
+
+            other.GetComponent<Bonus>().Compute = false;
+        }
+
 
         private void OnCollisionWithWall(Collision collision)
         {

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5e35984dd2b8c4bc1a3cabf2f100841a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_Frames/SplitFrame02_Demo.prefab
+  uploadId: 714409

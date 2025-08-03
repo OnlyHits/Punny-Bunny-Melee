@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 49f895609b219482d853ff15fe7cba92
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_DemoScene_Panels/LobbyTutorialMessage.prefab
+  uploadId: 714409

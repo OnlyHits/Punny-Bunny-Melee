@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b0d13a260d89246dba6e5f4ad0857aa3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_DemoScene_Panels/Setting.prefab
+  uploadId: 714409

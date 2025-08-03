@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 329dc0f1ad8c14ffa91ad90abf3d794a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_Buttons/Button_Square02_Demo.prefab
+  uploadId: 714409

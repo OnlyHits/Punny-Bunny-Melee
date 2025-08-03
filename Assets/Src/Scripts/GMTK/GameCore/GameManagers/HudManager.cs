@@ -14,6 +14,10 @@ namespace GMTK
         [Title("Pause")]
         [SerializeField] private PauseMenu m_pauseMenu;
 
+        [Title("Win & Lose")]
+        [SerializeField] private WinMenu m_winMenu;
+        [SerializeField] private LoseMenu m_loseMenu;
+
         [Title("Cursor")]
         [SerializeField] private Transform m_cursor;
         // @note: time to complete one rotation
@@ -38,16 +42,18 @@ namespace GMTK
 
             GMTKGameCore.Instance.MainGameMode.GetPlayerInput().onPauseAction += OnPause;
 
-            m_pauseMenu.RegisterOnResume(() =>
-            {
-                TogglePause();
-            });
-            m_pauseMenu.RegisterOnQuitMainMenu(() =>
-            {
-                Time.timeScale = 1;
-            });
+            m_pauseMenu.RegisterOnResume(() => { TogglePause(); });
+            m_pauseMenu.RegisterOnQuitMainMenu(() => { Time.timeScale = 1; });
+
+            m_loseMenu.RegisterOnQuitMainMenu(() => { Time.timeScale = 1; });
+            m_winMenu.RegisterOnQuitMainMenu(() => { Time.timeScale = 1; });
+
+            m_loseMenu.RegisterOnRestart(() => { Time.timeScale = 1; });
+            m_winMenu.RegisterOnRestart(() => { Time.timeScale = 1; });
 
             m_pauseMenu.gameObject.SetActive(false);
+            m_loseMenu.gameObject.SetActive(false);
+            m_winMenu.gameObject.SetActive(false);
         }
 
         public override void LateInit(params object[] parameters)

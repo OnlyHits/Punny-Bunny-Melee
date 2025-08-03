@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 198762147686557462}
   - component: {fileID: 199966995426481548}
   - component: {fileID: -4953540384867226091}
-  m_Layer: 0
+  - component: {fileID: -47514723894394160}
+  m_Layer: 14
   m_Name: PowerboxShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4957,6 +4958,27 @@ MonoBehaviour:
   m_pause: 0
   m_type: 1
   m_particleSystem: {fileID: 198762147686557462}
+--- !u!65 &-47514723894394160
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360735731553936}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1687106446698046
 GameObject:
   m_ObjectHideFlags: 0
@@ -4968,7 +4990,7 @@ GameObject:
   - component: {fileID: 4171316727424944}
   - component: {fileID: 198889740664608384}
   - component: {fileID: 199433154166080226}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Tinysparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9907,7 +9929,7 @@ GameObject:
   - component: {fileID: 4681701566117284}
   - component: {fileID: 198778964375797892}
   - component: {fileID: 199378319061364408}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: GlowCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

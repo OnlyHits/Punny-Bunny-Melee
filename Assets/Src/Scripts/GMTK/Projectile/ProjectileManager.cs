@@ -132,9 +132,11 @@ namespace GMTK
             m_healBonusPool?.Update(Time.deltaTime);
             m_shieldBonusPool?.Update(Time.deltaTime);
         }
+
         public override void LateInit(params object[] parameters)
         {
         }
+
         public override void Init(params object[] parameters)
         {
             if (parameters.Length < 1 || parameters[0] is not AttackLoader)

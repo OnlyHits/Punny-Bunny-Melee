@@ -195,16 +195,38 @@ namespace GMTK
         public GameObject LevelDesignPrefab { get => m_levelDesignPrefab; protected set { } }
         public (Vector3, Vector3) GetArenaTransposerDatas() => (m_mainLevelDesignInstance.transform.position, m_mainLevelDesignInstance.GetPlaneSize());
 
+        private float m_bonusTimer = 0f;
+        private bool m_isInit = false;
+
         protected override void OnFixedUpdate()
         { }
         protected override void OnLateUpdate()
         { }
         protected override void OnUpdate()
-        { }
+        {
+            if (!m_isInit)
+                return;
+
+            m_bonusTimer = Mathf.Max(0f, m_bonusTimer - Time.deltaTime);
+
+            if (m_bonusTimer == 0f)
+            {
+                if (GetRandomNavMeshPoint(out var pos))
+                {
+                    BonusType type = UnityEngine.Random.Range(0, 10) < 5 ? BonusType.Heal : BonusType.Bullet;
+
+                    GMTKGameCore.Instance.MainGameMode.GetGameManager().GetProjectileManager().AllocateBonus(pos, type);
+                }
+                m_bonusTimer = UnityEngine.Random.Range(10f, 15f);
+            }
+
+        }
         public override void LateInit(params object[] parameters)
         { }
         public override void Init(params object[] parameters)
-        { }
+        {
+            m_isInit = true;
+        }
 
         /// <summary>
         /// Computes the shortest path between two points on the 3x3 wrapped NavMesh.
@@ -401,6 +423,31 @@ namespace GMTK
 
             Vector3 intersection = origin + dir * t;
             return intersection;
+        }
+        public bool GetRandomNavMeshPoint(out Vector3 result, int maxAttempts = 10, float sampleRadius = 50)
+        {
+            for (int i = 0; i < maxAttempts; i++)
+            {
+                Vector3 randomPoint = GetRandomPoint(GetArenaTransposerDatas().Item1, GetArenaTransposerDatas().Item2);
+
+                if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, sampleRadius, NavMesh.AllAreas))
+                {
+                    result = hit.position;
+                    return true;
+                }
+            }
+
+            result = Vector3.zero;
+            return false;
+        }
+
+        private static Vector3 GetRandomPoint(Vector3 center, Vector3 size)
+        {
+            return new Vector3(
+                UnityEngine.Random.Range(center.x - size.x * 0.5f, center.x + size.x * 0.5f),
+                UnityEngine.Random.Range(center.y - size.y * 0.5f, center.y + size.y * 0.5f),
+                UnityEngine.Random.Range(center.z - size.z * 0.5f, center.z + size.z * 0.5f)
+            );
         }
 
 #if UNITY_EDITOR

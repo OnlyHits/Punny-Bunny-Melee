@@ -23,7 +23,7 @@ namespace GMTK
         #region BaseBehaviour_Cb
         public override void Init(params object[] parameters)
         {
-            Cursor.visible = false;
+            //Cursor.visible = false;
         }
         public override void LateInit(params object[] parameters) { }
         protected override void OnFixedUpdate() { }

@@ -144,7 +144,6 @@ MonoBehaviour:
   m_agent: {fileID: 132448843677441713}
   m_transposer: {fileID: 6749880515427119675}
   m_ragdollTransposer: {fileID: 8503161239525252390}
-  m_attackManager: {fileID: 6364864115386470691}
   m_speed: 10
   m_direction: {x: 0, y: 0, z: 0}
   m_prctDamages: 0
@@ -239,7 +238,7 @@ MonoBehaviour:
     max_distance_sqr: 100
     bullet_type: 3
     weapon_type: 3
-  m_fireRate: 0
+  m_fireRate: 3
   m_weaponParent: {fileID: 4404734476886829890}
   m_weapons: 00000000010000000200000003000000
   m_layer:

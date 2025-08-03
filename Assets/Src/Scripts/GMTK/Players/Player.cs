@@ -41,12 +41,14 @@ namespace GMTK
         protected bool m_isMoving;
         protected Vector3 m_shootDirection = Vector3.zero;
         protected Vector3 m_basePos;
+        protected bool m_isRagdoll;
 
         public float GetPrcntDamages() => m_prctDamages;
         public Color GetMainColor() => m_material.GetColor("_BaseColor");
         public bool IsMoving { get => m_isMoving; protected set { } }
         public Vector3 ShootDirection { get => m_shootDirection; protected set { } }
         public Transform PistolPivot { get => m_pistolPivot; protected set { } }
+        public bool IsRagdoll { get => m_isRagdoll; protected set { } }
         private event Action m_onGetHit;
 
         private readonly string ANIM_RUN = "Run";
@@ -101,11 +103,11 @@ namespace GMTK
                 transform.position = m_agent.transform.position;
                 m_agent.transform.localPosition = Vector3.zero;
             }
-            else
-            {
-                transform.position = m_agent.transform.position;
-                m_agent.transform.position = transform.position;
-            }
+            //else
+            //{
+            //    transform.position = m_agent.transform.position;
+            //    m_agent.transform.position = transform.position;
+            //}
         }
 
         protected override void OnUpdate() { }
@@ -197,6 +199,8 @@ namespace GMTK
         #region Ragdoll
         protected void EnableRagdoll(bool enable)
         {
+            m_isRagdoll = enable;
+
             m_ragdollTransposer.enabled = enable;
             m_transposer.enabled = !enable;
 
@@ -204,8 +208,8 @@ namespace GMTK
             if (!enable)
             {
                 transform.position = m_ragdollRb[0].position;
-                m_agent.transform.position = transform.position;
                 m_ragdollRb[0].transform.localPosition = Vector3.zero;
+                m_agent.Warp(transform.position);
             }
 
             m_rb.useGravity = enable;
@@ -237,8 +241,10 @@ namespace GMTK
             m_onGetHit -= function;
             m_onGetHit += function;
         }
-        private void GetHit(Collision collision = null)
+        protected virtual void GetHit(Collision collision)
         {
+            StopMove();
+
             EnableRagdoll(true);
 
             m_prctDamages += 10f;
@@ -249,7 +255,8 @@ namespace GMTK
                 Vector3 playerPos = new Vector3(transform.position.x, 0f, transform.position.z);
                 Vector3 hitPos = new Vector3(collision.transform.position.x, 0f, collision.transform.position.z);
 
-                Vector3 explulsionDir = playerPos - hitPos;
+                Vector3 explulsionDir = (playerPos - hitPos).normalized;
+                explulsionDir.y = 0f;
 
                 m_ragdollRb[0].AddForce(explulsionDir * m_explostionForce, ForceMode.Impulse);
             }

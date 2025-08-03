@@ -117,7 +117,7 @@ namespace GMTK
         { }
         protected override void OnUpdate()
         {
-            m_cooldownTimer = Mathf.Clamp(m_cooldownTimer - Time.deltaTime, 0.0f, 1f / m_fireRate);
+            m_cooldownTimer = Mathf.Max(m_cooldownTimer - Time.deltaTime, 0.0f);
         }
         public override void LateInit(params object[] parameters)
         { }
@@ -136,6 +136,7 @@ namespace GMTK
                 weapon.Value.Init();
             }
 
+            m_cooldownTimer = 0f;
             ChangeAttack(0);
         }
         #endregion BaseBehaviour
@@ -266,7 +267,7 @@ namespace GMTK
             );
 
             m_fireCoroutines.Add(wrapper);
-            m_cooldownTimer = 1 / m_fireRate;
+            m_cooldownTimer = 1f / m_fireRate;
             m_onShoot?.Invoke(m_currentWeapon.GetWeaponType());
             return true;
         }
@@ -284,7 +285,7 @@ namespace GMTK
             );
 
             m_fireCoroutines.Add(wrapper);
-            m_cooldownTimer = 1 / m_fireRate;
+            m_cooldownTimer = 1f / m_fireRate;
             m_onShoot?.Invoke(m_currentWeapon.GetWeaponType());
             return true;
         }

@@ -117,14 +117,37 @@ namespace GMTK
             }
         }
 
+        public bool MoveToRandomPlayer()
+        {
+            if (GMTKGameCore.Instance.MainGameMode.GetGameManager() == null)
+                return false;
+
+            var datas = GMTKGameCore.Instance.MainGameMode.GetArenaTransposerDatas();
+
+            Vector3 position = m_enemies[Random.Range(0, m_enemies.Count - 1)].transform.position;
+            Player enemy = m_enemies[Random.Range(0, m_enemies.Count - 1)];
+
+            if (enemy == null || !enemy.IsRagdoll)
+                return false;
+
+            if (ComputeShortestWrappedPath(transform.position, position))
+            {
+                StartMove();
+                return true;
+            }
+
+            return false;
+        }
+
         protected override void OnUpdate()
         {
-            if (!m_isInit) return;
+            if (!m_isInit || m_isRagdoll) return;
 
             if (!IsMoving)
             {
                 NoMove();
-                MoveToRandomPoint();
+                if (!MoveToRandomPlayer())
+                    MoveToRandomPoint();
             }
 
             if (GetInRangeEnemy(out m_targetEnemy))
@@ -142,6 +165,13 @@ namespace GMTK
                 Rotate();
         }
         #endregion BaseBehaviour_Cb
+        protected override void GetHit(Collision collision)
+        {
+            m_attackInterface.StopAllAttacks();
+            ClearPath();
+
+            base.GetHit(collision);
+        }
 
         private void RotateToTargetEnemy()
         {
@@ -153,14 +183,6 @@ namespace GMTK
         {
             base.OnTeleport(position);
             m_justTeleport = true;
-        }
-
-        private float ComputePathLength(NavMeshPath path)
-        {
-            float length = 0f;
-            for (int i = 1; i < path.corners.Length; i++)
-                length += Vector3.Distance(path.corners[i - 1], path.corners[i]);
-            return length;
         }
 
         private void ClearPath()
@@ -234,7 +256,7 @@ namespace GMTK
                 || m_attackInterface.CurrentWeapon() == null)
                 return false;
 
-            float distance = Mathf.Sqrt(m_attackInterface.EquipedAttack().max_distance_sqr);
+            float distance = m_attackInterface.EquipedAttack().max_distance_sqr;
             Vector3 position = m_attackInterface.CurrentWeapon().GetFirePosition();
 
             foreach (var enemy in m_enemies)

@@ -8,7 +8,7 @@ namespace GMTK
 {
     public class PlayerController : Player
     {
-        private new PlayerAttackInterface m_attackInterface = null;
+        private PlayerAttackInterface m_attackInterface = null;
 
         public override AttackInterface GetAttackManager() => m_attackInterface;
 
@@ -35,6 +35,9 @@ namespace GMTK
 
         protected override void OnUpdate()
         {
+            if (IsRagdoll)
+                return;
+
             base.OnUpdate();
 
             Vector2 mouseDirection = Input.mousePosition;
@@ -46,9 +49,18 @@ namespace GMTK
             }
         }
         #endregion BaseBehaviour_Cb
+        protected override void GetHit(Collision collision)
+        {
+            m_attackInterface.StopAllAttacks();
+
+            base.GetHit(collision);
+        }
 
         private void OnMove(InputType input, Vector2 vector)
         {
+            if (IsRagdoll)
+                return;
+
             switch (input)
             {
                 case InputType.PRESSED:

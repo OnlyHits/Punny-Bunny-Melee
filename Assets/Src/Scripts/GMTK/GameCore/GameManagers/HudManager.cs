@@ -48,7 +48,7 @@ namespace GMTK
 
         public override void Init(params object[] parameters)
         {
-            Cursor.visible = false;
+//            Cursor.visible = false;
         }
 
         protected override void OnFixedUpdate()

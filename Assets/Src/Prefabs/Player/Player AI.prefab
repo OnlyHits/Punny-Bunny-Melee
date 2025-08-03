@@ -136,7 +136,6 @@ MonoBehaviour:
   m_agent: {fileID: 132448843677441713}
   m_transposer: {fileID: 6749880515427119675}
   m_ragdollTransposer: {fileID: 8503161239525252390}
-  m_attackManager: {fileID: 0}
   m_speed: 10
   m_direction: {x: 0, y: 0, z: 0}
   m_prctDamages: 0
@@ -167,7 +166,6 @@ MonoBehaviour:
   - {fileID: 5513491774771859035}
   - {fileID: 3358010289711817324}
   m_material: {fileID: 2100000, guid: 5ce26038d30f9d800bf3ad98f46e2f7f, type: 2}
-  m_target: {fileID: 0}
   m_cornerReachThreshold: 0.1
 --- !u!114 &2322619228784761422
 MonoBehaviour:
@@ -203,7 +201,7 @@ MonoBehaviour:
     max_distance_sqr: 50
     bullet_type: 0
     weapon_type: 3
-  m_fireRate: 0
+  m_fireRate: 1
   m_weaponParent: {fileID: 4404734476886829890}
   m_weapons: 0100000003000000
 --- !u!54 &1319836899348953731 stripped

@@ -34,6 +34,9 @@ namespace GMTK
 
         private void OnFire(InputType input, bool b)
         {
+            if (m_player.IsRagdoll)
+                return;
+
             if (input == InputType.RELEASED)
             {
                 TryAttack(LayerMask.NameToLayer(m_projectileLayerName));
@@ -42,6 +45,9 @@ namespace GMTK
 
         private void OnSwitchWeapon(InputType input, float b)
         {
+            if (m_player.IsRagdoll)
+                return;
+
             if ((int)b > 0)
             {
                 ChangeAttack(GetIndex() == 3 ? 0 : GetIndex() + 1);
@@ -54,6 +60,9 @@ namespace GMTK
 
         private void OnCounter(InputType input, bool b)
         {
+            if (m_player.IsRagdoll)
+                return;
+
             if (input == InputType.PRESSED)
             {
                 // consider using OverlapSphereNonAlloc

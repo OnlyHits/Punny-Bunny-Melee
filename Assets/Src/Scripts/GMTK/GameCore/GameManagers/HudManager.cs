@@ -42,6 +42,10 @@ namespace GMTK
             {
                 TogglePause();
             });
+            m_pauseMenu.RegisterOnQuitMainMenu(() =>
+            {
+                Time.timeScale = 1;
+            });
 
             m_pauseMenu.gameObject.SetActive(false);
         }
@@ -81,7 +85,7 @@ namespace GMTK
         #region Unity_Cb
         private void OnDestroy()
         {
-            Cursor.visible = true;
+            Cursor.visible = false;
         }
 
         #endregion
@@ -90,13 +94,25 @@ namespace GMTK
         public void TogglePause()
         {
             m_paused = !m_paused;
-            Cursor.visible = m_paused;
+
+            GMTK.GMTKGameCore.Instance.GetGameMode<MainGameMode>().GetGameManager().Pause(m_paused);
             m_pauseMenu.gameObject.SetActive(m_paused);
+            Time.timeScale = m_paused ? 0 : 1f;
+            //Cursor.visible = m_paused;
+            //m_cursor.gameObject.SetActive(!m_paused);
+
+            if (m_paused)
+            {
+                m_cursor.transform.rotation = Quaternion.identity;
+            }
         }
 
         private void OnPause(InputType inputType, bool b)
         {
-            TogglePause();
+            if (inputType == InputType.PRESSED)
+            {
+                TogglePause();
+            }
         }
         #endregion
 

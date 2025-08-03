@@ -63,8 +63,8 @@ namespace GMTK
             InputActionStruct<Vector2> iMove = new InputActionStruct<Vector2>(m_moveAction, onMoveAction, Vector2.zero, true);
             InputActionStruct<bool> iFire = new InputActionStruct<bool>(m_fireAction, onFireAction, false);
             InputActionStruct<bool> iCounter = new InputActionStruct<bool>(m_counterAction, onCounterAction, false);
-            InputActionStruct<float> iSwitchWeapon = new InputActionStruct<float>(m_switchWeaponAction, onSwitchWeaponAction, 0, true);
-            InputActionStruct<bool> iPause = new InputActionStruct<bool>(m_pauseAction, onPauseAction, false, true);
+            InputActionStruct<float> iSwitchWeapon = new InputActionStruct<float>(m_switchWeaponAction, onSwitchWeaponAction, 0, false);
+            InputActionStruct<bool> iPause = new InputActionStruct<bool>(m_pauseAction, onPauseAction, false, false);
 
             m_inputActionStructsV2.Add(iMove);
             m_inputActionStructsBool.Add(iFire);

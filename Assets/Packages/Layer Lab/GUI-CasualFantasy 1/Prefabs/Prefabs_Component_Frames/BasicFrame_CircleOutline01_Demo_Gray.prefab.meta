@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: edefb69cc41ab40e38814870054b48af
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_Frames/BasicFrame_CircleOutline01_Demo_Gray.prefab
+  uploadId: 714409

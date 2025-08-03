@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 000dd032c9e014f1da97dd4e0848a21b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_UI_Etc/TabMenu_Top_White.prefab
+  uploadId: 714409

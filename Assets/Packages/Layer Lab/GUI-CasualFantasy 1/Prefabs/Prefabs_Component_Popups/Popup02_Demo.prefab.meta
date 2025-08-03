@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 339d72625239e48ab9554f8b61d1196d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_Popups/Popup02_Demo.prefab
+  uploadId: 714409

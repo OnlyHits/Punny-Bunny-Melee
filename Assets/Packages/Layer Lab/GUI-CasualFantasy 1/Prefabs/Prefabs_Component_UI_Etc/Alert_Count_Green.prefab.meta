@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a5158a6410bd74ac98ff5e3871ac576b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/Prefabs/Prefabs_Component_UI_Etc/Alert_Count_Green.prefab
+  uploadId: 714409

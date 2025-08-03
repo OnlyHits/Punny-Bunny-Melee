@@ -32,13 +32,15 @@ namespace GMTK
         private void OnSwitchWeapon(InputType input, float b)
         {
             if (m_player.IsRagdoll)
+            {
                 return;
+            }
 
-            if ((int)b > 0)
+            if ((int)b > 2)
             {
                 ChangeAttack(GetIndex() == 3 ? 0 : GetIndex() + 1);
             }
-            else if ((int)b < 0)
+            else if ((int)b < 2)
             {
                 ChangeAttack(GetIndex() == 0 ? 3 : GetIndex() - 1);
             }

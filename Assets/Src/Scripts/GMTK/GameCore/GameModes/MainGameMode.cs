@@ -114,10 +114,14 @@ namespace GMTK
         }
 
         private void OnWin()
-        { }
+        {
+            m_hudManager.Win();
+        }
 
         private void OnLose()
-        { }
+        {
+            m_hudManager.Lose();
+        }
 
         private void Update()
         {

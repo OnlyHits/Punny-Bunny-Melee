@@ -89,8 +89,6 @@ namespace GMTK
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.ObstacleLayer))
             {
-                //Debug.Log("bite");
-
                 if (IsRagdoll && m_prctDamages == 100f)
                     Die(collision);
             }

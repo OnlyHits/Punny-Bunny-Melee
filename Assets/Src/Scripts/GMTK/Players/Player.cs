@@ -35,6 +35,7 @@ namespace GMTK
 
         [Title("Low life modifier")]
         [SerializeField] protected float m_fireRate = 5;
+        [SerializeField] protected ParticleSystem m_particleSystem;
 
         [Title("Pistol pivot")]
         [SerializeField] protected Transform m_pistolPivot;
@@ -46,8 +47,10 @@ namespace GMTK
         protected bool m_isMoving;
         protected Vector3 m_shootDirection = Vector3.zero;
         protected Vector3 m_basePos;
-        protected bool m_isRagdoll;
+        protected bool m_isRagdoll = false;
+        protected bool m_isDead = false;
 
+        public bool IsDead() => m_isDead;
         public float GetPrcntDamages() => m_prctDamages;
         public Color GetMainColor() => m_material.GetColor("_BaseColor");
         public bool IsMoving { get => m_isMoving; protected set { } }
@@ -99,12 +102,9 @@ namespace GMTK
         {
             m_transposer.RegisterOnTeleport(OnTeleport);
 
-            foreach (var item in m_ragdollRb)
-            {
-                item.AddComponent<ColliderWrapper>();
-                item.GetComponent<ColliderWrapper>().LayerToCollide = LayerMask.GetMask(GmtkUtils.ObstacleLayer);
-                item.GetComponent<ColliderWrapper>().onCollisionEnter += OnCollisionWithWall;
-            }
+            m_ragdollRb[0].AddComponent<ColliderWrapper>();
+            m_ragdollRb[0].GetComponent<ColliderWrapper>().LayerToCollide = LayerMask.GetMask(GmtkUtils.ObstacleLayer);
+            m_ragdollRb[0].GetComponent<ColliderWrapper>().onCollisionEnter += OnCollisionWithWall;
         }
 
         protected virtual void OnTeleport(Vector3 position)
@@ -126,11 +126,6 @@ namespace GMTK
                 transform.position = m_agent.transform.position;
                 m_agent.transform.localPosition = Vector3.zero;
             }
-            //else
-            //{
-            //    transform.position = m_agent.transform.position;
-            //    m_agent.transform.position = transform.position;
-            //}
         }
 
         protected override void OnUpdate() { }
@@ -266,22 +261,21 @@ namespace GMTK
         }
         protected virtual void Die(Collision collision)
         {
-            Debug.Log("You die");
-
             StopMove();
 
             EnableRagdoll(true);
 
-            if (collision == null || m_ragdollRb == null || m_ragdollRb.Count == 0)
-                return;
+            foreach (var item in m_ragdollRb)
+            {
+                item.linearVelocity = Vector3.zero;
+                item.GetComponent<Collider>().enabled = false;
+            }
 
-            ContactPoint contact = collision.GetContact(0);
-            Vector3 hitDir = (transform.position - contact.point).normalized;
-            Vector3 reflectDir = Vector3.Reflect(hitDir, contact.normal).normalized;
-            Vector3 forceDir = reflectDir + Vector3.up * 0.7f; // tweak 0.7f for vertical pop strength
-            forceDir.Normalize();
+            GMTKGameCore.Instance.MainGameMode.GetGameManager()
+                .GetProjectileManager().AllocateExplosion(m_ragdollRb[0].transform.position);
 
-            m_ragdollRb[0].AddForce(forceDir * m_dieRepulsionForce, ForceMode.Impulse);
+            m_isDead = true;
+            gameObject.SetActive(false);
         }
 
         protected virtual void GetHit(Collision collision)

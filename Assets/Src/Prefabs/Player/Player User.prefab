@@ -163,6 +163,7 @@ MonoBehaviour:
   - {fileID: 1319836899348953731}
   - {fileID: 376171619337141475}
   m_fireRate: 5
+  m_particleSystem: {fileID: 4015766428253561172, guid: c13daa9b992e5c94fbad423c0538d740, type: 3}
   m_pistolPivot: {fileID: 8458609718130793814}
   m_renderers:
   - {fileID: 3771006580172678873}
@@ -253,6 +254,7 @@ MonoBehaviour:
     bounce_on_collision: 0
     time_between_bullet: 0.1
     max_distance_sqr: 50
+    max_bounces: 1
     bullet_type: 0
     weapon_type: 1
   m_fireRate: 3

@@ -18,8 +18,6 @@ namespace GMTK
         private Vector3[] m_currentPath = null;
         private int m_currentPathIndex = 0;
 
-
-
         private bool m_justTeleport = false;
         private int m_teleportIndex = -1;
 
@@ -119,13 +117,16 @@ namespace GMTK
 
         public bool MoveToRandomPlayer()
         {
-            if (GMTKGameCore.Instance.MainGameMode.GetGameManager() == null)
+            if (GMTKGameCore.Instance.MainGameMode.GetGameManager() == null
+                || m_enemies.Count == 0)
                 return false;
 
             var datas = GMTKGameCore.Instance.MainGameMode.GetArenaTransposerDatas();
 
-            Vector3 position = m_enemies[Random.Range(0, m_enemies.Count - 1)].transform.position;
-            Player enemy = m_enemies[Random.Range(0, m_enemies.Count - 1)];
+            int index = Random.Range(0, m_enemies.Count - 1);
+
+            Vector3 position = m_enemies[index].transform.position;
+            Player enemy = m_enemies[index];
 
             if (enemy == null || !enemy.IsRagdoll)
                 return false;
@@ -142,6 +143,8 @@ namespace GMTK
         protected override void OnUpdate()
         {
             if (!m_isInit || m_isRagdoll) return;
+
+            m_enemies.RemoveAll(enemy => enemy.IsDead());
 
             if (!IsMoving)
             {

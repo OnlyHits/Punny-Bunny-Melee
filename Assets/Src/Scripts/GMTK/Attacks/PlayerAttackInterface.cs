@@ -9,6 +9,8 @@ namespace GMTK
         [SerializeField] private float m_innerRepulsionRadius;
         [SerializeField, ReadOnly] private Collider[] m_hits = new Collider[100];
 
+        private float m_cd = 0f;
+
         public override void Init(params object[] parameters)
         {
             base.Init(parameters);
@@ -21,11 +23,23 @@ namespace GMTK
         private void OnFire(InputType input, bool b)
         {
             if (m_player.IsRagdoll)
+            {
                 return;
+            }
 
             if (input == InputType.RELEASED)
             {
                 TryAttack();
+            }
+        }
+
+        protected override void OnUpdate()
+        {
+            base.OnUpdate();
+
+            if (m_cd > 0f)
+            {
+                m_cd -= Time.deltaTime;
             }
         }
 
@@ -36,15 +50,21 @@ namespace GMTK
                 return;
             }
 
-            if ((int)b > 2)
+            if (m_cd <= 0f)
             {
-                ChangeAttack(GetIndex() == 3 ? 0 : GetIndex() + 1);
-            }
-            else if ((int)b < 2)
-            {
-                ChangeAttack(GetIndex() == 0 ? 3 : GetIndex() - 1);
+                if ((int)b > 2)
+                {
+                    ChangeAttack(GetIndex() == 3 ? 0 : GetIndex() + 1);
+                    m_cd = 0.2f;
+                }
+                else if ((int)b < 2)
+                {
+                    ChangeAttack(GetIndex() == 0 ? 3 : GetIndex() - 1);
+                    m_cd = 0.2f;
+                }
             }
         }
+
 
         void OnDrawGizmosSelected()
         {

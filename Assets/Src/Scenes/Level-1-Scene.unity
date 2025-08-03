@@ -292,6 +292,118 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player AI (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_weapons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: 'm_weapons.Array.data[3]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].fire_once
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].fire_once
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].angle_range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].bullet_type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].angle_range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].bullet_type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].bullet_type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].max_distance_sqr
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].max_distance_sqr
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].max_distance_sqr
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].projectile_number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].projectile_number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].randomize_distribution
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3311251105902649327, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16
@@ -727,6 +839,178 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player AI (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_fireRate
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_weapons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: 'm_weapons.Array.data[3]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[0].speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].speed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].fire_once
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].fire_once
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[0].angle_range
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[0].max_bounces
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[0].weapon_type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].angle_range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].max_bounces
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].angle_range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].bullet_type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].angle_range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].bullet_type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].bullet_type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].max_distance_sqr
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].max_distance_sqr
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].max_distance_sqr
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[0].projectile_number
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].projectile_number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].projectile_number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].projectile_number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[0].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[0].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].bounce_on_collision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].time_between_bullet
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].randomize_distribution
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3311251105902649327, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.00325
@@ -802,6 +1086,162 @@ PrefabInstance:
     - target: {fileID: 1176332315281277045, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
       propertyPath: m_Name
       value: Player AI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_weapons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: 'm_weapons.Array.data[3]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].fire_once
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].fire_once
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].fire_once
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[0].weapon_type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].angle_range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].bullet_type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].angle_range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].bullet_type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].angle_range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].bullet_type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].bullet_type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].weapon_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].max_distance_sqr
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].max_distance_sqr
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].max_distance_sqr
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].max_distance_sqr
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].projectile_number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].projectile_number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].projectile_number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[3].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].bounce_on_collision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[4].time_between_bullet
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[1].randomize_distribution
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322619228784761422, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
+      propertyPath: m_attackDatas.Array.data[2].randomize_distribution
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3311251105902649327, guid: a2d776d42cbaa6545a33a9cf617bb41c, type: 3}
       propertyPath: m_LocalPosition.x

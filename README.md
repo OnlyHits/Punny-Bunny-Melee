@@ -70,6 +70,10 @@ winget install --id Git.Git -e
 ```
 3. Close your terminal & re open it, then you can run the commands
 
+## Game Screenshots
+
+<img width="347" height="195" alt="QYfX_r" src="https://github.com/user-attachments/assets/3edcffa0-c75f-4524-aa0c-4eb217f25dfe" />
+<img width="347" height="195" alt="TeXu79" src="https://github.com/user-attachments/assets/3c24540e-324a-4cbc-b50f-57d733adcb09" />
 
 ## Credits to :
 

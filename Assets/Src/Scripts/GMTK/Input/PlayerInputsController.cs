@@ -47,7 +47,7 @@ namespace GMTK
         }
         #endregion
 
-        private void FindAction()
+        private void FindAction() 
         {
             m_moveAction = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Move", true);
             m_fireAction = GMTKGameCore.Instance.GetInputAsset().FindAction("Player/Fire", true);

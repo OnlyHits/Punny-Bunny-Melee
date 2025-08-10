@@ -19,10 +19,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        targetPlatform:
-          - StandaloneWindows64
-          - StandaloneLinux64
-          - WebGL
+        # the user run "windows" "linux" "web" or nothing to target the right platforms
+        targetPlatform: ${{ fromJSON(
+          inputs.buildPlatform == 'windows' && '["StandaloneWindows64"]' ||
+          inputs.buildPlatform == 'linux' && '["StandaloneLinux64"]' ||
+          inputs.buildPlatform == 'web' && '["WebGL"]' ||
+          '["StandaloneWindows64","StandaloneLinux64","WebGL"]') }}
     
     steps:
       - name: checkout

@@ -1,0 +1,85 @@
+name: Build Releases
+
+jobs:
+  buildOnMultiplePlatforms:
+    name: Build for ${{ matrix.targetPlatform }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneWindows64
+          - StandaloneLinux64
+          - WebGL
+    
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      
+      - name: get-previous-tag
+        id: previoustag
+        uses: 'WyriHaximus/github-action-get-previous-tag@v1'
+        with:
+          fallback: 0.0.0 # Optional fallback tag to use when no tag on first release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: get-next-version
+        id: next
+        uses: 'WyriHaximus/github-action-next-release-version@1'
+        with:
+          version: ${{ steps.previoustag.outputs.tag }}
+     
+      - name: caching-library
+        uses: actions/cache@v3
+        with:
+          path: Library/
+          key: Library-${{ matrix.targetPlatform }}
+          restore-keys: Library-
+
+      - name: build-project
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: ${{ matrix.targetPlatform }}
+      
+      - name: upload-build
+        uses: actions/upload-artifact@v3
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
+
+      - name: zip-artifact
+        run: zip build-${{ matrix.targetPlatform }}.zip ./build/${{ matrix.targetPlatform }}/* -r
+
+      - name: create-release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          tag_name: ${{ matrix.targetPlatform }}-${{ steps.next.outputs.version }}
+          release_name: Release-${{ matrix.targetPlatform }}-v0.0.${{ steps.next.outputs.version }}
+          commitish: main
+          #body_path: CHANGELOG.md # optional body (description)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: upload-release
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build-${{ matrix.targetPlatform }}.zip
+          asset_name: Release-${{ matrix.targetPlatform }}.zip
+          asset_content_type: application/gzip
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

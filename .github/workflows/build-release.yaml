@@ -57,13 +57,13 @@ jobs:
       - name: build-project
         uses: game-ci/unity-builder@v4
         env:
+          UNITY_SERIAL: "" #${{ secrets.UNITY_SERIAL }} #for unity plus/pro, not personal
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_SERIAL: "" #${{ secrets.UNITY_SERIAL }} #for unity plus/pro, not personal
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          unityVersion: 6000.0.51f1 # optional but it could be usefull
+          #unityVersion: 6000.0.51f1 # optional but it could be usefull
       
       - name: upload-build
         uses: actions/upload-artifact@v4

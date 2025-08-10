@@ -56,9 +56,11 @@ jobs:
       - name: build-project
         uses: game-ci/unity-builder@v4
         env:
+          # use unity licenc, OR, emal pswd & serial
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          #UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          #UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          #UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
       

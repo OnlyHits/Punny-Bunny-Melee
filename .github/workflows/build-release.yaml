@@ -45,7 +45,8 @@ jobs:
         uses: 'WyriHaximus/github-action-next-release-version@1.0.0'
         with:
           version: ${{ steps.previoustag.outputs.tag }}
-     
+
+      # caching library files then the github action doesn't have to re pull it each time 
       - name: caching-library
         uses: actions/cache@v3
         with:
@@ -56,13 +57,13 @@ jobs:
       - name: build-project
         uses: game-ci/unity-builder@v4
         env:
-          # use unity licenc, OR, emal pswd & serial
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          #UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          #UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          #UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+          #UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }} #for unity plus/pro, not personal
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
+          #unityVersion: 2022.3.XXf1   # optional
       
       - name: upload-build
         uses: actions/upload-artifact@v4

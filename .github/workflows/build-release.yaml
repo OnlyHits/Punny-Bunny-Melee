@@ -1,5 +1,12 @@
 name: Build Releases
 
+workflow_dispatch:
+    inputs:
+      buildPlatform:
+        description: 'Target platform (leave blank for all)'
+        required: false
+        default: ''
+
 jobs:
   buildOnMultiplePlatforms:
     name: Build for ${{ matrix.targetPlatform }}

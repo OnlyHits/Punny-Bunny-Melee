@@ -50,6 +50,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2e03c90ab0e41346adf3d9f4d4f05a0
+    m_Address: Assets/Src/Prefabs/Projectile/FlashExplosionBlue.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e4290d7f714c65847a1ec85f9473c1e1
     m_Address: Assets/Src/Prefabs/Weapon/Shotgun04_standardShader.prefab
     m_ReadOnly: 0

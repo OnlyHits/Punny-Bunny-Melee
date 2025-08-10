@@ -21,6 +21,8 @@ namespace GMTK
         private float m_distanceSinceAllocate = 0;
         private int m_bounces = 0;
 
+        private Collider m_ignoredCollider = null;
+
         private AttackUtils.BulletType m_type;
 
         public Vector3 Direction { get => m_direction; set => m_direction = value; }
@@ -121,10 +123,16 @@ namespace GMTK
                 Debug.LogWarning("wrong parameters");
                 return;
             }
+            if (parameter.Length < 4 || parameter[3] is not Collider)
+            {
+                Debug.LogWarning("wrong parameters");
+                return;
+            }
 
             transform.position = (Vector3)parameter[0];
             m_direction = (Vector3)parameter[1];
             AttackDatas datas = (AttackDatas)parameter[2];
+            m_ignoredCollider = (Collider)parameter[3];
 
             m_speed = datas.speed;
             m_bounceOnCollide = datas.bounce_on_collision;
@@ -138,10 +146,17 @@ namespace GMTK
 
             m_lastPosition = transform.position;
 
+            if (m_ignoredCollider != null)
+            {
+                Physics.IgnoreCollision(m_ignoredCollider, GetComponent<Collider>(), true);
+            }
+
             m_particleSystem.Stop();
             m_particleSystem.Play(true);
 
             Impulse(m_speed);
+
+
 
             Compute = true;
         }
@@ -151,6 +166,12 @@ namespace GMTK
             m_distanceSinceAllocate = 0.0f;
             m_lastVelocity = Vector3.zero;
             m_lastPosition = Vector3.zero;
+
+            if (m_ignoredCollider != null)
+            {
+                Physics.IgnoreCollision(m_ignoredCollider, GetComponent<Collider>(), false);
+            }
+
             Compute = false;
         }
     }

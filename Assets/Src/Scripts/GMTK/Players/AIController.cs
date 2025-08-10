@@ -2,15 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
-using Unity.VisualScripting;
 using CustomArchitecture;
-using UnityEngine.UIElements;
+using System;
+using Unity.VisualScripting;
 
 namespace GMTK
 {
+    public class AIDecision
+    {
+        public string Name;
+        public Func<bool> Action;
+        public float BaseWeight = 0f;
+        public float Scale = 1f;
+
+        public float EffectivScale { get => BaseWeight * Scale; protected set { } }
+
+        public AIDecision(string name, Func<bool> action, float baseWeight)
+        {
+            Name = name;
+            Action = action;
+            BaseWeight = baseWeight;
+        }
+    }
+
     public class AIController : Player
     {
         [SerializeField] private float m_cornerReachThreshold;
+
+        private List<AIDecision> m_decisionMaking = null;
 
         private List<Player> m_enemies = null;
         private Player m_targetEnemy = null;
@@ -24,7 +43,12 @@ namespace GMTK
         private AIAttackInterface m_attackInterface = null;
         public override AttackInterface GetAttackManager() => m_attackInterface;
 
+        bool m_isStuck = false;
         bool m_isInit = false;
+        Vector3 m_lastPosition = Vector3.zero;
+        float m_lastMoveTime = 0f;
+        float m_stuckCheckInterval = 1f;
+        float m_minMoveDistance = 0.05f;
 
 
         #region BaseBehaviour_Cb
@@ -51,6 +75,15 @@ namespace GMTK
             m_attackInterface.Init(parameters[1], this);
 
             m_enemies = (List<Player>)parameters[0];
+
+            m_decisionMaking = new()
+            {
+                new AIDecision("MoveToRandomPosition", MoveToRandomPlayer, .3f),
+                new AIDecision("MoveToRandomEnemy", MoveToClosestEnemy, .8f),
+                new AIDecision("MoveToClosestEnemy", MoveToClosestEnemy, .5f),
+                new AIDecision("FleeFromClosest", FleeFromClosestEnemy, 1f),
+            };
+
             m_isInit = true;
         }
 
@@ -87,9 +120,9 @@ namespace GMTK
             for (int i = 0; i < maxAttempts; i++)
             {
                 Vector3 randomPoint = new Vector3(
-                    Random.Range(center.x - size.x / 2f, center.x + size.x / 2f),
+                    UnityEngine.Random.Range(center.x - size.x / 2f, center.x + size.x / 2f),
                     center.y,
-                    Random.Range(center.z - size.z / 2f, center.z + size.z / 2f)
+                    UnityEngine.Random.Range(center.z - size.z / 2f, center.z + size.z / 2f)
                 );
 
                 if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, 1f, NavMesh.AllAreas))
@@ -101,18 +134,23 @@ namespace GMTK
 
             return false;
         }
-        public void MoveToRandomPoint()
+        public bool MoveToRandomPoint()
         {
             if (GMTKGameCore.Instance.MainGameMode.GetGameManager() == null)
-                return;
+                return false;
 
             var datas = GMTKGameCore.Instance.MainGameMode.GetArenaTransposerDatas();
 
             if (GetRandomPointInBounds(datas.Item1, datas.Item2, out var result))
             {
                 if (ComputeShortestWrappedPath(transform.position, result))
+                {
                     StartMove();
+                    return true;
+                }
             }
+
+            return false;
         }
 
         public bool MoveToRandomPlayer()
@@ -123,7 +161,7 @@ namespace GMTK
 
             var datas = GMTKGameCore.Instance.MainGameMode.GetArenaTransposerDatas();
 
-            int index = Random.Range(0, m_enemies.Count - 1);
+            int index = UnityEngine.Random.Range(0, m_enemies.Count - 1);
 
             Vector3 position = m_enemies[index].transform.position;
             Player enemy = m_enemies[index];
@@ -132,6 +170,92 @@ namespace GMTK
                 return false;
 
             if (ComputeShortestWrappedPath(transform.position, position))
+            {
+                StartMove();
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool FleeFromClosestEnemy()
+        {
+            if (GMTKGameCore.Instance.MainGameMode.GetGameManager() == null || m_enemies.Count == 0)
+                return false;
+
+            Player closestEnemy = null;
+            float closestSqrDistance = float.MaxValue;
+            Vector3 myPosition = transform.position;
+
+            foreach (var enemy in m_enemies)
+            {
+                if (enemy == null || !enemy.IsRagdoll)
+                    continue;
+
+                float sqrDistance = (enemy.transform.position - myPosition).sqrMagnitude;
+                if (sqrDistance < closestSqrDistance)
+                {
+                    closestSqrDistance = sqrDistance;
+                    closestEnemy = enemy;
+                }
+            }
+
+            if (closestEnemy == null)
+                return false;
+
+            // Calculate flee direction (away from closest enemy)
+            Vector3 fleeDirection = (myPosition - closestEnemy.transform.position).normalized;
+
+            // Define a flee distance (you can tweak this)
+            float fleeDistance = 5f;
+
+            // Get arena bounds
+            var (center, size) = GMTKGameCore.Instance.MainGameMode.GetArenaTransposerDatas();
+
+            // Try to find a valid flee point in the flee direction
+            for (int i = 0; i < 5; i++) // Try multiple distances if needed
+            {
+                Vector3 fleeTarget = myPosition + fleeDirection * (fleeDistance * (1 + i * 0.5f));
+
+                //// Clamp to arena bounds
+                //fleeTarget = ClampToBounds(fleeTarget, center, size);
+
+                if (ComputeShortestWrappedPath(myPosition, fleeTarget))
+                {
+                    StartMove();
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool MoveToClosestEnemy()
+        {
+            if (GMTKGameCore.Instance.MainGameMode.GetGameManager() == null || m_enemies.Count == 0)
+                return false;
+
+            Player closestEnemy = null;
+            float closestSqrDistance = float.MaxValue;
+            Vector3 myPosition = transform.position;
+
+            foreach (var enemy in m_enemies)
+            {
+                if (enemy == null || !enemy.IsRagdoll)
+                    continue;
+
+                float sqrDistance = (enemy.transform.position - myPosition).sqrMagnitude;
+                if (sqrDistance < closestSqrDistance)
+                {
+                    closestSqrDistance = sqrDistance;
+                    closestEnemy = enemy;
+                }
+            }
+
+            if (closestEnemy == null)
+                return false;
+
+            if (ComputeShortestWrappedPath(myPosition, closestEnemy.transform.position))
             {
                 StartMove();
                 return true;
@@ -151,6 +275,8 @@ namespace GMTK
                 NoMove();
                 if (!MoveToRandomPlayer())
                     MoveToRandomPoint();
+
+                //MovementDecisionMaking();
             }
 
             if (GetInRangeEnemy(out m_targetEnemy))
@@ -168,6 +294,77 @@ namespace GMTK
                 Rotate();
         }
         #endregion BaseBehaviour_Cb
+
+        private void MovementDecisionMaking()
+        {
+            // Compute total weight
+            float totalWeight = 0f;
+            foreach (var option in m_decisionMaking)
+            {
+                if (option.Name == "FleeFromClosest")
+                    option.Scale = m_prctDamages / 100f;
+                else
+                    option.Scale = 1f;
+                totalWeight += option.EffectivScale;
+            }
+
+            if (totalWeight <= 0f)
+                return;
+
+            // Roll a weighted random selection
+            float roll = UnityEngine.Random.Range(0f, totalWeight);
+            float accum = 0f;
+
+            foreach (var option in m_decisionMaking)
+            {
+                accum += option.EffectivScale;
+                if (roll <= accum)
+                {
+                    option.Action.Invoke();
+                    break;
+                }
+            }
+
+            //MoveToRandomPlayer();
+            //MoveToRandomPoint();
+            //MoveToClosestEnemy();
+            //FleeFromClosestEnemy();
+        }
+
+        private void CheckIfStuck()
+        {
+            if (!IsMoving || m_currentPath == null)
+            {
+                m_isStuck = false;
+                return;
+            }
+
+            if (Time.time - m_lastMoveTime > m_stuckCheckInterval)
+            {
+                float distanceMoved = (transform.position - m_lastPosition).sqrMagnitude;
+                if (distanceMoved < m_minMoveDistance * m_minMoveDistance)
+                {
+                    if (!m_isStuck)
+                    {
+                        m_isStuck = true;
+                        Debug.LogWarning($"{gameObject.name} seems to be stuck!");
+
+                        // Try to fix by recomputing path
+                        ClearPath();
+                        MoveToRandomPoint(); // or MoveToRandomPlayer() based on your logic
+                    }
+                }
+                else
+                {
+                    m_isStuck = false;
+                }
+
+                m_lastPosition = transform.position;
+                m_lastMoveTime = Time.time;
+            }
+        }
+
+
         protected override void GetHit(Collision collision)
         {
             if (GetAttackManager().UseMinigun())

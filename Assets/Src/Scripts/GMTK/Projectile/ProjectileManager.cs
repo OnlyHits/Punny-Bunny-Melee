@@ -88,32 +88,20 @@ namespace GMTK
 
         public void AllocateProjectile(Vector3 direction, Vector3 position, AttackDatas datas, Collider collider)
         {
-            Projectile projectile = null;
-
             switch (datas.bullet_type)
             {
                 case AttackUtils.BulletType.Bullet_Normal:
-                    projectile =  m_normalBulletPool?.AllocateElement(position, direction, datas);
+                    m_normalBulletPool?.AllocateElement(position, direction, datas, collider);
                     break;
                 case AttackUtils.BulletType.Bullet_Bubble:
-                    projectile = m_bubbleBulletPool?.AllocateElement(position, direction, datas);
+                    m_bubbleBulletPool?.AllocateElement(position, direction, datas, collider);
                     break;
                 case AttackUtils.BulletType.Bullet_Fireball:
-                    projectile = m_fireballBulletPool?.AllocateElement(position, direction, datas);
+                    m_fireballBulletPool?.AllocateElement(position, direction, datas, collider);
                     break;
                 case AttackUtils.BulletType.Bullet_Fireball_Big:
-                    projectile = m_fireballBigBulletPool?.AllocateElement(position, direction, datas);
+                    m_fireballBigBulletPool?.AllocateElement(position, direction, datas, collider);
                     break;
-            }
-
-            if (projectile != null)
-            {
-                Collider projectileCollider = projectile.GetComponent<Collider>();
-
-                if (collider != null && projectileCollider != null)
-                {
-                    Physics.IgnoreCollision(collider, projectileCollider);
-                }
             }
         }
 

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       buildPlatform:
-        description: 'Target platform (leave blank for all)'
+        description: 'Target platform (windows, linux, web or leave blank for all)'
         required: false
         default: ''
 

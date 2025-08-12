@@ -30,6 +30,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          lfs: true
           submodules: recursive
           ssh-key: ${{ secrets.PRIVATE_SSH_KEY  }} # Because the repo is private
           #persist-credentials: false # Ensures to use the ssh key

@@ -32,6 +32,7 @@ jobs:
           fetch-depth: 0
           lfs: true
           submodules: recursive
+          ssh-key: ${{ secrets.PRIVATE_SSH_KEY  }} # Because the repo is private
       
       - name: get-previous-tag
         id: previoustag

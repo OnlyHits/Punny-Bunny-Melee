@@ -54,6 +54,9 @@ jobs:
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
 
+      #- name: create-logs-dir
+      #  run: mkdir -p Logs
+
       - name: build-project
         uses: game-ci/unity-builder@v4
         env:
@@ -63,8 +66,19 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
+      #    customParameters: -logFile ./Logs/Editor.log
           #unityVersion: 6000.0.51f1 # optional but it could be usefull
       
+      #- name: upload-unity-logs
+      #  if: always()
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: UnityLogs-${{ matrix.targetPlatform }}
+      #    path: |
+      #      Logs/**
+      #    if-no-files-found: warn
+      #    retention-days: 7
+
       - name: upload-build
         uses: actions/upload-artifact@v4
         with:

@@ -59,9 +59,6 @@ jobs:
             Library-${{ matrix.targetPlatform }}
             Library-
 
-      - name: create-logs-dir
-        run: mkdir -p Logs
-
       - name: build-project
         uses: game-ci/unity-builder@v4
         env:
@@ -71,15 +68,6 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           customParameters: -logFile /github/workspace/Logs/Editor.log
-
-      - name: upload-unity-log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: UnityLogs-${{ matrix.targetPlatform }}
-          path: Logs/Editor.log
-          if-no-files-found: warn
-          retention-days: 7
 
       - name: upload-build
         uses: actions/upload-artifact@v4

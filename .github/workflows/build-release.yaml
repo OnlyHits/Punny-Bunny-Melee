@@ -70,15 +70,9 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          customParameters: -logFile ./Logs/Editor.log
+          customParameters: -logFile /github/workspace/Logs/Editor.log
 
-      - name: collect-log-file
-        if: always()
-        run: |
-          mkdir -p Logs
-          cp ~/.config/unity3d/Editor.log Logs/Editor.log || echo "No Editor.log found"
-
-      - name: upload-artifact-log-file
+      - name: upload-unity-log
         if: always()
         uses: actions/upload-artifact@v4
         with:

@@ -1,10 +1,13 @@
 name: Build Releases
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
     inputs:
       buildPlatform:
-        description: 'Target platform (leave blank for all)'
+        description: 'Target platform (windows, linux, web or leave blank for all)'
         required: false
         default: ''
 
@@ -18,7 +21,6 @@ jobs:
     strategy:
       fail-fast: true # if you want to retry on error or not
       matrix:
-        # the user run "windows" "linux" "web" or nothing to target the right platforms
         targetPlatform: ${{ fromJSON(
           inputs.buildPlatform == 'windows' && '["StandaloneWindows64"]' ||
           inputs.buildPlatform == 'linux' && '["StandaloneLinux64"]' ||
@@ -31,6 +33,9 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+          submodules: recursive
+          ssh-key: ${{ secrets.PRIVATE_SSH_KEY  }} # Because the repo is private
+          #persist-credentials: false # Ensures to use the ssh key
       
       - name: get-previous-tag
         id: previoustag
@@ -46,25 +51,38 @@ jobs:
         with:
           version: ${{ steps.previoustag.outputs.tag }}
 
-      # caching library files then the github action doesn't have to re pull it each time 
       - name: caching-library
         uses: actions/cache@v3
         with:
           path: Library/
           key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
+          restore-keys: |
+            Library-${{ matrix.targetPlatform }}
+            Library-
+
+      #- name: create-logs-dir
+      #  run: mkdir -p Logs
 
       - name: build-project
         uses: game-ci/unity-builder@v4
         env:
-          UNITY_SERIAL: "" #${{ secrets.UNITY_SERIAL }} #for unity plus/pro, not personal
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          #unityVersion: 6000.0.51f1 # optional but it could be usefull
+      #    customParameters: -logFile ./Logs/Editor.log
       
+      #- name: upload-unity-logs
+      #  if: always()
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: UnityLogs-${{ matrix.targetPlatform }}
+      #    path: |
+      #      Logs/**
+      #    if-no-files-found: warn
+      #    retention-days: 7
+
       - name: upload-build
         uses: actions/upload-artifact@v4
         with:
@@ -83,7 +101,7 @@ jobs:
           tag_name: ${{ matrix.targetPlatform }}-${{ steps.next.outputs.version }}
           release_name: Release-${{ matrix.targetPlatform }}-v0.0.${{ steps.next.outputs.version }}
           commitish: main
-          #body_path: CHANGELOG.md # optional body (description)
+          #body_path: CHANGELOG.md # optional description
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

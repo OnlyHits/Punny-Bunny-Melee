@@ -16,7 +16,7 @@ jobs:
       run:
         working-directory: ./
     strategy:
-      fail-fast: true # if you want to retry on error
+      fail-fast: true # if you want to retry on error or not
       matrix:
         # the user run "windows" "linux" "web" or nothing to target the right platforms
         targetPlatform: ${{ fromJSON(

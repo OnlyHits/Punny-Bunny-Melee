@@ -35,7 +35,6 @@ jobs:
           lfs: true
           submodules: recursive
           ssh-key: ${{ secrets.PRIVATE_SSH_KEY  }} # Because the repo is private
-          #persist-credentials: false # Ensures to use the ssh key
       
       - name: get-previous-tag
         id: previoustag
@@ -60,9 +59,6 @@ jobs:
             Library-${{ matrix.targetPlatform }}
             Library-
 
-      #- name: create-logs-dir
-      #  run: mkdir -p Logs
-
       - name: build-project
         uses: game-ci/unity-builder@v4
         env:
@@ -71,17 +67,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-      #    customParameters: -logFile ./Logs/Editor.log
-      
-      #- name: upload-unity-logs
-      #  if: always()
-      #  uses: actions/upload-artifact@v4
-      #  with:
-      #    name: UnityLogs-${{ matrix.targetPlatform }}
-      #    path: |
-      #      Logs/**
-      #    if-no-files-found: warn
-      #    retention-days: 7
+          customParameters: -logFile /github/workspace/Logs/Editor.log
 
       - name: upload-build
         uses: actions/upload-artifact@v4

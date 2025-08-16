@@ -72,24 +72,18 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           customParameters: -logFile ./Logs/Editor.log
 
-      - name: Collect Unity Editor log
+      - name: collect-log-file
         if: always()
         run: |
           mkdir -p Logs
-          LOG="$HOME/.config/unity3d/Editor.log"
-          if [ -f "$LOG" ]; then
-            cp "$LOG" Logs/Editor.log
-          else
-            echo "No Editor.log found at $LOG"
-          fi
+          cp ~/.config/unity3d/Editor.log Logs/Editor.log || echo "No Editor.log found"
 
-      - name: upload-unity-logs
+      - name: upload-artifact-log-file
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: UnityLogs-${{ matrix.targetPlatform }}
-          path: |
-            Logs/**
+          path: Logs/Editor.log
           if-no-files-found: warn
           retention-days: 7
 

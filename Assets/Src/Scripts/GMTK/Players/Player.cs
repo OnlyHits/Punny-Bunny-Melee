@@ -10,7 +10,7 @@ using static GMTK.AttackUtils;
 
 namespace GMTK
 {
-    public abstract class Player : BaseBehaviour
+    public class Player : BaseBehaviour
     {
         [Title("Dependancies")]
         [SerializeField] protected Rigidbody m_rb;
@@ -43,6 +43,7 @@ namespace GMTK
         [Title("Visual")]
         [SerializeField] protected List<Renderer> m_renderers;
         [SerializeField] protected Material m_material;
+        [SerializeField] protected Material m_faceMaterial;
 
         protected bool m_isMoving;
         protected Vector3 m_shootDirection = Vector3.zero;
@@ -61,7 +62,10 @@ namespace GMTK
         private event Action m_onGetHit;
 
         private readonly string ANIM_RUN = "Run";
-        public abstract AttackInterface GetAttackManager();
+        public virtual AttackInterface GetAttackManager()
+        {
+            return null;
+        }
 
         #region Unity_Cb
         private void Awake()
@@ -82,6 +86,7 @@ namespace GMTK
                     GetHit(collision);
             }
         }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other != null && other.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.BonusLayer))
@@ -94,6 +99,7 @@ namespace GMTK
         }
         #endregion
 
+        #region Collisions
         private void CollideBonus(Collider other)
         {
             if (other.gameObject.GetComponent<Bonus>().GetBonusType() == BonusType.Bullet)
@@ -111,7 +117,6 @@ namespace GMTK
 
             other.gameObject.GetComponent<Bonus>().Compute = false;
         }
-
         private void OnCollisionWithWall(Collision collision)
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer(GmtkUtils.ObstacleLayer))
@@ -120,6 +125,8 @@ namespace GMTK
                     Die(collision);
             }
         }
+
+        #endregion
 
         #region BaseBehaviour_Cb
         public override void Init(params object[] parameters)
@@ -145,6 +152,10 @@ namespace GMTK
         protected override void OnFixedUpdate() { }
         protected override void OnLateUpdate()
         {
+            if (!m_agent.isOnNavMesh)
+            {
+                return;
+            }
             if (m_agent.gameObject.activeSelf)
             {
                 transform.position = m_agent.transform.position;
@@ -156,11 +167,26 @@ namespace GMTK
         #endregion BaseBehaviour_Cb
 
         #region Visual
+
         private void BindMaterial()
         {
-            foreach (Renderer rd in m_renderers)
+            for (int j = 0; j < m_renderers.Count; ++j)
             {
-                rd.materials = new Material[1] { m_material };
+                Renderer rd = m_renderers[j];
+                Material[] materials = new Material[rd.materials.Length];
+                for (int i = 0; i < materials.Length; ++i)
+                {
+                    // @note: not clean but fast fix to assign face material on right slot & renderer
+                    if (i == 0 && j == 1)
+                    {
+                        materials[i] = m_faceMaterial;
+                    }
+                    else
+                    {
+                        materials[i] = m_material;
+                    }
+                }
+                rd.materials = materials;
             }
         }
         #endregion

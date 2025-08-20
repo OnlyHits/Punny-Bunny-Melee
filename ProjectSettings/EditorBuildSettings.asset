@@ -14,11 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Src/Scenes/LoadingScene.unity
     guid: 5f830d89e9b14c2448f78e240239d1b0
-  - enabled: 1
-    path: Assets/Src/Scenes/Test-Projectile.unity
-    guid: 3edbf28f002143143812a090c81ecf8d
-  - enabled: 1
-    path: Assets/Src/Scenes/Test-AI&MapScene.unity
+  - enabled: 0
+    path: Assets/Src/Scenes/Test/Test-AI&MapScene.unity
     guid: d628d271205299288b795eab3e3b70b5
   - enabled: 1
     path: Assets/Src/Scenes/MainMenuScene.unity

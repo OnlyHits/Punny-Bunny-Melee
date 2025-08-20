@@ -1805,7 +1805,7 @@ MonoBehaviour:
   - {fileID: 907296658650783851}
   - {fileID: 6398805660648913782}
   m_material: {fileID: 2100000, guid: ebd1686800caa929ca096594c968d0e9, type: 2}
-  m_faceMaterial: {fileID: 2100000, guid: 7e1b0d8bec90ad04691efd19bc8b9c4a, type: 2}
+  m_faceMaterial: {fileID: 2100000, guid: c8527a81431e6d7f887a057e8574ce53, type: 2}
 --- !u!54 &6560054934559429062
 Rigidbody:
   m_ObjectHideFlags: 0
